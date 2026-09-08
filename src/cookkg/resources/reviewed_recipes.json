@@ -1,0 +1,12 @@
+{
+  "dishes/breakfast/空气炸锅面包片.md": {"sha256": "5c57f5cf967524ec2fab8fc9eaf1d4a90ad45e23d2da9a443d889741d02559f0", "approved": true, "reviewed_on": "2026-09-08"},
+  "dishes/breakfast/美式炒蛋.md": {"sha256": "5e2a165dc354be04e757353654fcb2e849ec34ced081fcbd30caa3aefa5c7571", "approved": true, "reviewed_on": "2026-09-08"},
+  "dishes/breakfast/鸡蛋三明治.md": {"sha256": "27c400d50141e164b651848e41be79cea4f84bb12f75b99c15bd95152993d9d1", "approved": true, "reviewed_on": "2026-09-08"},
+  "dishes/condiment/油酥.md": {"sha256": "7b03cb02058bbca9d01ba206735ac06eba6c6f6dd6cc0b65a83e834f37589b54", "approved": true, "reviewed_on": "2026-09-08"},
+  "dishes/meat_dish/小炒肉.md": {"sha256": "020664019cc79e82f8619b8e5cdc66c39aa83abc83ff6bdbec22a767a68842c6", "approved": true, "reviewed_on": "2026-09-08", "ingredient_status": {"食用油": "required"}},
+  "dishes/meat_dish/意式烤鸡.md": {"sha256": "858f0a7409f90deb98cd61c34263c897f63e233a6104e5fc9dc3ba81f27a559c", "approved": true, "reviewed_on": "2026-09-08"},
+  "dishes/meat_dish/烤鸡翅.md": {"sha256": "ffd8f772f2aeab8127b79229fbbb59f5fab1cb2ee81c67f62dd9e85da8460e40", "approved": true, "reviewed_on": "2026-09-08"},
+  "dishes/meat_dish/黄瓜炒肉.md": {"sha256": "433df432c2ac472174832c7989e4fd44a874cdeaa08916d645538be2bf9a31fc", "approved": true, "reviewed_on": "2026-09-08"},
+  "dishes/vegetable_dish/洋葱炒鸡蛋/洋葱炒鸡蛋.md": {"sha256": "d744b2afa5588f756970ee237cbe0393434eaac84d4d0f04f15c773afb9c85b2", "approved": true, "reviewed_on": "2026-09-08"},
+  "dishes/vegetable_dish/莴笋叶煎饼/莴笋叶煎饼.md": {"sha256": "ad9ef92dab5e2ab6dcf569714053276dfe163464669c7f4f504483b8d7ee99b5", "approved": true, "reviewed_on": "2026-09-08"}
+}
