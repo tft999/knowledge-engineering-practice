@@ -13,6 +13,8 @@ from cookkg.recommend import RecommendRequest, recommend
 app = typer.Typer(help="HowToCook 食材知识图谱与约束菜单规划")
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="backslashreplace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="backslashreplace")
 DEFAULT_RAW = Path("data/raw/howtocook")
 DEFAULT_PROCESSED = Path("data/processed")
 
@@ -123,6 +125,8 @@ def verify_neo4j(
         typer.echo(f"Neo4j 验证失败：{error}", err=True)
         raise typer.Exit(1) from error
     typer.echo(json_module.dumps(result, ensure_ascii=False, indent=2))
+    if not result.get("ok"):
+        raise typer.Exit(1)
 
 
 if __name__ == "__main__":

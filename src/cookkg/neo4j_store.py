@@ -34,6 +34,10 @@ def _key(snapshot, node_id):
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
+def _node_payload(attrs):
+    return json.dumps(attrs, ensure_ascii=False, sort_keys=True)
+
+
 def _edge_tuple(recipe, ingredient, attrs):
     return (recipe, ingredient, attrs.get("status"),
             tuple(attrs.get("quantity_raw") or []), tuple(attrs.get("evidence") or []))
@@ -52,6 +56,7 @@ def import_graph(graph: nx.DiGraph) -> dict:
             **snapshot, "key": _key(snapshot, node_id), "node_id": node_id,
             "id": attrs.get("id", node_id), "name": attrs.get("name", node_id),
             "kind": kind, "source_url": attrs.get("source_url"),
+            "payload": _node_payload(attrs),
         })
     edges = []
     for recipe, ingredient, attrs in graph.edges(data=True):
@@ -65,6 +70,12 @@ def import_graph(graph: nx.DiGraph) -> dict:
         })
 
     def write(tx):
+        tx.run(
+            "MATCH (n) WHERE (n:CookKGRecipe OR n:CookKGIngredient) "
+            "AND n.dataset = $dataset AND n.source_commit = $source_commit "
+            "DETACH DELETE n",
+            **snapshot,
+        ).consume()
         for kind, label in (("recipe", "CookKGRecipe"), ("ingredient", "CookKGIngredient")):
             for offset in range(0, len(nodes[kind]), 1000):
                 tx.run(f"UNWIND $rows AS row MERGE (n:{label} {{key: row.key}}) SET n += row",
@@ -95,16 +106,19 @@ def verify_graph(graph: nx.DiGraph) -> dict:
     """Compare node identities and every edge (including attributes), plus one query."""
     uri, username, password, database = _config()
     snapshot = _snapshot(graph)
-    expected_nodes = Counter((node_id, attrs["kind"]) for node_id, attrs in graph.nodes(data=True))
+    expected_nodes = Counter(
+        (node_id, attrs["kind"], _node_payload(attrs))
+        for node_id, attrs in graph.nodes(data=True)
+    )
     expected_edges = Counter(_edge_tuple(r, i, attrs) for r, i, attrs in graph.edges(data=True))
     ingredients = sorted(n for n, attrs in graph.nodes(data=True) if attrs["kind"] == "ingredient")
     sample = ingredients[0] if ingredients else None
 
     def read(tx):
-        actual_nodes = Counter((row["node_id"], row["kind"]) for row in tx.run(
+        actual_nodes = Counter((row["node_id"], row["kind"], row["payload"]) for row in tx.run(
             "MATCH (n) WHERE (n:CookKGRecipe OR n:CookKGIngredient) "
             "AND n.dataset = $dataset AND n.source_commit = $source_commit "
-            "RETURN n.node_id AS node_id, n.kind AS kind", **snapshot))
+            "RETURN n.node_id AS node_id, n.kind AS kind, n.payload AS payload", **snapshot))
         actual_edges = Counter(_edge_tuple(row["recipe"], row["ingredient"], row) for row in tx.run(
             "MATCH (r:CookKGRecipe)-[e:COOKKG_USES]->(i:CookKGIngredient) "
             "WHERE r.dataset = $dataset AND r.source_commit = $source_commit "

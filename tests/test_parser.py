@@ -70,3 +70,5 @@ def test_calculation_only_ingredient_is_pending():
         (ingredient.name, ingredient.status) for ingredient in result.recipe.ingredients
     ]
     assert "ingredient_only_in_calculation:食用油" in result.issues
+    item = next(item for item in result.recipe.ingredients if item.name == "食用油")
+    assert item.evidence == ["dishes/test.md:6"]

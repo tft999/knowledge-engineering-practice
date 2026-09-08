@@ -20,6 +20,8 @@ def source_config() -> dict:
 def fetch_dataset(destination: Path, force: bool = False) -> dict:
     config = source_config()
     marker = destination / ".cookkg-source.json"
+    if destination.exists() and not marker.exists():
+        raise RuntimeError("目标不是 CookKG 管理的数据目录，拒绝替换")
     if marker.exists() and not force:
         current = json.loads(marker.read_text(encoding="utf-8"))
         if current.get("commit") == config["commit"]:
@@ -56,6 +58,15 @@ def load_reviews(path: Path) -> dict:
 
 
 def build_dataset(raw: Path, output: Path, commit: str, reviews_path: Path) -> dict:
+    manifest_path = raw / ".cookkg-source.json"
+    if not manifest_path.exists():
+        raise RuntimeError("原始数据缺少 CookKG 来源清单")
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as error:
+        raise RuntimeError("CookKG 来源清单无法读取") from error
+    if manifest.get("commit") != commit:
+        raise RuntimeError("原始数据提交不匹配，拒绝生成错误来源链接")
     reviews = load_reviews(reviews_path)
     results = []
     stale_reviews = 0
@@ -69,7 +80,12 @@ def build_dataset(raw: Path, output: Path, commit: str, reviews_path: Path) -> d
                 overrides = review.get("ingredient_status", {})
                 for ingredient in result.recipe.ingredients:
                     if ingredient.name in overrides:
-                        ingredient.status = overrides[ingredient.name]
+                        status = overrides[ingredient.name]
+                        if status not in {"required", "optional", "pending"}:
+                            raise RuntimeError(
+                                f"非法食材状态：{relative} / {ingredient.name} / {status}"
+                            )
+                        ingredient.status = status
                 removed = {
                     normalize_ingredient(name) for name in review.get("remove_ingredients", [])
                 }
@@ -82,14 +98,27 @@ def build_dataset(raw: Path, output: Path, commit: str, reviews_path: Path) -> d
                 for addition in review.get("add_ingredients", []):
                     name = normalize_ingredient(addition["name"])
                     if name not in existing:
+                        status = addition.get("status", "required")
+                        if status not in {"required", "optional", "pending"}:
+                            raise RuntimeError(
+                                f"非法食材状态：{relative} / {name} / {status}"
+                            )
                         result.recipe.ingredients.append(
                             IngredientUse(
                                 name=name,
-                                status=addition.get("status", "required"),
+                                status=status,
                                 evidence=[f"human-review:{relative}"],
                             )
                         )
                         existing.add(name)
+                removed_tools = {name.strip() for name in review.get("remove_tools", [])}
+                result.recipe.tools = [
+                    tool for tool in result.recipe.tools if tool not in removed_tools
+                ]
+                for tool in review.get("add_tools", []):
+                    clean_tool = tool.strip()
+                    if clean_tool and clean_tool not in result.recipe.tools:
+                        result.recipe.tools.append(clean_tool)
             else:
                 stale_reviews += 1
                 result.issues.append("stale_review")

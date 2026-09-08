@@ -47,11 +47,11 @@ def parse_recipe(text: str, path: str, commit: str) -> ParseResult:
         issues.append("missing_ingredients_section")
         return ParseResult(recipe=recipe, issues=issues)
 
-    calculation_values: list[str] = []
-    for _, line in calculation_lines:
+    calculation_values: list[tuple[int, str]] = []
+    for number, line in calculation_lines:
         if re.match(r"^\s*[-*]\s+", line):
             raw = re.sub(r"^\s*[-*]\s+", "", line).strip()
-            calculation_values.append(raw)
+            calculation_values.append((number, raw))
 
     known: set[str] = set()
     for number, line in ingredient_lines:
@@ -72,7 +72,7 @@ def parse_recipe(text: str, path: str, commit: str) -> ParseResult:
                 status="optional" if optional else "required",
                 quantity_raw=[
                     raw
-                    for raw in calculation_values
+                    for _, raw in calculation_values
                     if normalize_ingredient(raw).startswith(name_value)
                     or raw.startswith(name_value)
                 ],
@@ -82,14 +82,15 @@ def parse_recipe(text: str, path: str, commit: str) -> ParseResult:
 
     for candidate in sorted(STEP_ONLY_CANDIDATES):
         name_value = normalize_ingredient(candidate)
-        raw_values = [raw for raw in calculation_values if raw.startswith(candidate)]
+        matches = [(number, raw) for number, raw in calculation_values if raw.startswith(candidate)]
+        raw_values = [raw for _, raw in matches]
         if raw_values and name_value not in known:
             recipe.ingredients.append(
                 IngredientUse(
                     name=name_value,
                     status="pending",
                     quantity_raw=raw_values,
-                    evidence=[f"{path}:calculation"],
+                    evidence=[f"{path}:{number}" for number, _ in matches],
                 )
             )
             known.add(name_value)
@@ -100,8 +101,13 @@ def parse_recipe(text: str, path: str, commit: str) -> ParseResult:
     for candidate in sorted(STEP_ONLY_CANDIDATES):
         canonical = normalize_ingredient(candidate)
         if candidate in operation_text and canonical not in known:
+            evidence = [
+                f"{path}:{number}"
+                for number, line in operation_lines
+                if candidate in line
+            ]
             recipe.ingredients.append(
-                IngredientUse(name=canonical, status="pending", evidence=[f"{path}:operation"])
+                IngredientUse(name=canonical, status="pending", evidence=evidence)
             )
             known.add(canonical)
             issues.append(f"ingredient_only_in_steps:{canonical}")
