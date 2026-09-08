@@ -1,5 +1,70 @@
-# Knowledge Engineering Practice
+# CookKG：家庭菜单规划
 
-知识工程综合实践课程小组项目。
+知识工程综合实践课程项目。项目使用 [HowToCook](https://github.com/Anduin2017/HowToCook)
+的固定版本构建食材知识图谱，根据已有食材、常备调料和排除项推荐 1—3 道菜，
+并以“联合菜单所需补购食材种类最少”为主要优化目标。
 
-> 当前状态：选题待定。
+当前首轮交付是可复现的数据与推荐闭环，不是完整 GraphRAG 系统。Web 页面、
+向量检索和 LLM 问答安排在后续阶段。
+
+项目的完整问题定义、用户故事、创新边界、总体架构和课程完成标准见
+[项目定义与总体架构](docs/PROJECT.md)。后续工作已拆分为数据扩充、Web 演示、GraphRAG 和
+实验答辩四个阶段，详见 [v0.2—v1.0 实施计划](docs/superpowers/plans/2026-09-09-cookkg-roadmap.md)。
+
+## 快速开始
+
+需要 Python 3.13。以下命令在仓库根目录运行：
+
+```powershell
+python -m venv .venv
+.venv/Scripts/python -m pip install -e '.[dev]'
+.venv/Scripts/cookkg fetch
+.venv/Scripts/cookkg build
+.venv/Scripts/cookkg recommend --have '鸡蛋,洋葱,面包片' `
+  --pantry '盐,食用油,黄油,料酒' --count 2 --max-buy 2
+```
+
+加上 `--json` 可获得结构化结果。原始数据、标准 JSONL、NetworkX 图和质量报告
+分别写入 `data/raw/howtocook` 与 `data/processed`，这些生成文件不会提交到 Git。
+
+系统默认不假定油盐齐全。`--have` 表示希望消耗的现有食材，`--pantry` 表示常备
+但不计入覆盖率的调料，`--exclude` 是不能出现的食材。补购按食材种类计算，
+不判断克数是否充足。
+
+## 数据质量门禁
+
+数据源固定为 HowToCook 提交
+`2b19c9e9ee926fd925a68207a57582a338813f9c`。规则解析会扫描全库并报告跨章节不一致；
+严格推荐只使用 `reviewed_recipes.json` 中人工审核且 SHA-256 仍匹配的菜谱。
+上游文件变化会使审核自动失效，避免旧审核覆盖新内容。
+
+当前提交包含 10 道人工审核菜谱。规则解析结果中的 `pending` 食材、未审核菜谱和
+结构不完整菜谱不会进入推荐。
+
+## Neo4j
+
+复制 `.env.example` 中的变量到当前 shell 环境，然后执行：
+
+```powershell
+.venv/Scripts/cookkg import-neo4j
+.venv/Scripts/cookkg verify-neo4j
+```
+
+导入使用 CookKG 专用标签、数据集与源提交命名空间，并采用幂等写入；不会清除其他数据。
+本机没有可连接的 Neo4j 时，离线功能仍可使用，数据库验收会明确报告失败原因。
+
+## 验证
+
+```powershell
+.venv/Scripts/python -m pytest -q
+.venv/Scripts/ruff check .
+```
+
+详细设计见 [设计文档](docs/superpowers/specs/2026-09-08-cook-graph-design.md)，执行记录见
+[实施计划](docs/superpowers/plans/2026-09-08-cook-graph-implementation.md)和
+[首轮验收记录](docs/validation/initial-validation.md)。
+
+## 数据许可
+
+菜谱来自 Anduin2017/HowToCook，源仓库声明为 Unlicense。生成结果保留固定提交来源链接，
+便于追溯原文。CookKG 自身的许可尚未由课程小组指定。
