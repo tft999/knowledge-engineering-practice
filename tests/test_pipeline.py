@@ -34,7 +34,11 @@ def test_build_requires_matching_human_review_hash(tmp_path):
     digest = hashlib.sha256(GOOD.encode()).hexdigest()
     reviews = tmp_path / "reviews.json"
     reviews.write_text(
-        json.dumps({"dishes/vegetable/家常菜.md": {"sha256": digest, "approved": True}}),
+        json.dumps({
+            "dishes/vegetable/家常菜.md": {
+                "sha256": digest, "approved": True, "reviewed_on": "2026-09-10"
+            }
+        }),
         encoding="utf-8",
     )
 
@@ -45,7 +49,13 @@ def test_build_requires_matching_human_review_hash(tmp_path):
     assert (output / "graph.json").exists()
 
     reviews.write_text(
-        json.dumps({"dishes/vegetable/家常菜.md": {"sha256": "stale", "approved": True}}),
+        json.dumps({
+            "dishes/vegetable/家常菜.md": {
+                "sha256": "00000000000000000000000000000000"
+                          "00000000000000000000000000000000",
+                "approved": True, "reviewed_on": "2026-09-10"
+            }
+        }),
         encoding="utf-8",
     )
     report = build_dataset(raw, output, "abc", reviews)
@@ -69,6 +79,7 @@ def test_review_can_add_remove_and_resolve_ingredients(tmp_path):
                 "dishes/vegetable/家常菜.md": {
                     "sha256": digest,
                     "approved": True,
+                    "reviewed_on": "2026-09-10",
                     "remove_ingredients": ["盐"],
                     "add_ingredients": [{"name": "食用油", "status": "required"}],
                     "add_tools": ["炒锅"],
@@ -136,11 +147,12 @@ def test_build_rejects_invalid_review_status(tmp_path):
                 "dishes/vegetable/家常菜.md": {
                     "sha256": hashlib.sha256(GOOD.encode()).hexdigest(),
                     "approved": True,
+                    "reviewed_on": "2026-09-10",
                     "ingredient_status": {"盐": "requird"},
                 }
             }
         ),
         encoding="utf-8",
     )
-    with pytest.raises(RuntimeError, match="非法食材状态"):
+    with pytest.raises(RuntimeError, match="审核记录无效"):
         build_dataset(raw, tmp_path / "out", "abc", reviews)

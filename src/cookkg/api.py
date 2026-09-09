@@ -35,11 +35,11 @@ def create_app(graph_path: Path) -> FastAPI:
         except Exception as error:
             raise RuntimeError("CookKG 图谱无法读取，请重新运行 cookkg build") from error
         taxonomy = load_taxonomy()
-        if (
-            graph.graph.get("schema_version") != 2
-            or graph.graph.get("taxonomy_version") != taxonomy.version
+        v2_integration = graph.graph.get("data_contract") == "cookkg-v2-integration"
+        if graph.graph.get("schema_version") != 2 or (not v2_integration and (
+            graph.graph.get("taxonomy_version") != taxonomy.version
             or graph.graph.get("taxonomy_digest") != taxonomy.digest()
-        ):
+        )):
             raise RuntimeError("CookKG 图谱版本过旧，请重新运行 cookkg build")
         app.state.service = CookKgService(graph)
         yield
@@ -67,6 +67,8 @@ def create_app(graph_path: Path) -> FastAPI:
             "schema_version": graph.graph["schema_version"],
             "taxonomy_version": graph.graph["taxonomy_version"],
             "reviewed_recipes": cookkg.reviewed_recipe_count(),
+            "integration_eligible_recipes": cookkg.integration_eligible_recipe_count(),
+            "available_recipes": cookkg.available_recipe_count(),
             "nodes": graph.number_of_nodes(),
             "edges": graph.number_of_edges(),
         }

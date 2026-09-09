@@ -68,7 +68,7 @@ def test_health_reports_loaded_graph_metadata(graph_path):
     assert response.status_code == 200
     assert response.json()["source_commit"] == "fixture"
     assert response.json()["schema_version"] == 2
-    assert response.json()["reviewed_recipes"] == 2
+    assert response.json()["reviewed_recipes"] == 3
 
 
 def test_recommendation_returns_frontend_contract_and_hierarchy_explanation(graph_path):

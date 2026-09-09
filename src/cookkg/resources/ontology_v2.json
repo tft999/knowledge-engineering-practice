@@ -1,0 +1,4287 @@
+{
+  "schema_version": "2.0",
+  "method": "ai_assisted",
+  "categories": [
+    "主食加工品",
+    "乳制品",
+    "其他加工食材",
+    "其他植物材料",
+    "其他水产",
+    "其他调味品",
+    "叶菜类",
+    "坚果种子类",
+    "复合调味品",
+    "未指定畜种肉类",
+    "果实干制品",
+    "果实蔬菜",
+    "根茎蔬菜",
+    "水产加工品",
+    "水产类",
+    "水果类",
+    "烘焙零食",
+    "牛肉类",
+    "猪肉类",
+    "禽肉类",
+    "粉类",
+    "糖类",
+    "羊肉类",
+    "肉类",
+    "肉类加工品",
+    "茎叶蔬菜",
+    "菌菇类",
+    "葱蒜香草类",
+    "蔬菜类",
+    "藻类",
+    "虾类",
+    "蛋类",
+    "蟹类",
+    "调味品",
+    "谷物类",
+    "豆制品",
+    "豆类蔬菜",
+    "贝类",
+    "辣椒类",
+    "酒类调料",
+    "食材",
+    "食用油脂",
+    "食用胶和膨松剂",
+    "饮料原料",
+    "香辛料",
+    "鱼类"
+  ],
+  "ingredients": {
+    "三文鱼": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "东北米": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "乳鸽": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "五花肉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "五香粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "低筋面粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "俄式酸黄瓜汁": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "全脂奶粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "全脂牛奶": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "八角": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "冬菇": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "冰糖": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "冷冻花卷": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "加糖炼乳": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "北方大米": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "十三香": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "即食玉米粒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "原味奥利奥": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "原味酸奶": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "去心莲子": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "可可粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "叶菜类蔬菜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "吉利丁": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "吉利丁片": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "吐司": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "味精": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "咖啡粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "啤酒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "培根": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "大米": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "大葱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "大葱葱白": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "大虾": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "奶油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "奶油奶酪": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "姜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "姜蒜粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "娃娃菜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "子弹头辣椒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "孜然粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "小汤圆": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "小米椒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "小肉丝": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "小苏打": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "小葱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "小豆蔻粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "小龙虾": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "尖椒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "巧克力": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "干辣椒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "干辣椒面": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "开洋": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "快熟面": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "意大利面": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "意式浓缩咖啡": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "手抓饼皮": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "手指饼干": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "排骨": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "料酒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "新鲜吐司": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "新鲜玉米": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "方形吐司片": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "无盐黄油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "无菌鸡蛋": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "日本豆腐": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "昆布酱油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "明虾": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "普通面粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "有盐牛油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "朗姆酒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "朝天椒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "杏仁": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "果酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "枸杞": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "柠檬": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "桂圆": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "桂皮": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "梭子蟹": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "棉花糖": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "植物油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "椰子水": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "椰树牌椰汁": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "橄榄油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "毛菜油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "毛豆": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "水": {
+      "resource_kind": "household_resource",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "水果": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "水浸金枪鱼罐头": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "河蟹": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "油麦菜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "泡发好的海参": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "泡打粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "泡面": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "洋葱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "活虾": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "浓缩咖啡": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "海虾": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "淀粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "淡奶油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "混合坚果": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "火腿": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "火腿肠": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "炼乳": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "熟白芝麻": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "熟蛋黄": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "牛奶": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "牛肉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "牛里脊": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "猪肉末": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "猪骨": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "玉竹": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "玉米": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "玉米淀粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "甘竹牌鲮鱼罐头": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "partial"
+    },
+    "生抽": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "生菜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "生蚝": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "番茄酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "瘦肉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "白砂糖": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "白糖": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "白胡椒粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "白芝麻": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "白芷": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "白菜心": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "白葡萄酒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "白醋": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "盐": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "石斛": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "米": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "米酒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "米醋": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "粉条": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "粟米": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "糍粑": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "糖": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "糖粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "糯米": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "糯米粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "紫菜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "紫薯粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "红枣": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "红柚果肉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "红糖": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "红萝卜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "绵白糖": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "罗氏虾": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "羊杂": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "羊肉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "老姜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "老干妈": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "老抽": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "肥牛片": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "胡椒粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "胡萝卜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "腰果": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "芝士": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "芝士片": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "芝麻": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "芝麻油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "芝麻酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "芝麻香油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "芥末": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "花椒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "花椒油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "花椒粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "花生油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "花生酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "芹菜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "草寇": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "草莓": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "荔浦芋头": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "荞麦面": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "莴笋": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "莴笋叶": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "菌菇": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "菜籽油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "菠菜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "萝卜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "葡萄干": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "葱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "蒜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "蒜苔": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "蒜蓉酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "蒸鱼豉油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "蓝莓": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "虾仁": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "虾皮": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "蚝油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "蛋挞皮": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "蛋黄酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "蛏子": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "蜂蜜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "西洋参": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "西红柿": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "话梅": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "豆瓣酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "豆腐": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "豆腐干": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "豆角": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "豆豉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "辣条": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "辣椒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "辣椒酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "速冻水饺": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "郫县豆瓣酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "酥油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "酱油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "酵母": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "酸黄瓜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "醋": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "醪糟": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "重奶油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "野山椒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "金菇": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "金针菇": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "银耳": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "陈皮": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "青花椒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "青菜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "青葱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "面包片": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "面包糠": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "面条": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "面粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "韭菜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "食用油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "饼干": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "香叶": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "香油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "香草精": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "香菜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "香葱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "香醋": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "马斯卡彭芝士": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "高筋面粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "鱼干": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "鲜虾": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "鲣鱼海苔碎": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "鲤鱼": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "鲮鱼": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "鸡精": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "鸡翅中": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "鸡腿": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "鸡蛋": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "鸡蛋黄": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "麦冬": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "麻油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "麻辣鲜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黄油": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黄瓜": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黄豆酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黄酒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黑胡椒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黑胡椒粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黑胡椒粒": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黑胡椒酱": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黑芝麻": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黑虎虾": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黑鳕鱼": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "黔式腊肠": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    },
+    "龟苓膏粉": {
+      "resource_kind": "food",
+      "classification_state": "pending",
+      "component_coverage": "unspecified"
+    }
+  },
+  "relations": [
+    {
+      "type": "HAS_COMPONENT",
+      "child": "甘竹牌鲮鱼罐头",
+      "parent": "豆豉",
+      "review_state": "pending",
+      "basis": "本篇实际从罐头取出的成分；仅部分披露，不是完整标签。",
+      "recipe_id": "dishes/meat_dish/豆豉鲮鱼油麦菜/豆豉鲮鱼油麦菜.md",
+      "source_hash": "c681e57c88a55666cbbadd2e29b7d5e0e016bea5070ab642bcd7b6898212d2cb",
+      "evidence": [
+        {
+          "line": 41,
+          "text": "   - 蒜末煸香后加入鲮鱼罐头中的豆豉，翻拌后加入切碎的鲮鱼块，再次翻拌"
+        }
+      ]
+    },
+    {
+      "type": "HAS_COMPONENT",
+      "child": "甘竹牌鲮鱼罐头",
+      "parent": "食用油",
+      "review_state": "pending",
+      "basis": "本篇实际从罐头取出的成分；仅部分披露，不是完整标签。",
+      "recipe_id": "dishes/meat_dish/豆豉鲮鱼油麦菜/豆豉鲮鱼油麦菜.md",
+      "source_hash": "c681e57c88a55666cbbadd2e29b7d5e0e016bea5070ab642bcd7b6898212d2cb",
+      "evidence": [
+        {
+          "line": 40,
+          "text": "   - 重新热锅后，加入鲮鱼罐头中的油，放入蒜末煸香"
+        }
+      ]
+    },
+    {
+      "type": "HAS_COMPONENT",
+      "child": "甘竹牌鲮鱼罐头",
+      "parent": "鲮鱼",
+      "review_state": "pending",
+      "basis": "本篇实际从罐头取出的成分；仅部分披露，不是完整标签。",
+      "recipe_id": "dishes/meat_dish/豆豉鲮鱼油麦菜/豆豉鲮鱼油麦菜.md",
+      "source_hash": "c681e57c88a55666cbbadd2e29b7d5e0e016bea5070ab642bcd7b6898212d2cb",
+      "evidence": [
+        {
+          "line": 35,
+          "text": "   - 鲮鱼罐头打开后，把鲮鱼主刺去除，切成小段后备用"
+        }
+      ]
+    },
+    {
+      "type": "IS_A",
+      "child": "三文鱼",
+      "parent": "鱼类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "东北米",
+      "parent": "谷物类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "乳鸽",
+      "parent": "禽肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "五花肉",
+      "parent": "猪肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "五香粉",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "低筋面粉",
+      "parent": "粉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "俄式酸黄瓜汁",
+      "parent": "其他调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "全脂奶粉",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "全脂牛奶",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "八角",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "冬菇",
+      "parent": "菌菇类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "冰糖",
+      "parent": "糖类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "冷冻花卷",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "加糖炼乳",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "北方大米",
+      "parent": "谷物类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "十三香",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "即食玉米粒",
+      "parent": "谷物类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "原味奥利奥",
+      "parent": "烘焙零食",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "原味酸奶",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "去心莲子",
+      "parent": "坚果种子类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "可可粉",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "叶菜类蔬菜",
+      "parent": "叶菜类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "吉利丁",
+      "parent": "食用胶和膨松剂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "吉利丁片",
+      "parent": "食用胶和膨松剂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "吐司",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "味精",
+      "parent": "其他调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "咖啡粉",
+      "parent": "饮料原料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "啤酒",
+      "parent": "酒类调料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "培根",
+      "parent": "肉类加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "大米",
+      "parent": "谷物类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "大葱",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "大葱葱白",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "大虾",
+      "parent": "虾类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "奶油",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "奶油奶酪",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "姜",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "姜蒜粉",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "娃娃菜",
+      "parent": "叶菜类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "子弹头辣椒",
+      "parent": "辣椒类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "孜然粉",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "小汤圆",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "小米椒",
+      "parent": "辣椒类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "小肉丝",
+      "parent": "未指定畜种肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "小苏打",
+      "parent": "食用胶和膨松剂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "小葱",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "小豆蔻粉",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "小龙虾",
+      "parent": "虾类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "尖椒",
+      "parent": "辣椒类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "巧克力",
+      "parent": "烘焙零食",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "干辣椒",
+      "parent": "辣椒类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "干辣椒面",
+      "parent": "辣椒类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "开洋",
+      "parent": "水产加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "快熟面",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "意大利面",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "意式浓缩咖啡",
+      "parent": "饮料原料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "手抓饼皮",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "手指饼干",
+      "parent": "烘焙零食",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "排骨",
+      "parent": "未指定畜种肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "料酒",
+      "parent": "酒类调料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "新鲜吐司",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "新鲜玉米",
+      "parent": "谷物类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "方形吐司片",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "无盐黄油",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "无菌鸡蛋",
+      "parent": "蛋类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "日本豆腐",
+      "parent": "其他加工食材",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "昆布酱油",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "明虾",
+      "parent": "虾类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "普通面粉",
+      "parent": "粉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "朗姆酒",
+      "parent": "酒类调料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "朝天椒",
+      "parent": "辣椒类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "杏仁",
+      "parent": "坚果种子类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "果酱",
+      "parent": "其他加工食材",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "枸杞",
+      "parent": "果实干制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "柠檬",
+      "parent": "水果类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "桂圆",
+      "parent": "水果类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "桂皮",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "梭子蟹",
+      "parent": "蟹类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "棉花糖",
+      "parent": "烘焙零食",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "植物油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "椰子水",
+      "parent": "饮料原料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "椰树牌椰汁",
+      "parent": "饮料原料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "橄榄油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "毛菜油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "毛豆",
+      "parent": "豆类蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "水果",
+      "parent": "水果类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "水浸金枪鱼罐头",
+      "parent": "水产加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "河蟹",
+      "parent": "蟹类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "油麦菜",
+      "parent": "叶菜类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "泡发好的海参",
+      "parent": "其他水产",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "泡打粉",
+      "parent": "食用胶和膨松剂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "泡面",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "洋葱",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "活虾",
+      "parent": "虾类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "浓缩咖啡",
+      "parent": "饮料原料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "海虾",
+      "parent": "虾类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "淀粉",
+      "parent": "粉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "淡奶油",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "混合坚果",
+      "parent": "坚果种子类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "火腿",
+      "parent": "肉类加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "火腿肠",
+      "parent": "肉类加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "炼乳",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "熟白芝麻",
+      "parent": "坚果种子类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "熟蛋黄",
+      "parent": "蛋类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "牛奶",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "牛肉",
+      "parent": "牛肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "牛里脊",
+      "parent": "牛肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "猪肉末",
+      "parent": "猪肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "猪骨",
+      "parent": "猪肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "玉竹",
+      "parent": "其他植物材料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "玉米",
+      "parent": "谷物类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "玉米淀粉",
+      "parent": "粉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "甘竹牌鲮鱼罐头",
+      "parent": "水产加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "生抽",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "生菜",
+      "parent": "叶菜类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "生蚝",
+      "parent": "贝类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "番茄酱",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "瘦肉",
+      "parent": "未指定畜种肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "白砂糖",
+      "parent": "糖类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "白糖",
+      "parent": "糖类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "白胡椒粉",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "白芝麻",
+      "parent": "坚果种子类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "白芷",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "白菜心",
+      "parent": "叶菜类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "白葡萄酒",
+      "parent": "酒类调料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "白醋",
+      "parent": "其他调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "盐",
+      "parent": "其他调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "石斛",
+      "parent": "其他植物材料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "米",
+      "parent": "谷物类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "米酒",
+      "parent": "酒类调料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "米醋",
+      "parent": "其他调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "粉条",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "粟米",
+      "parent": "谷物类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "糍粑",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "糖",
+      "parent": "糖类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "糖粉",
+      "parent": "糖类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "糯米",
+      "parent": "谷物类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "糯米粉",
+      "parent": "粉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "紫菜",
+      "parent": "藻类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "紫薯粉",
+      "parent": "粉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "红枣",
+      "parent": "果实干制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "红柚果肉",
+      "parent": "水果类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "红糖",
+      "parent": "糖类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "绵白糖",
+      "parent": "糖类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "罗氏虾",
+      "parent": "虾类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "羊杂",
+      "parent": "羊肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "羊肉",
+      "parent": "羊肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "老姜",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "老干妈",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "老抽",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "肥牛片",
+      "parent": "牛肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "胡椒粉",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "胡萝卜",
+      "parent": "根茎蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "腰果",
+      "parent": "坚果种子类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "芝士",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "芝士片",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "芝麻",
+      "parent": "坚果种子类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "芝麻油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "芝麻酱",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "芝麻香油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "芥末",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "花椒",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "花椒油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "花椒粉",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "花生油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "花生酱",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "芹菜",
+      "parent": "茎叶蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "草寇",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "草莓",
+      "parent": "水果类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "荔浦芋头",
+      "parent": "根茎蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "荞麦面",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "莴笋",
+      "parent": "茎叶蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "莴笋叶",
+      "parent": "叶菜类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "菌菇",
+      "parent": "菌菇类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "菜籽油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "菠菜",
+      "parent": "叶菜类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "萝卜",
+      "parent": "根茎蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "葡萄干",
+      "parent": "果实干制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "葱",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "蒜",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "蒜苔",
+      "parent": "茎叶蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "蒜蓉酱",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "蒸鱼豉油",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "蓝莓",
+      "parent": "水果类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "虾仁",
+      "parent": "虾类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "虾皮",
+      "parent": "水产加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "蚝油",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "蛋挞皮",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "蛋黄酱",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "蛏子",
+      "parent": "贝类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "蜂蜜",
+      "parent": "糖类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "西洋参",
+      "parent": "其他植物材料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "西红柿",
+      "parent": "果实蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "话梅",
+      "parent": "果实干制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "豆瓣酱",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "豆腐",
+      "parent": "豆制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "豆腐干",
+      "parent": "豆制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "豆角",
+      "parent": "豆类蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "豆豉",
+      "parent": "豆制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "辣条",
+      "parent": "烘焙零食",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "辣椒",
+      "parent": "辣椒类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "辣椒酱",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "速冻水饺",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "郫县豆瓣酱",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "酥油",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "酱油",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "酵母",
+      "parent": "食用胶和膨松剂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "酸黄瓜",
+      "parent": "其他加工食材",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "醋",
+      "parent": "其他调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "醪糟",
+      "parent": "其他加工食材",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "重奶油",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "野山椒",
+      "parent": "辣椒类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "金菇",
+      "parent": "菌菇类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "金针菇",
+      "parent": "菌菇类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "银耳",
+      "parent": "菌菇类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "陈皮",
+      "parent": "果实干制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "青花椒",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "青菜",
+      "parent": "叶菜类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "青葱",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "面包片",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "面包糠",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "面条",
+      "parent": "主食加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "面粉",
+      "parent": "粉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "韭菜",
+      "parent": "茎叶蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "食用油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "饼干",
+      "parent": "烘焙零食",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "香叶",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "香油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "香草精",
+      "parent": "其他调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "香菜",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "香葱",
+      "parent": "葱蒜香草类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "香醋",
+      "parent": "其他调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "马斯卡彭芝士",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "高筋面粉",
+      "parent": "粉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "鱼干",
+      "parent": "水产加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "鲜虾",
+      "parent": "虾类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "鲣鱼海苔碎",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "鲤鱼",
+      "parent": "鱼类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "鲮鱼",
+      "parent": "鱼类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "鸡精",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "鸡翅中",
+      "parent": "禽肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "鸡腿",
+      "parent": "禽肉类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "鸡蛋",
+      "parent": "蛋类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "鸡蛋黄",
+      "parent": "蛋类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "麦冬",
+      "parent": "其他植物材料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "麻油",
+      "parent": "食用油脂",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "麻辣鲜",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黄油",
+      "parent": "乳制品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黄瓜",
+      "parent": "果实蔬菜",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黄豆酱",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黄酒",
+      "parent": "酒类调料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黑胡椒",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黑胡椒粉",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黑胡椒粒",
+      "parent": "香辛料",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黑胡椒酱",
+      "parent": "复合调味品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黑芝麻",
+      "parent": "坚果种子类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黑虎虾",
+      "parent": "虾类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黑鳕鱼",
+      "parent": "鱼类",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "黔式腊肠",
+      "parent": "肉类加工品",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "IS_A",
+      "child": "龟苓膏粉",
+      "parent": "其他加工食材",
+      "review_state": "pending",
+      "basis": "项目烹饪检索分类提案；AI辅助拟定，需成员人工审核。不是原文已证实的生物学分类。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "主食加工品",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "乳制品",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "其他加工食材",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "其他植物材料",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "其他水产",
+      "parent": "水产类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "其他调味品",
+      "parent": "调味品",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "叶菜类",
+      "parent": "蔬菜类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "坚果种子类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "复合调味品",
+      "parent": "调味品",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "未指定畜种肉类",
+      "parent": "肉类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "果实干制品",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "果实蔬菜",
+      "parent": "蔬菜类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "根茎蔬菜",
+      "parent": "蔬菜类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "水产加工品",
+      "parent": "水产类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "水产类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "水果类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "烘焙零食",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "牛肉类",
+      "parent": "肉类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "猪肉类",
+      "parent": "肉类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "禽肉类",
+      "parent": "肉类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "粉类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "糖类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "羊肉类",
+      "parent": "肉类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "肉类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "肉类加工品",
+      "parent": "肉类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "茎叶蔬菜",
+      "parent": "蔬菜类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "菌菇类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "葱蒜香草类",
+      "parent": "蔬菜类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "蔬菜类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "藻类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "虾类",
+      "parent": "水产类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "蛋类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "蟹类",
+      "parent": "水产类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "调味品",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "谷物类",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "豆制品",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "豆类蔬菜",
+      "parent": "蔬菜类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "贝类",
+      "parent": "水产类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "辣椒类",
+      "parent": "蔬菜类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "酒类调料",
+      "parent": "调味品",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "食用油脂",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "食用胶和膨松剂",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "饮料原料",
+      "parent": "食材",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "香辛料",
+      "parent": "调味品",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    },
+    {
+      "type": "SUBCLASS_OF",
+      "child": "鱼类",
+      "parent": "水产类",
+      "review_state": "pending",
+      "basis": "项目检索本体的上下位约定，待小组确认。"
+    }
+  ],
+  "aliases": [
+    {
+      "alias": "食盐",
+      "canonical": "盐",
+      "scope": "dishes/condiment/炸串酱料.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 27,
+          "text": "- 食盐 20 克"
+        }
+      ]
+    },
+    {
+      "alias": "蒜头",
+      "canonical": "蒜",
+      "scope": "dishes/condiment/蒜香酱油.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 11,
+          "text": "- 蒜头"
+        },
+        {
+          "line": 19,
+          "text": "- 蒜头 2 瓣"
+        }
+      ]
+    },
+    {
+      "alias": "食用盐",
+      "canonical": "盐",
+      "scope": "dishes/vegetable_dish/话梅煮毛豆/话梅煮毛豆.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 13,
+          "text": "* 食用盐"
+        },
+        {
+          "line": 21,
+          "text": "* 食用盐 2 g"
+        }
+      ]
+    },
+    {
+      "alias": "食用盐",
+      "canonical": "盐",
+      "scope": "dishes/vegetable_dish/菠菜炒鸡蛋/菠菜炒鸡蛋.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 16,
+          "text": "- 食用盐"
+        },
+        {
+          "line": 25,
+          "text": "- 食用盐 5g"
+        }
+      ]
+    },
+    {
+      "alias": "蒜瓣",
+      "canonical": "蒜",
+      "scope": "dishes/vegetable_dish/炒青菜.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 20,
+          "text": "- 蒜瓣 2 粒 * 份数"
+        }
+      ]
+    },
+    {
+      "alias": "小米辣",
+      "canonical": "小米椒",
+      "scope": "dishes/meat_dish/小米辣炒肉.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 11,
+          "text": "* 小米辣"
+        },
+        {
+          "line": 27,
+          "text": "- 小米椒 20 个，根据个人口味加减"
+        }
+      ]
+    },
+    {
+      "alias": "大蒜",
+      "canonical": "蒜",
+      "scope": "dishes/meat_dish/小米辣炒肉.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 17,
+          "text": "* 大蒜"
+        },
+        {
+          "line": 33,
+          "text": "- 姜蒜 50g"
+        }
+      ]
+    },
+    {
+      "alias": "食用盐",
+      "canonical": "盐",
+      "scope": "dishes/meat_dish/蒜苔炒肉末.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 13,
+          "text": "- 食用盐"
+        },
+        {
+          "line": 27,
+          "text": "- 食盐 2g"
+        }
+      ]
+    },
+    {
+      "alias": "蒜瓣",
+      "canonical": "蒜",
+      "scope": "dishes/meat_dish/蒜苔炒肉末.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 16,
+          "text": "- 蒜瓣"
+        },
+        {
+          "line": 25,
+          "text": "- 蒜瓣 2 瓣"
+        }
+      ]
+    },
+    {
+      "alias": "大蒜",
+      "canonical": "蒜",
+      "scope": "dishes/aquatic/蒜香黄油虾/蒜香黄油虾.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 15,
+          "text": "- 大蒜"
+        },
+        {
+          "line": 29,
+          "text": "- 大蒜 4 瓣（约 20g）"
+        }
+      ]
+    },
+    {
+      "alias": "郫县豆瓣",
+      "canonical": "郫县豆瓣酱",
+      "scope": "dishes/aquatic/小龙虾/小龙虾.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 22,
+          "text": "- 郫县豆瓣"
+        },
+        {
+          "line": 43,
+          "text": "- 郫县豆瓣 = 30 克"
+        }
+      ]
+    },
+    {
+      "alias": "食盐",
+      "canonical": "盐",
+      "scope": "dishes/soup/金针菇汤.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 19,
+          "text": "- 食盐 15 克"
+        }
+      ]
+    },
+    {
+      "alias": "味素",
+      "canonical": "味精",
+      "scope": "dishes/soup/西红柿鸡蛋汤.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 14,
+          "text": "- 味素"
+        },
+        {
+          "line": 23,
+          "text": "- 味素 5 克（可选）"
+        },
+        {
+          "line": 40,
+          "text": "味素可加可不加。"
+        }
+      ]
+    },
+    {
+      "alias": "食用盐",
+      "canonical": "盐",
+      "scope": "dishes/soup/菌菇炖乳鸽/菌菇炖乳鸽.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 16,
+          "text": "* 食用盐"
+        },
+        {
+          "line": 28,
+          "text": "* 食用盐 10 g"
+        }
+      ]
+    },
+    {
+      "alias": "番茄",
+      "canonical": "西红柿",
+      "scope": "dishes/soup/番茄牛肉蛋花汤.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 12,
+          "text": "- 番茄"
+        },
+        {
+          "line": 21,
+          "text": "- 番茄用量为 1 个/人"
+        }
+      ]
+    },
+    {
+      "alias": "食用盐",
+      "canonical": "盐",
+      "scope": "dishes/soup/羊肉汤/羊肉汤.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 18,
+          "text": "- 食用盐"
+        },
+        {
+          "line": 32,
+          "text": "- 食用盐 5g"
+        }
+      ]
+    },
+    {
+      "alias": "食盐",
+      "canonical": "盐",
+      "scope": "dishes/staple/炒意大利面/炒意大利面.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 31,
+          "text": "5. 放入 10 克番茄酱、肥牛、加入 2g 食盐，继续翻炒一分钟"
+        }
+      ]
+    },
+    {
+      "alias": "食用盐",
+      "canonical": "盐",
+      "scope": "dishes/breakfast/蛋煎糍粑.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 23,
+          "text": "- 食用盐 2g"
+        }
+      ]
+    },
+    {
+      "alias": "蒜头",
+      "canonical": "蒜",
+      "scope": "dishes/condiment/油泼辣子/油泼辣子.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 14,
+          "text": "- 蒜头"
+        },
+        {
+          "line": 35,
+          "text": "- 蒜头 1 个"
+        }
+      ]
+    },
+    {
+      "alias": "食盐",
+      "canonical": "盐",
+      "scope": "dishes/dessert/草莓冰淇淋/草莓冰淇淋.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 26,
+          "text": "- 食盐 1 克"
+        },
+        {
+          "line": 29,
+          "text": "- 食盐 1 克"
+        }
+      ]
+    },
+    {
+      "alias": "耗油",
+      "canonical": "蚝油",
+      "scope": "dishes/vegetable_dish/素炒豆角.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 17,
+          "text": "- 耗油"
+        },
+        {
+          "line": 30,
+          "text": "- 耗油 6ml"
+        }
+      ]
+    },
+    {
+      "alias": "小米辣",
+      "canonical": "小米椒",
+      "scope": "dishes/vegetable_dish/凉拌莴笋/凉拌莴笋.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 13,
+          "text": "* 小米辣"
+        },
+        {
+          "line": 25,
+          "text": "* 小米辣 2 个"
+        }
+      ]
+    },
+    {
+      "alias": "蒜头",
+      "canonical": "蒜",
+      "scope": "dishes/vegetable_dish/凉拌莴笋/凉拌莴笋.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 15,
+          "text": "* 蒜头"
+        },
+        {
+          "line": 27,
+          "text": "* 蒜头 2 粒"
+        }
+      ]
+    },
+    {
+      "alias": "小米辣",
+      "canonical": "小米椒",
+      "scope": "dishes/vegetable_dish/油醋爆蛋.md",
+      "review_state": "pending",
+      "basis": "AI提议的篇内同义/词形/错字归一化，需人工确认。",
+      "evidence": [
+        {
+          "line": 12,
+          "text": "- 小米辣"
+        },
+        {
+          "line": 28,
+          "text": "- 小米辣 10 g（约 3 个）"
+        }
+      ]
+    },
+    {
+      "alias": "火腿片",
+      "canonical": "火腿",
+      "scope": "dishes/breakfast/金枪鱼酱三明治.md",
+      "review_state": "pending",
+      "basis": "标注规范8.5：采购食材与加工形态分离。",
+      "evidence": [
+        {
+          "line": 16,
+          "text": "- 火腿片（可选）"
+        }
+      ]
+    },
+    {
+      "alias": "五花肉薄片",
+      "canonical": "五花肉",
+      "scope": "dishes/meat_dish/蒜苔炒肉末.md",
+      "review_state": "pending",
+      "basis": "标注规范8.5：采购食材与加工形态分离。",
+      "evidence": [
+        {
+          "line": 11,
+          "text": "- 五花肉薄片"
+        },
+        {
+          "line": 23,
+          "text": "- 五花肉薄片 4 片（约 20g）"
+        }
+      ]
+    },
+    {
+      "alias": "五花肉条",
+      "canonical": "五花肉",
+      "scope": "dishes/meat_dish/香煎五花肉/香煎五花肉.md",
+      "review_state": "pending",
+      "basis": "标注规范8.5：采购食材与加工形态分离。",
+      "evidence": [
+        {
+          "line": 13,
+          "text": "- 五花肉条（推荐长宽高为 20cm\\*6cm\\*5cm）"
+        },
+        {
+          "line": 23,
+          "text": "- 五花肉条（推荐长宽高为 20cm\\*6cm\\*5cm）"
+        }
+      ]
+    },
+    {
+      "alias": "葱花",
+      "canonical": "葱",
+      "scope": "dishes/soup/紫菜蛋花汤.md",
+      "review_state": "pending",
+      "basis": "标注规范8.5：采购食材与加工形态分离。",
+      "evidence": [
+        {
+          "line": 13,
+          "text": "* 葱花"
+        }
+      ]
+    },
+    {
+      "alias": "葱花",
+      "canonical": "葱",
+      "scope": "dishes/breakfast/蒸水蛋.md",
+      "review_state": "pending",
+      "basis": "标注规范8.5：采购食材与加工形态分离。",
+      "evidence": [
+        {
+          "line": 32,
+          "text": "- 也可加入蒸鱼豉油，葱花香油作为佐料。"
+        }
+      ]
+    },
+    {
+      "alias": "葱花",
+      "canonical": "葱",
+      "scope": "dishes/breakfast/煎饺.md",
+      "review_state": "pending",
+      "basis": "标注规范8.5：采购食材与加工形态分离。",
+      "evidence": [
+        {
+          "line": 13,
+          "text": "- 芝麻、葱花（切段）或其他配料"
+        },
+        {
+          "line": 31,
+          "text": "9. 放入黑芝麻和葱花再焖 10s"
+        }
+      ]
+    },
+    {
+      "alias": "姜片",
+      "canonical": "姜",
+      "scope": "dishes/condiment/油泼辣子/油泼辣子.md",
+      "review_state": "pending",
+      "basis": "标注规范8.5：采购食材与加工形态分离。",
+      "evidence": [
+        {
+          "line": 29,
+          "text": "- 姜片（可选）"
+        },
+        {
+          "line": 44,
+          "text": "- 其他配料：八角(1)、花椒（20-50 粒都可，看个人口味）、香叶（2-3 片）、白芷（2-3 片）、姜片（大拇指粗细的姜切片）（可选）"
+        }
+      ]
+    },
+    {
+      "alias": "面粉",
+      "canonical": "普通面粉",
+      "scope": "dishes/breakfast/手抓饼.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 13,
+          "text": "- 普通面粉  "
+        },
+        {
+          "line": 31,
+          "text": "- 面粉 200 克  "
+        }
+      ]
+    },
+    {
+      "alias": "手抓饼",
+      "canonical": "手抓饼皮",
+      "scope": "dishes/breakfast/苏格兰蛋/苏格兰蛋.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 15,
+          "text": "- 手抓饼皮"
+        },
+        {
+          "line": 25,
+          "text": "- 手抓饼 1 份-2 份（看鸡蛋大小）"
+        }
+      ]
+    },
+    {
+      "alias": "水浸金枪鱼",
+      "canonical": "水浸金枪鱼罐头",
+      "scope": "dishes/breakfast/金枪鱼酱三明治.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 11,
+          "text": "- 水浸金枪鱼罐头（不建议用油浸，会很腻）"
+        },
+        {
+          "line": 21,
+          "text": "- 水浸金枪鱼 65g"
+        }
+      ]
+    },
+    {
+      "alias": "奥利奥",
+      "canonical": "原味奥利奥",
+      "scope": "dishes/dessert/奥利奥冰淇淋/奥利奥冰淇淋.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 12,
+          "text": "- 原味奥利奥"
+        },
+        {
+          "line": 22,
+          "text": "- 奥利奥 6 块"
+        }
+      ]
+    },
+    {
+      "alias": "豆腐",
+      "canonical": "日本豆腐",
+      "scope": "dishes/vegetable_dish/金针菇日本豆腐煲.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 12,
+          "text": "- 日本豆腐（玉子豆腐）"
+        },
+        {
+          "line": 25,
+          "text": "- 豆腐 2 袋"
+        }
+      ]
+    },
+    {
+      "alias": "鸡翅",
+      "canonical": "鸡翅中",
+      "scope": "dishes/meat_dish/烤鸡翅.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 11,
+          "text": "- 鸡翅中"
+        },
+        {
+          "line": 20,
+          "text": "- 鸡翅用量为 3-4 个/人"
+        }
+      ]
+    },
+    {
+      "alias": "鲮鱼罐头",
+      "canonical": "甘竹牌鲮鱼罐头",
+      "scope": "dishes/meat_dish/豆豉鲮鱼油麦菜/豆豉鲮鱼油麦菜.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 14,
+          "text": "- 甘竹牌鲮鱼罐头"
+        },
+        {
+          "line": 25,
+          "text": "- 鲮鱼罐头 1 罐（250g 上下）"
+        }
+      ]
+    },
+    {
+      "alias": "虾",
+      "canonical": "活虾",
+      "scope": "dishes/aquatic/白灼虾/白灼虾.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 11,
+          "text": "- 活虾"
+        },
+        {
+          "line": 29,
+          "text": "- 虾 250g * 份数（建议 1-2 人份）"
+        }
+      ]
+    },
+    {
+      "alias": "葱",
+      "canonical": "小葱",
+      "scope": "dishes/aquatic/酱炖蟹.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 19,
+          "text": "- 小葱"
+        },
+        {
+          "line": 37,
+          "text": "- 葱 10 g"
+        }
+      ]
+    },
+    {
+      "alias": "香油",
+      "canonical": "芝麻油",
+      "scope": "dishes/soup/朱雀汤/朱雀汤.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 12,
+          "text": "- 香油（芝麻油）"
+        },
+        {
+          "line": 23,
+          "text": "- 2ml 香油"
+        }
+      ]
+    },
+    {
+      "alias": "肥牛",
+      "canonical": "肥牛片",
+      "scope": "dishes/staple/炒意大利面/炒意大利面.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 15,
+          "text": "- 肥牛片"
+        },
+        {
+          "line": 22,
+          "text": "- 肥牛 5 片 / 人"
+        }
+      ]
+    },
+    {
+      "alias": "米",
+      "canonical": "北方大米",
+      "scope": "dishes/staple/米饭/煮锅蒸米饭.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 12,
+          "text": "- 北方大米"
+        },
+        {
+          "line": 18,
+          "text": "- 米：100ml-200ml/人"
+        }
+      ]
+    },
+    {
+      "alias": "饺子",
+      "canonical": "速冻水饺",
+      "scope": "dishes/breakfast/煎饺.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 12,
+          "text": "- 饺子（速冻水饺）"
+        },
+        {
+          "line": 19,
+          "text": "- 饺子一包 （根据个人食量选择， 约 10 - 15 个）"
+        }
+      ]
+    },
+    {
+      "alias": "糖",
+      "canonical": "白糖",
+      "scope": "dishes/vegetable_dish/凉拌油麦菜.md",
+      "review_state": "pending",
+      "basis": "该菜原料与计算中的篇内称呼对应；不作为跨菜同义词。",
+      "evidence": [
+        {
+          "line": 16,
+          "text": "* 白糖"
+        },
+        {
+          "line": 32,
+          "text": "* 5g 糖 * 份数"
+        }
+      ]
+    }
+  ],
+  "unclassified": [
+    "有盐牛油",
+    "红萝卜"
+  ],
+  "notes": [
+    "类别用于忌口检索演示，不证明完整配料或无过敏原。",
+    "有盐牛油、红萝卜保留待分类，避免地域名称误判。",
+    "近似名称不自动成为同义词；食材形态差异保留。"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "method": "ai_assisted",
+  "human_reviewed": false,
+  "changes": [
+    {
+      "recipe_id": "dishes/breakfast/金枪鱼酱三明治.md",
+      "before": "火腿片",
+      "after": "火腿",
+      "evidence": [
+        {
+          "line": 16,
+          "text": "- 火腿片（可选）"
+        }
+      ]
+    },
+    {
+      "recipe_id": "dishes/meat_dish/蒜苔炒肉末.md",
+      "before": "五花肉薄片",
+      "after": "五花肉",
+      "evidence": [
+        {
+          "line": 11,
+          "text": "- 五花肉薄片"
+        },
+        {
+          "line": 23,
+          "text": "- 五花肉薄片 4 片（约 20g）"
+        }
+      ]
+    },
+    {
+      "recipe_id": "dishes/meat_dish/香煎五花肉/香煎五花肉.md",
+      "before": "五花肉条",
+      "after": "五花肉",
+      "evidence": [
+        {
+          "line": 13,
+          "text": "- 五花肉条（推荐长宽高为 20cm\\*6cm\\*5cm）"
+        },
+        {
+          "line": 23,
+          "text": "- 五花肉条（推荐长宽高为 20cm\\*6cm\\*5cm）"
+        }
+      ]
+    },
+    {
+      "recipe_id": "dishes/soup/紫菜蛋花汤.md",
+      "before": "葱花",
+      "after": "葱",
+      "evidence": [
+        {
+          "line": 13,
+          "text": "* 葱花"
+        }
+      ]
+    },
+    {
+      "recipe_id": "dishes/breakfast/蒸水蛋.md",
+      "before": "葱花",
+      "after": "葱",
+      "evidence": [
+        {
+          "line": 32,
+          "text": "- 也可加入蒸鱼豉油，葱花香油作为佐料。"
+        }
+      ]
+    },
+    {
+      "recipe_id": "dishes/breakfast/煎饺.md",
+      "before": "葱花",
+      "after": "葱",
+      "evidence": [
+        {
+          "line": 13,
+          "text": "- 芝麻、葱花（切段）或其他配料"
+        },
+        {
+          "line": 31,
+          "text": "9. 放入黑芝麻和葱花再焖 10s"
+        }
+      ]
+    },
+    {
+      "recipe_id": "dishes/condiment/油泼辣子/油泼辣子.md",
+      "before": "姜片",
+      "after": "姜",
+      "evidence": [
+        {
+          "line": 29,
+          "text": "- 姜片（可选）"
+        },
+        {
+          "line": 44,
+          "text": "- 其他配料：八角(1)、花椒（20-50 粒都可，看个人口味）、香叶（2-3 片）、白芷（2-3 片）、姜片（大拇指粗细的姜切片）（可选）"
+        }
+      ]
+    }
+  ]
+}
