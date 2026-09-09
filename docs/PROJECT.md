@@ -61,7 +61,8 @@ CookKG 将过程拆成两个确定性阶段：
 
 如果辣椒只是一道菜的可选食材，系统保留该菜并说明制作时省略该项。
 
-当前 v0.1 已能演示精确排除和联合补购。食材类别推理、选择组和 Web UI 属于下一阶段目标，不能在答辩中描述为已经完成。
+当前版本已经能演示联合补购、食材类别排除、FastAPI 和 Web UI。选择组、复合食材推理及
+GraphRAG 仍是后续目标，不能在答辩中描述为已经完成。
 
 ### 2.3 项目价值
 
@@ -113,28 +114,30 @@ CookKG 将过程拆成两个确定性阶段：
 
 ## 5. 当前状态与版本目标
 
-### 5.1 已完成：v0.1 离线闭环
+### 5.1 已完成：v0.2 真实应用闭环
 
 - 固定 HowToCook 提交下载及来源清单校验；
 - 370 个 Markdown 全量扫描，输出 369 道标准菜谱和质量报告；
-- 菜谱、食材及必需/可选/待审核关系的 NetworkX 图谱；
+- 菜谱、食材、类别、工具及标准关系的 NetworkX 图谱；
 - 10 道菜的内容哈希绑定人工审核；
 - 1 至 3 道菜的联合补购优化；
-- 已有食材、常备调料、精确排除项和最多补购种类约束；
+- 已有食材、常备调料、具体食材或审核类别排除及最多补购种类约束；
+- 版本化人工辣椒分类、多级后代展开和稳定排除解释路径；
+- FastAPI 健康检查、推荐、菜谱详情和局部图谱接口；
+- React 单页规划器、被排除菜谱图谱与真实浏览器联调；
 - 中文文本与 JSON CLI；
 - Neo4j 快照隔离导入及节点、边、属性一致性验证；
-- 29 个离线测试通过；在线 Neo4j 测试因本机未配置数据库而跳过。
+- 43 个 Python 测试和 17 个前端测试通过；在线 Neo4j 测试因本机未配置数据库而跳过。
 
-### 5.2 下一阶段：v0.2 图谱语义与 Web 演示
+### 5.2 下一阶段：v0.3 数据覆盖与关系语义
 
 - 将人工审核菜谱扩展到不少于 100 道；
 - 将需求语义和审核状态拆分为独立字段；
 - 支持必需、可选、选择组和开放选择组；
-- 建立与审核菜谱相关的食材类别层级；
-- 实现类别排除、多跳解释和经审核的有限成分关系；
-- 提供 FastAPI 接口；
-- 完成中文 Web UI、菜单结果页和局部图谱解释；
-- 完成端到端联调和真实 Neo4j 验证。
+- 扩展食材类别层级和经审核的有限成分关系；
+- 增加审核工作流和数据质量统计页面；
+- 完成真实 Neo4j 在线幂等导入验证；
+- 建立不少于 100 条人工评测输入。
 
 ### 5.3 课程最终版：v1.0 实验与交付
 
@@ -156,7 +159,7 @@ flowchart LR
     E --> F[NetworkX 离线图]
     E --> G[Neo4j 持久图谱]
     F --> H[语义排除与解释]
-    G --> H
+    G -. 可选持久化与验证 .-> H
     H --> I[可行菜谱候选]
     I --> J[多菜联合补购优化]
     J --> K[FastAPI]
@@ -172,19 +175,20 @@ flowchart LR
 ```text
 (Recipe)-[:REQUIRES {quantity_raw, evidence, review_state}]->(Ingredient)
 (Recipe)-[:OPTIONALLY_USES {quantity_raw, evidence, review_state}]->(Ingredient)
-(Recipe)-[:ONE_OF {group_id, min_select, max_select, evidence}]->(Ingredient)
 (Ingredient)-[:IS_A {evidence, review_state}]->(IngredientCategory)
 (IngredientCategory)-[:SUBCLASS_OF]->(IngredientCategory)
-(Ingredient)-[:HAS_COMPONENT {evidence, review_state}]->(Ingredient)
 (Recipe)-[:REQUIRES_TOOL]->(Tool)
 ```
+
+`ONE_OF` 和 `HAS_COMPONENT` 是下一阶段关系，本轮未写入严格推荐图。
 
 正式模型将两个维度分开：
 
 - `requirement` 表示 `required`、`optional`、`one_of` 或 `unknown`；
 - `review_state` 表示 `auto`、`confirmed`、`pending` 或 `rejected`。
 
-当前 v0.1 的 `required/optional/pending` 单字段模型是过渡结构，v0.2 迁移时必须保持旧数据可读取。
+当前标准数据仍保留 `required/optional/pending` 状态；图边已将可公开关系映射为
+`REQUIRES/OPTIONALLY_USES`，后续拆分字段时必须保持旧数据可读取。
 
 盐、油和糖仍是可采购食材，系统不默认用户拥有。水可以作为 `household_resource` 保留做法证据，但不进入补购清单。工具独立建模，不得混入食材。
 
@@ -203,7 +207,7 @@ flowchart LR
 
 ### 6.3 领域服务层
 
-- `exclusion`：归一化用户排除条件，沿类别层级和审核后的有限成分关系扩展排除集合；
+- `exclusion`：归一化用户排除条件，沿审核后的类别层级扩展排除集合；
 - `filter`：按必需、可选和选择组语义处理冲突；
 - `recommend`：执行候选筛选、组合枚举、补购集合计算和稳定排序；
 - `explain`：输出菜谱保留或淘汰的图路径与原文证据；
@@ -213,16 +217,15 @@ flowchart LR
 
 ### 6.4 应用层
 
-当前 Typer CLI 是数据处理和离线推荐入口。v0.2 增加 FastAPI，暴露：
+Typer CLI 是数据处理、离线推荐和服务启动入口。FastAPI 当前暴露：
 
 - 健康检查；
 - 菜单推荐；
 - 菜谱详情；
-- 排除条件解释；
 - 局部图谱；
-- 数据审核队列。
 
-中文 Web UI 只调用 API，不复制推荐规则。页面包含条件输入、菜单结果、补购清单、约束解释和菜谱详情。
+排除解释随推荐结果返回，局部图谱接口接收排除参数并标记命中路径。中文 Web UI 只调用 API，
+不复制推荐规则。数据审核队列属于后续工作。
 
 ## 7. 核心算法
 
@@ -236,8 +239,7 @@ flowchart LR
 
 1. 归一化名称；
 2. 查找该类别的所有审核后代；
-3. 可选地查找经审核且来源明确的复合食材成分；
-4. 返回扩展结果和完整推理路径。
+3. 返回扩展结果和完整推理路径。
 
 项目不根据“辣味”等模糊口味自动推断具体食材。首版只处理用户明确输入的食材名称或食材类别。
 
