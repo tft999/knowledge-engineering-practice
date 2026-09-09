@@ -36,6 +36,31 @@ python -m venv .venv
 但不计入覆盖率的调料，`--exclude` 是不能出现的食材。补购按食材种类计算，
 不判断克数是否充足。
 
+## Web 演示界面
+
+`web/` 提供桌面优先、兼容平板的 React 单页菜单规划器。后端 API 完成前默认使用明确标识的
+演示数据，页面覆盖条件输入、联合补购结果、菜谱详情和局部知识图谱解释。
+
+```powershell
+cd web
+pnpm install
+Copy-Item .env.example .env.local
+pnpm dev
+```
+
+将 `VITE_USE_MOCKS=false` 后，前端通过 `VITE_API_BASE_URL` 连接 FastAPI。生产构建和测试命令：
+
+```powershell
+pnpm test
+pnpm build
+pnpm e2e
+```
+
+端到端测试默认使用本机 Google Chrome。
+
+前端设计与实施说明见[菜单规划器 UI 设计](docs/superpowers/specs/2026-09-09-menu-planner-ui-design.md)
+和[实施计划](docs/superpowers/plans/2026-09-09-menu-planner-ui-implementation.md)。
+
 ## 数据质量门禁
 
 数据源固定为 HowToCook 提交
