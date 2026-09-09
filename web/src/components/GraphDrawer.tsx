@@ -10,9 +10,22 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import "@xyflow/react/dist/style.css";
 
-import type { CookKgApi, GraphNeighborhood, GraphNode, MenuPlan } from "../api/types";
+import type {
+  CookKgApi,
+  Explanation,
+  GraphNeighborhood,
+  GraphNode,
+  MenuPlan,
+  RecipeSummary,
+} from "../api/types";
 
-type Props = { api: CookKgApi; plan: MenuPlan };
+type Props = {
+  api: CookKgApi;
+  exclude: string[];
+  explanations: Explanation[];
+  plan: MenuPlan;
+};
+type GraphTarget = RecipeSummary & { rejected: boolean };
 
 const kindLabels: Record<GraphNode["kind"], string> = {
   recipe: "菜谱",
@@ -76,7 +89,20 @@ function graphElements(graph: GraphNeighborhood): { nodes: Node[]; edges: Edge[]
   return { nodes, edges };
 }
 
-export function GraphDrawer({ api, plan }: Props) {
+export function GraphDrawer({ api, exclude, explanations, plan }: Props) {
+  const targets = useMemo(() => {
+    const items: GraphTarget[] = plan.recipes.map((recipe) => ({ ...recipe, rejected: false }));
+    const existing = new Set(items.map((item) => item.id));
+    for (const explanation of explanations) {
+      const recipe = explanation.path[0];
+      if (!recipe || recipe.kind !== "recipe") continue;
+      const id = recipe.id.replace(/^r:/, "");
+      if (existing.has(id)) continue;
+      items.push({ id, name: recipe.label, source_url: "", rejected: true });
+      existing.add(id);
+    }
+    return items;
+  }, [explanations, plan.recipes]);
   const [open, setOpen] = useState(false);
   const [recipeId, setRecipeId] = useState(plan.recipes[0]?.id || "");
   const [graph, setGraph] = useState<GraphNeighborhood | null>(null);
@@ -92,7 +118,7 @@ export function GraphDrawer({ api, plan }: Props) {
     setGraph(null);
     setSelected(null);
     api
-      .getNeighborhood(recipeId, 30, controller.signal)
+      .getNeighborhood(recipeId, { limit: 30, exclude }, controller.signal)
       .then(setGraph)
       .catch((reason: unknown) => {
         if (reason instanceof DOMException && reason.name === "AbortError") return;
@@ -100,7 +126,7 @@ export function GraphDrawer({ api, plan }: Props) {
       })
       .finally(() => setLoading(false));
     return () => controller.abort();
-  }, [api, open, recipeId]);
+  }, [api, exclude, open, recipeId]);
 
   const elements = useMemo(() => (graph ? graphElements(graph) : null), [graph]);
 
@@ -141,19 +167,23 @@ export function GraphDrawer({ api, plan }: Props) {
           </div>
 
           <div className="flex gap-2 overflow-x-auto border-b border-slate-200 px-5 py-3">
-            {plan.recipes.map((recipe) => (
+            {targets.map((recipe) => (
               <button
                 aria-pressed={recipeId === recipe.id}
                 className={`shrink-0 rounded-lg px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-300 ${
                   recipeId === recipe.id
-                    ? "bg-blue-600 text-white"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                    ? recipe.rejected
+                      ? "bg-red-600 text-white"
+                      : "bg-blue-600 text-white"
+                    : recipe.rejected
+                      ? "bg-red-50 text-red-700 hover:bg-red-100"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                 }`}
                 key={recipe.id}
                 onClick={() => setRecipeId(recipe.id)}
                 type="button"
               >
-                {recipe.name}
+                {recipe.name}{recipe.rejected ? "（已排除）" : ""}
               </button>
             ))}
           </div>

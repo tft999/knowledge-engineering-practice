@@ -88,6 +88,11 @@ export type GraphNeighborhood = {
   edges: GraphEdge[];
 };
 
+export type GraphNeighborhoodOptions = {
+  limit?: number;
+  exclude?: string[];
+};
+
 export interface CookKgApi {
   recommend(
     input: RecommendationRequest,
@@ -96,7 +101,7 @@ export interface CookKgApi {
   getRecipe(recipeId: string, signal?: AbortSignal): Promise<RecipeDetail>;
   getNeighborhood(
     recipeId: string,
-    limit?: number,
+    options?: GraphNeighborhoodOptions,
     signal?: AbortSignal,
   ): Promise<GraphNeighborhood>;
 }

@@ -54,6 +54,18 @@ const recipes: Record<string, RecipeDetail> = {
     ],
     steps: "煮熟鸡蛋并捣碎，与蛋黄酱、盐和黑胡椒混合。煎熟培根后夹入吐司。",
   },
+  "dishes/meat_dish/小炒肉.md": {
+    id: "dishes/meat_dish/小炒肉.md",
+    name: "小炒肉",
+    source_url: source("dishes/meat_dish/小炒肉.md"),
+    category: "荤菜",
+    difficulty: 3,
+    ingredients: [
+      { name: "小米椒", requirement: "required", quantity_raw: ["小米椒 2 个"] },
+      { name: "猪肉", requirement: "required", quantity_raw: ["猪肉 200 g"] },
+    ],
+    steps: "猪肉切片，与小米椒一起炒熟。",
+  },
 };
 
 const success: RecommendationResponse = {
@@ -95,7 +107,7 @@ const success: RecommendationResponse = {
       kind: "excluded_required",
       message: "小炒肉必需使用小米椒；小米椒属于用户排除的辣椒类别。",
       path: [
-        { id: "recipe:小炒肉", label: "小炒肉", kind: "recipe" },
+        { id: "r:dishes/meat_dish/小炒肉.md", label: "小炒肉", kind: "recipe" },
         { id: "ingredient:小米椒", label: "小米椒", kind: "ingredient" },
         { id: "category:辣椒", label: "辣椒", kind: "category" },
       ],
@@ -118,20 +130,24 @@ function wait(ms: number, signal?: AbortSignal): Promise<void> {
   });
 }
 
-function graphFor(recipeId: string): GraphNeighborhood {
+function graphFor(recipeId: string, exclude: string[] = []): GraphNeighborhood {
   const recipe = recipes[recipeId];
   if (!recipe) throw new Error("没有找到这道菜的图谱数据");
   const ingredientNodes = recipe.ingredients.map((item) => ({
     id: `ingredient:${item.name}`,
     label: item.name,
     kind: "ingredient" as const,
+    excluded: exclude.includes("辣椒") && item.name === "小米椒",
   }));
+  const pepper = recipe.ingredients.some((item) => item.name === "小米椒");
   return {
     recipe_id: recipeId,
     nodes: [
       { id: `recipe:${recipeId}`, label: recipe.name, kind: "recipe" },
       ...ingredientNodes,
-      { id: "category:家常菜", label: "家常菜", kind: "category" },
+      ...(pepper
+        ? [{ id: "category:辣椒", label: "辣椒", kind: "category" as const, excluded: true }]
+        : []),
       { id: "tool:炒锅", label: "炒锅", kind: "tool" },
     ],
     edges: [
@@ -140,13 +156,17 @@ function graphFor(recipeId: string): GraphNeighborhood {
         source: `recipe:${recipeId}`,
         target: `ingredient:${item.name}`,
         relation: item.requirement === "optional" ? ("OPTIONALLY_USES" as const) : ("REQUIRES" as const),
+        excluded: exclude.includes("辣椒") && item.name === "小米椒",
       })),
-      {
-        id: "edge:category",
-        source: ingredientNodes[0].id,
-        target: "category:家常菜",
-        relation: "IS_A",
-      },
+      ...(pepper
+        ? [{
+            id: "edge:category",
+            source: "ingredient:小米椒",
+            target: "category:辣椒",
+            relation: "IS_A" as const,
+            excluded: true,
+          }]
+        : []),
       {
         id: "edge:tool",
         source: `recipe:${recipeId}`,
@@ -174,10 +194,10 @@ export function createMockApi(options: MockOptions = {}): CookKgApi {
       if (!recipe) throw new Error("没有找到菜谱详情");
       return structuredClone(recipe);
     },
-    async getNeighborhood(recipeId, _limit = 30, signal) {
+    async getNeighborhood(recipeId, options = {}, signal) {
       await wait(delayMs, signal);
       if (scenario === "graph-error") throw new Error("图谱服务暂时不可用");
-      return graphFor(recipeId);
+      return graphFor(recipeId, options.exclude);
     },
   };
 }

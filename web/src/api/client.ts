@@ -200,6 +200,17 @@ async function responseJson(response: Response): Promise<unknown> {
     try {
       const body = record(await response.json(), "error response");
       if (typeof body.detail === "string") message = body.detail;
+      if (Array.isArray(body.detail)) {
+        const validation = body.detail.find(
+          (item) =>
+            typeof item === "object" &&
+            item !== null &&
+            typeof (item as JsonRecord).msg === "string",
+        ) as JsonRecord | undefined;
+        if (validation) {
+          message = (validation.msg as string).replace(/^Value error,\s*/, "");
+        }
+      }
     } catch {
       // Keep the stable status message for non-JSON errors.
     }
@@ -227,8 +238,12 @@ export function createHttpApi(baseUrl: string, fetcher: typeof fetch = fetch): C
       );
       return parseRecipeDetail(await responseJson(response));
     },
-    async getNeighborhood(recipeId, limit = 30, signal) {
-      const query = new URLSearchParams({ recipe_id: recipeId, limit: String(limit) });
+    async getNeighborhood(recipeId, options = {}, signal) {
+      const query = new URLSearchParams({
+        recipe_id: recipeId,
+        limit: String(options.limit ?? 30),
+      });
+      for (const ingredient of options.exclude ?? []) query.append("exclude", ingredient);
       const response = await fetcher(`${base}/api/v1/graph/neighborhood?${query}`, {
         signal,
       });

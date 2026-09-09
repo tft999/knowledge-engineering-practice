@@ -1,8 +1,8 @@
-import type { CookKgApi, MenuPlan } from "../api/types";
+import type { CookKgApi, Explanation, MenuPlan } from "../api/types";
 import { GraphDrawer } from "./GraphDrawer";
 import { RecipeDisclosure } from "./RecipeDisclosure";
 
-type Props = { api: CookKgApi; plan: MenuPlan };
+type Props = { api: CookKgApi; exclude: string[]; explanations: Explanation[]; plan: MenuPlan };
 
 function TagList({ empty, items, tone }: { empty: string; items: string[]; tone: string }) {
   if (!items.length) return <p className="mt-2 text-sm text-slate-400">{empty}</p>;
@@ -17,7 +17,7 @@ function TagList({ empty, items, tone }: { empty: string; items: string[]; tone:
   );
 }
 
-export function PlanCard({ api, plan }: Props) {
+export function PlanCard({ api, exclude, explanations, plan }: Props) {
   return (
     <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
       <div className="flex items-start justify-between gap-4">
@@ -70,7 +70,7 @@ export function PlanCard({ api, plan }: Props) {
         ))}
       </div>
       <div className="mt-2 flex justify-end border-t border-slate-100 pt-4">
-        <GraphDrawer api={api} plan={plan} />
+        <GraphDrawer api={api} exclude={exclude} explanations={explanations} plan={plan} />
       </div>
     </article>
   );
