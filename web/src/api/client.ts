@@ -103,6 +103,19 @@ export function parseRecommendationResponse(value: unknown): RecommendationRespo
           kind: nodeKind as "recipe" | "ingredient" | "category" | "tool",
         };
       }),
+      edges: array(explanation.edges, "explanation.edges").map((rawEdge) => {
+        const edge = record(rawEdge, "explanation edge");
+        const relation = text(edge.relation, "explanation edge.relation");
+        if (!["REQUIRES", "OPTIONALLY_USES", "IS_A", "SUBCLASS_OF"].includes(relation)) {
+          throw new ApiContractError("explanation edge.relation 无效");
+        }
+        return {
+          source: text(edge.source, "explanation edge.source"),
+          target: text(edge.target, "explanation edge.target"),
+          relation: relation as "REQUIRES" | "OPTIONALLY_USES" | "IS_A" | "SUBCLASS_OF",
+          evidence: strings(edge.evidence, "explanation edge.evidence"),
+        };
+      }),
     };
   });
   const reason = item.reason;
@@ -188,6 +201,7 @@ export function parseGraphNeighborhood(value: unknown): GraphNeighborhood {
         source: text(edge.source, "graph edge.source"),
         target: text(edge.target, "graph edge.target"),
         relation: relation as GraphEdge["relation"],
+        evidence: strings(edge.evidence, "graph edge.evidence"),
         excluded: edge.excluded === true,
       };
     }),
@@ -200,6 +214,17 @@ async function responseJson(response: Response): Promise<unknown> {
     try {
       const body = record(await response.json(), "error response");
       if (typeof body.detail === "string") message = body.detail;
+      if (Array.isArray(body.detail)) {
+        const validation = body.detail.find(
+          (item) =>
+            typeof item === "object" &&
+            item !== null &&
+            typeof (item as JsonRecord).msg === "string",
+        ) as JsonRecord | undefined;
+        if (validation) {
+          message = (validation.msg as string).replace(/^Value error,\s*/, "");
+        }
+      }
     } catch {
       // Keep the stable status message for non-JSON errors.
     }
@@ -227,8 +252,12 @@ export function createHttpApi(baseUrl: string, fetcher: typeof fetch = fetch): C
       );
       return parseRecipeDetail(await responseJson(response));
     },
-    async getNeighborhood(recipeId, limit = 30, signal) {
-      const query = new URLSearchParams({ recipe_id: recipeId, limit: String(limit) });
+    async getNeighborhood(recipeId, options = {}, signal) {
+      const query = new URLSearchParams({
+        recipe_id: recipeId,
+        limit: String(options.limit ?? 30),
+      });
+      for (const ingredient of options.exclude ?? []) query.append("exclude", ingredient);
       const response = await fetcher(`${base}/api/v1/graph/neighborhood?${query}`, {
         signal,
       });

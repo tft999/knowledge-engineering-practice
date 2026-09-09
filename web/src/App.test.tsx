@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+import { ApiHttpError } from "./api/client";
 import { createMockApi } from "./api/mock";
 import { App } from "./App";
 
@@ -57,5 +58,20 @@ describe("CookKG planner page", () => {
     expect(await screen.findByText("服务连接失败")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "重试上次请求" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "删除鸡蛋" })).toBeInTheDocument();
+  });
+
+  it("distinguishes invalid constraints from a network failure", async () => {
+    const user = userEvent.setup();
+    const api = createMockApi({ delayMs: 0 });
+    api.recommend = async () => {
+      throw new ApiHttpError(422, "西红柿归一化后同时出现在可用与排除条件");
+    };
+    render(<App api={api} isMock={false} />);
+
+    await user.click(screen.getByRole("button", { name: "生成菜单方案" }));
+
+    expect(await screen.findByText("输入条件有误")).toBeInTheDocument();
+    expect(screen.getByText(/西红柿归一化后/)).toBeInTheDocument();
+    expect(screen.queryByText("服务连接失败")).not.toBeInTheDocument();
   });
 });

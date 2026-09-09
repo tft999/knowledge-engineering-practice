@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import type { CookKgApi, RecommendationRequest, RecommendationResponse } from "./api/types";
+import { ApiHttpError } from "./api/client";
 import { PlanCard } from "./components/PlanCard";
 import { PlannerForm } from "./components/PlannerForm";
 
@@ -11,6 +12,7 @@ export function App({ api, isMock }: Props) {
   const [status, setStatus] = useState<RequestState>("idle");
   const [result, setResult] = useState<RecommendationResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [errorStatus, setErrorStatus] = useState<number | null>(null);
   const [lastRequest, setLastRequest] = useState<RecommendationRequest | null>(null);
   const controllerRef = useRef<AbortController | null>(null);
 
@@ -23,6 +25,7 @@ export function App({ api, isMock }: Props) {
     setLastRequest(request);
     setStatus("loading");
     setError(null);
+    setErrorStatus(null);
     try {
       const next = await api.recommend(request, controller.signal);
       setResult(next);
@@ -30,6 +33,7 @@ export function App({ api, isMock }: Props) {
     } catch (reason) {
       if (reason instanceof DOMException && reason.name === "AbortError") return;
       setError(reason instanceof Error ? reason.message : "推荐服务暂时不可用");
+      setErrorStatus(reason instanceof ApiHttpError ? reason.status : null);
       setStatus("error");
     }
   };
@@ -77,6 +81,7 @@ export function App({ api, isMock }: Props) {
           {status === "error" ? (
             <ErrorState
               detail={error}
+              invalidInput={errorStatus === 422}
               onRetry={() => {
                 if (lastRequest) void run(lastRequest);
               }}
@@ -112,7 +117,13 @@ export function App({ api, isMock }: Props) {
               </div>
               <div className="space-y-4">
                 {result.plans.map((plan) => (
-                  <PlanCard api={api} key={plan.id} plan={plan} />
+                  <PlanCard
+                    api={api}
+                    exclude={result.normalized_input.exclude}
+                    explanations={result.explanations}
+                    key={plan.id}
+                    plan={plan}
+                  />
                 ))}
               </div>
             </>
@@ -175,14 +186,26 @@ function EmptyState({ reason }: { reason: string | null }) {
   );
 }
 
-function ErrorState({ detail, onRetry }: { detail: string | null; onRetry: () => void }) {
+function ErrorState({
+  detail,
+  invalidInput,
+  onRetry,
+}: {
+  detail: string | null;
+  invalidInput: boolean;
+  onRetry: () => void;
+}) {
   return (
     <div className="rounded-2xl border border-red-200 bg-red-50 p-8 text-center" role="alert">
-      <p className="text-lg font-semibold text-red-900">服务连接失败</p>
+      <p className="text-lg font-semibold text-red-900">
+        {invalidInput ? "输入条件有误" : "服务连接失败"}
+      </p>
       <p className="mt-2 text-sm text-red-700">{detail || "请检查服务状态后重试。"}</p>
-      <button className="mt-5 rounded-xl bg-red-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-400" onClick={onRetry} type="button">
-        重试上次请求
-      </button>
+      {invalidInput ? null : (
+        <button className="mt-5 rounded-xl bg-red-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-400" onClick={onRetry} type="button">
+          重试上次请求
+        </button>
+      )}
     </div>
   );
 }

@@ -7,10 +7,17 @@ name = "cookkg"
 version = "0.1.0"
 description = "HowToCook ingredient graph and constrained menu planning"
 requires-python = ">=3.13"
-dependencies = ["networkx>=3.4,<4", "pydantic>=2.10,<3", "typer>=0.15,<1", "neo4j>=5.26,<7"]
+dependencies = [
+    "fastapi>=0.116,<1",
+    "networkx>=3.4,<4",
+    "neo4j>=5.26,<7",
+    "pydantic>=2.10,<3",
+    "typer>=0.15,<1",
+    "uvicorn>=0.35,<1",
+]
 
 [project.optional-dependencies]
-dev = ["pytest>=8,<10", "ruff>=0.9,<1"]
+dev = ["httpx2>=2.12,<3", "pytest>=8,<10", "ruff>=0.9,<1"]
 
 [project.scripts]
 cookkg = "cookkg.cli:app"
@@ -24,6 +31,9 @@ cookkg = ["resources/*.json"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = ["integration: requires a live Neo4j database"]
+filterwarnings = [
+    "ignore:The anyio.abc.BlockingPortal alias is deprecated:DeprecationWarning:starlette.testclient",
+]
 
 [tool.ruff]
 target-version = "py313"

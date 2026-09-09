@@ -38,16 +38,41 @@ def _node_payload(attrs):
     return json.dumps(attrs, ensure_ascii=False, sort_keys=True)
 
 
-def _edge_tuple(recipe, ingredient, attrs):
-    return (recipe, ingredient, attrs.get("status"),
-            tuple(attrs.get("quantity_raw") or []), tuple(attrs.get("evidence") or []))
+def _relation(attrs):
+    return attrs.get("relation") or {
+        "required": "REQUIRES",
+        "optional": "OPTIONALLY_USES",
+    }.get(attrs.get("status"))
+
+
+def _edge_payload(attrs):
+    return json.dumps(attrs, ensure_ascii=False, sort_keys=True)
+
+
+def _edge_tuple(source, target, relation, payload):
+    return (source, target, relation, payload)
+
+
+NODE_LABELS = {
+    "recipe": "CookKGRecipe",
+    "ingredient": "CookKGIngredient",
+    "category": "CookKGCategory",
+    "tool": "CookKGTool",
+}
+RELATION_ENDPOINTS = {
+    "REQUIRES": ("recipe", "ingredient"),
+    "OPTIONALLY_USES": ("recipe", "ingredient"),
+    "IS_A": ("ingredient", "category"),
+    "SUBCLASS_OF": ("category", "category"),
+    "REQUIRES_TOOL": ("recipe", "tool"),
+}
 
 
 def import_graph(graph: nx.DiGraph) -> dict:
     """MERGE a graph snapshot atomically, batching rows inside one transaction."""
     uri, username, password, database = _config()
     snapshot = _snapshot(graph)
-    nodes = {"recipe": [], "ingredient": []}
+    nodes = {kind: [] for kind in NODE_LABELS}
     for node_id, attrs in graph.nodes(data=True):
         kind = attrs.get("kind")
         if kind not in nodes:
@@ -58,40 +83,55 @@ def import_graph(graph: nx.DiGraph) -> dict:
             "kind": kind, "source_url": attrs.get("source_url"),
             "payload": _node_payload(attrs),
         })
-    edges = []
-    for recipe, ingredient, attrs in graph.edges(data=True):
-        if (graph.nodes[recipe].get("kind") != "recipe"
-                or graph.nodes[ingredient].get("kind") != "ingredient"):
-            raise Neo4jStoreError("Graph edges must connect recipe to ingredient")
-        edges.append({
-            "recipe_key": _key(snapshot, recipe), "ingredient_key": _key(snapshot, ingredient),
-            "status": attrs.get("status"), "quantity_raw": attrs.get("quantity_raw", []),
+    edges = {relation: [] for relation in RELATION_ENDPOINTS}
+    for source, target, attrs in graph.edges(data=True):
+        relation = _relation(attrs)
+        if relation not in RELATION_ENDPOINTS:
+            raise Neo4jStoreError("Graph contains an unsupported relation")
+        expected = RELATION_ENDPOINTS[relation]
+        actual = (graph.nodes[source].get("kind"), graph.nodes[target].get("kind"))
+        if actual != expected:
+            raise Neo4jStoreError("Graph relation endpoints do not match the schema")
+        edges[relation].append({
+            "source_key": _key(snapshot, source),
+            "target_key": _key(snapshot, target),
+            "status": attrs.get("status"),
+            "quantity_raw": attrs.get("quantity_raw", []),
             "evidence": attrs.get("evidence", []),
+            "payload": _edge_payload(attrs),
         })
 
     def write(tx):
         tx.run(
-            "MATCH (n) WHERE (n:CookKGRecipe OR n:CookKGIngredient) "
+            "MATCH (n) WHERE (n:CookKGRecipe OR n:CookKGIngredient "
+            "OR n:CookKGCategory OR n:CookKGTool) "
             "AND n.dataset = $dataset AND n.source_commit = $source_commit "
             "DETACH DELETE n",
             **snapshot,
         ).consume()
-        for kind, label in (("recipe", "CookKGRecipe"), ("ingredient", "CookKGIngredient")):
+        for kind, label in NODE_LABELS.items():
             for offset in range(0, len(nodes[kind]), 1000):
                 tx.run(f"UNWIND $rows AS row MERGE (n:{label} {{key: row.key}}) SET n += row",
                        rows=nodes[kind][offset:offset + 1000]).consume()
-        for offset in range(0, len(edges), 1000):
-            tx.run("UNWIND $rows AS row "
-                   "MATCH (r:CookKGRecipe {key: row.recipe_key}) "
-                   "MATCH (i:CookKGIngredient {key: row.ingredient_key}) "
-                   "MERGE (r)-[e:COOKKG_USES]->(i) "
-                   "SET e.status = row.status, e.quantity_raw = row.quantity_raw, "
-                   "e.evidence = row.evidence", rows=edges[offset:offset + 1000]).consume()
+        for relation, relation_rows in edges.items():
+            source_kind, target_kind = RELATION_ENDPOINTS[relation]
+            source_label = NODE_LABELS[source_kind]
+            target_label = NODE_LABELS[target_kind]
+            for offset in range(0, len(relation_rows), 1000):
+                tx.run(
+                    f"UNWIND $rows AS row "
+                    f"MATCH (s:{source_label} {{key: row.source_key}}) "
+                    f"MATCH (t:{target_label} {{key: row.target_key}}) "
+                    f"MERGE (s)-[e:COOKKG_{relation}]->(t) "
+                    "SET e.status = row.status, e.quantity_raw = row.quantity_raw, "
+                    "e.evidence = row.evidence, e.payload = row.payload",
+                    rows=relation_rows[offset:offset + 1000],
+                ).consume()
 
     try:
         with GraphDatabase.driver(uri, auth=(username, password)) as driver:
             with driver.session(database=database) as session:
-                for label in ("CookKGRecipe", "CookKGIngredient"):
+                for label in NODE_LABELS.values():
                     session.run(f"CREATE CONSTRAINT {label.lower()}_key IF NOT EXISTS "
                                 f"FOR (n:{label}) REQUIRE n.key IS UNIQUE").consume()
                 session.execute_write(write)
@@ -110,26 +150,43 @@ def verify_graph(graph: nx.DiGraph) -> dict:
         (node_id, attrs["kind"], _node_payload(attrs))
         for node_id, attrs in graph.nodes(data=True)
     )
-    expected_edges = Counter(_edge_tuple(r, i, attrs) for r, i, attrs in graph.edges(data=True))
-    ingredients = sorted(n for n, attrs in graph.nodes(data=True) if attrs["kind"] == "ingredient")
+    expected_edges = Counter(
+        _edge_tuple(source, target, _relation(attrs), _edge_payload(attrs))
+        for source, target, attrs in graph.edges(data=True)
+    )
+    ingredients = sorted(
+        node
+        for node, attrs in graph.nodes(data=True)
+        if attrs["kind"] == "ingredient"
+        and any(graph.nodes[source].get("kind") == "recipe" for source in graph.predecessors(node))
+    )
     sample = ingredients[0] if ingredients else None
 
     def read(tx):
         actual_nodes = Counter((row["node_id"], row["kind"], row["payload"]) for row in tx.run(
-            "MATCH (n) WHERE (n:CookKGRecipe OR n:CookKGIngredient) "
+            "MATCH (n) WHERE (n:CookKGRecipe OR n:CookKGIngredient "
+            "OR n:CookKGCategory OR n:CookKGTool) "
             "AND n.dataset = $dataset AND n.source_commit = $source_commit "
             "RETURN n.node_id AS node_id, n.kind AS kind, n.payload AS payload", **snapshot))
-        actual_edges = Counter(_edge_tuple(row["recipe"], row["ingredient"], row) for row in tx.run(
-            "MATCH (r:CookKGRecipe)-[e:COOKKG_USES]->(i:CookKGIngredient) "
-            "WHERE r.dataset = $dataset AND r.source_commit = $source_commit "
-            "AND i.dataset = $dataset AND i.source_commit = $source_commit "
-            "RETURN r.node_id AS recipe, i.node_id AS ingredient, e.status AS status, "
-            "e.quantity_raw AS quantity_raw, e.evidence AS evidence", **snapshot))
+        relation_types = [f"COOKKG_{relation}" for relation in RELATION_ENDPOINTS]
+        actual_edges = Counter(
+            _edge_tuple(row["source"], row["target"], row["relation"], row["payload"])
+            for row in tx.run(
+                "MATCH (s)-[e]->(t) WHERE type(e) IN $relation_types "
+                "AND s.dataset = $dataset AND s.source_commit = $source_commit "
+                "AND t.dataset = $dataset AND t.source_commit = $source_commit "
+                "RETURN s.node_id AS source, t.node_id AS target, "
+                "replace(type(e), 'COOKKG_', '') AS relation, e.payload AS payload",
+                relation_types=relation_types,
+                **snapshot,
+            )
+        )
         sample_actual = []
         if sample is not None:
             sample_actual = sorted(row["recipe"] for row in tx.run(
-                "MATCH (r:CookKGRecipe)-[:COOKKG_USES]->(i:CookKGIngredient {key: $key}) "
-                "WHERE r.dataset = $dataset AND r.source_commit = $source_commit "
+                "MATCH (r:CookKGRecipe)-[e]->(i:CookKGIngredient {key: $key}) "
+                "WHERE type(e) IN ['COOKKG_REQUIRES', 'COOKKG_OPTIONALLY_USES'] "
+                "AND r.dataset = $dataset AND r.source_commit = $source_commit "
                 "RETURN r.node_id AS recipe", key=_key(snapshot, sample), **snapshot))
         return actual_nodes, actual_edges, sample_actual
 

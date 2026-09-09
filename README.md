@@ -4,8 +4,8 @@
 的固定版本构建食材知识图谱，根据已有食材、常备调料和排除项推荐 1—3 道菜，
 并以“联合菜单所需补购食材种类最少”为主要优化目标。
 
-当前首轮交付是可复现的数据与推荐闭环，不是完整 GraphRAG 系统。Web 页面、
-向量检索和 LLM 问答安排在后续阶段。
+当前版本已经打通固定数据构建、知识图谱推理、联合菜单推荐、FastAPI 和 React 页面。
+向量检索和 LLM 问答安排在后续阶段，本项目当前不称为 GraphRAG 系统。
 
 项目的完整问题定义、用户故事、创新边界、总体架构和课程完成标准见
 [项目定义与总体架构](docs/PROJECT.md)。后续工作已拆分为数据扩充、Web 演示、GraphRAG 和
@@ -26,20 +26,21 @@ python -m venv .venv
 .venv/Scripts/cookkg fetch
 .venv/Scripts/cookkg build
 .venv/Scripts/cookkg recommend --have '鸡蛋,洋葱,面包片' `
-  --pantry '盐,食用油,黄油,料酒' --count 2 --max-buy 2
+  --pantry '盐,食用油,黄油,料酒' --exclude '辣椒' --count 2 --max-buy 2
+.venv/Scripts/cookkg serve
 ```
 
 加上 `--json` 可获得结构化结果。原始数据、标准 JSONL、NetworkX 图和质量报告
 分别写入 `data/raw/howtocook` 与 `data/processed`，这些生成文件不会提交到 Git。
 
 系统默认不假定油盐齐全。`--have` 表示希望消耗的现有食材，`--pantry` 表示常备
-但不计入覆盖率的调料，`--exclude` 是不能出现的食材。补购按食材种类计算，
-不判断克数是否充足。
+但不计入覆盖率的调料，`--exclude` 可以是具体食材或审核过的食材类别。补购按食材种类计算，
+不判断克数是否充足。默认 API 地址为 `http://127.0.0.1:8000`，接口文档位于 `/docs`。
 
 ## Web 演示界面
 
-`web/` 提供桌面优先、兼容平板的 React 单页菜单规划器。后端 API 完成前默认使用明确标识的
-演示数据，页面覆盖条件输入、联合补购结果、菜谱详情和局部知识图谱解释。
+`web/` 提供桌面优先、兼容平板的 React 单页菜单规划器。默认使用明确标识的演示数据；
+切换环境变量后可连接真实 FastAPI，展示联合补购结果、菜谱详情和红色忌口推理路径。
 
 ```powershell
 cd web
@@ -48,15 +49,25 @@ Copy-Item .env.example .env.local
 pnpm dev
 ```
 
-将 `VITE_USE_MOCKS=false` 后，前端通过 `VITE_API_BASE_URL` 连接 FastAPI。生产构建和测试命令：
+真实联调时先在仓库根目录执行 `cookkg build` 和 `cookkg serve`，再将 `web/.env.local`
+设置为：
+
+```env
+VITE_USE_MOCKS=false
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+生产构建和测试命令：
 
 ```powershell
 pnpm test
 pnpm build
 pnpm e2e
+pnpm e2e:real
 ```
 
-端到端测试默认使用本机 Google Chrome。
+`e2e` 使用模拟数据；`e2e:real` 自动启动真实 FastAPI 和 Vite，并要求已经生成
+`data/processed/graph.json`。端到端测试默认使用本机 Google Chrome。
 
 前端设计与实施说明见[菜单规划器 UI 设计](docs/superpowers/specs/2026-09-09-menu-planner-ui-design.md)
 和[实施计划](docs/superpowers/plans/2026-09-09-menu-planner-ui-implementation.md)。
@@ -68,8 +79,8 @@ pnpm e2e
 严格推荐只使用 `reviewed_recipes.json` 中人工审核且 SHA-256 仍匹配的菜谱。
 上游文件变化会使审核自动失效，避免旧审核覆盖新内容。
 
-当前提交包含 10 道人工审核菜谱。规则解析结果中的 `pending` 食材、未审核菜谱和
-结构不完整菜谱不会进入推荐。
+当前提交包含 10 道人工审核菜谱和版本化人工食材分类。规则解析结果中的 `pending` 食材、
+未审核菜谱和结构不完整菜谱不会进入推荐；只有分类资源中 `reviewed=true` 的关系参与推理。
 
 ## Neo4j
 

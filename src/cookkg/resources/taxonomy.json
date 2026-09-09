@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "memberships": [
+    {"ingredient": "小米椒", "category": "辣椒", "reviewed": true, "evidence": "CookKG taxonomy review 2026-09-09"},
+    {"ingredient": "朝天椒", "category": "辣椒", "reviewed": true, "evidence": "CookKG taxonomy review 2026-09-09"},
+    {"ingredient": "青椒", "category": "辣椒", "reviewed": true, "evidence": "CookKG taxonomy review 2026-09-09"}
+  ],
+  "categories": [
+    {"child": "辣椒", "parent": "蔬菜", "reviewed": true, "evidence": "CookKG taxonomy review 2026-09-09"}
+  ]
+}
