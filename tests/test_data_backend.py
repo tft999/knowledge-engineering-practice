@@ -56,8 +56,8 @@ def test_projection_is_loss_aware_and_supports_category_alias():
         requirement="one_of", review_state="pending", group_id="g", resource_kind="food",
         evidence=[dict(line=3, text="- 小米椒")])],
       "choice_groups": [dict(id="g", member_ids=["u1"], min_select=1, max_select=1,
-                              evidence=[dict(line=3, text="- 小米椒")])]},
-     "backend_has_no_choice_group_solver"),
+                              is_open=True, evidence=[dict(line=3, text="- 小米椒")])]},
+     "open_choice_group"),
 ])
 def test_projection_refuses_semantic_loss(updates, reason):
     record = recipe(**updates)
@@ -74,6 +74,29 @@ def test_household_water_is_not_projected_as_a_shopping_ingredient():
     value["ingredients"].append(water)
     graph, _ = build_backend_projection([DataRecipe.model_validate(value)], ontology())
     assert "i:水" not in graph
+
+
+def test_closed_choice_group_is_projected_and_prefers_stock_member():
+    ingredients = [
+        dict(use_id="u1", id="牛奶", surface="牛奶", requirement="one_of",
+             review_state="pending", group_id="g", resource_kind="food",
+             evidence=[dict(line=3, text="- 牛奶或豆浆")]),
+        dict(use_id="u2", id="豆浆", surface="豆浆", requirement="one_of",
+             review_state="pending", group_id="g", resource_kind="food",
+             evidence=[dict(line=3, text="- 牛奶或豆浆")]),
+    ]
+    group = dict(id="g", member_ids=["u1", "u2"], min_select=1, max_select=1,
+                 evidence=[dict(line=3, text="- 牛奶或豆浆")])
+    record = recipe(ingredients=ingredients, choice_groups=[group])
+
+    assert compatibility_reason(record) is None
+    graph, report = build_backend_projection([record], ontology())
+    assert report["integration_eligible"] == 1
+    assert graph.edges[f"r:{record.id}", "i:牛奶"]["group_id"] == "g"
+
+    result = recommend(graph, RecommendRequest(have={"豆浆"}, max_buy=0))
+    assert result.plans[0].to_buy == []
+    assert result.plans[0].covered == ["豆浆"]
 
 
 def test_projected_graph_loads_in_real_fastapi_contract(tmp_path):

@@ -181,6 +181,32 @@ def _plan_id(recipe_ids: list[str]) -> str:
     return f"plan-{digest}"
 
 
+def _resolve_choice_groups(
+    recipe_attrs: dict,
+    uses: list[tuple[str, dict]],
+    available: set[str],
+    expanded_exclude: set[str],
+) -> tuple[set[str], set[str]] | None:
+    """Choose the minimum required members of each closed food choice group."""
+    by_group: dict[str, list[str]] = {}
+    for name, edge in uses:
+        if edge.get("status") == "one_of" and edge.get("group_id"):
+            by_group.setdefault(edge["group_id"], []).append(name)
+
+    required: set[str] = set()
+    omitted: set[str] = set()
+    for group in sorted(recipe_attrs.get("choice_groups", []), key=lambda item: item["id"]):
+        members = sorted(by_group.get(group["id"], []))
+        allowed = [name for name in members if name not in expanded_exclude]
+        omitted.update(set(members) & expanded_exclude)
+        minimum = group["min_select"]
+        if len(allowed) < minimum:
+            return None
+        chosen = sorted(allowed, key=lambda name: (name not in available, name))[:minimum]
+        required.update(chosen)
+    return required, omitted
+
+
 def recommend(graph: nx.DiGraph, request: RecommendRequest) -> RecommendResult:
     have, pantry, exclude = request.have, request.pantry, request.exclude
     available = have | pantry
@@ -203,6 +229,13 @@ def recommend(graph: nx.DiGraph, request: RecommendRequest) -> RecommendResult:
             continue
         required = {name for name, edge in uses if edge.get("status") == "required"}
         optional = {name for name, edge in uses if edge.get("status") == "optional"}
+        resolved_groups = _resolve_choice_groups(
+            attrs, uses, available, expanded_exclude
+        )
+        if resolved_groups is None:
+            continue
+        group_required, group_omitted = resolved_groups
+        required |= group_required
         rejected = sorted(required & expanded_exclude)
         if rejected:
             for ingredient in rejected:
@@ -223,7 +256,9 @@ def recommend(graph: nx.DiGraph, request: RecommendRequest) -> RecommendResult:
             continue
         missing = required - available
         covered = required & have
-        candidates.append((len(missing), -len(covered), attrs["id"], node, required, optional))
+        candidates.append(
+            (len(missing), -len(covered), attrs["id"], node, required, optional, group_omitted)
+        )
     candidates.sort(key=lambda item: item[:3])
     candidate_count = len(candidates)
     candidates = candidates[:60]
@@ -236,7 +271,9 @@ def recommend(graph: nx.DiGraph, request: RecommendRequest) -> RecommendResult:
             continue
         covered = required & have
         ids = sorted(item[2] for item in chosen)
-        omitted = set().union(*(item[5] & expanded_exclude for item in chosen))
+        omitted = set().union(
+            *((item[5] & expanded_exclude) | item[6] for item in chosen)
+        )
         nodes = sorted((item[3] for item in chosen), key=lambda node: graph.nodes[node]["id"])
         plan = MenuPlan(
             id=_plan_id(ids),

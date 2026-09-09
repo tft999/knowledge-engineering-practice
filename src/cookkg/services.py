@@ -117,7 +117,7 @@ class CookKgService:
             if self.graph.nodes[target].get("kind") != "ingredient":
                 continue
             status = edge.get("status")
-            if status not in {"required", "optional"}:
+            if status not in {"required", "optional", "one_of"}:
                 continue
             ingredients.append(
                 RecipeIngredient(

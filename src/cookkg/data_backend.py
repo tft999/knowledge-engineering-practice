@@ -21,8 +21,10 @@ def compatibility_reason(recipe: DataRecipe) -> str | None:
         return "source_or_annotation_issue"
     if any(use.requirement == "unknown" for use in recipe.ingredients):
         return "unknown_ingredient_relation"
-    if recipe.choice_groups:
-        return "backend_has_no_choice_group_solver"
+    if any(group.is_open for group in recipe.choice_groups):
+        return "open_choice_group"
+    if any(group.kind != "food" for group in recipe.choice_groups):
+        return "tool_choice_group_not_supported"
     return None
 
 
@@ -62,7 +64,9 @@ def build_backend_projection(recipes: list[DataRecipe], ontology: dict) -> tuple
                        steps=recipe.steps, reviewed=False,
                        integration_eligible=reason is None, eligible=reason is None,
                        compatibility_blocker=reason,
-                       annotation_hash=recipe.annotation_hash)
+                       annotation_hash=recipe.annotation_hash,
+                       choice_groups=[group.model_dump(mode="json")
+                                      for group in recipe.choice_groups])
         for use in recipe.ingredients:
             if use.resource_kind == "household_resource":
                 continue
@@ -71,6 +75,7 @@ def build_backend_projection(recipes: list[DataRecipe], ontology: dict) -> tuple
             relation = {"required": "REQUIRES", "optional": "OPTIONALLY_USES",
                         "one_of": "ONE_OF", "unknown": "UNRESOLVED_USE"}[use.requirement]
             graph.add_edge(node, ingredient, relation=relation, status=use.requirement,
+                           group_id=use.group_id,
                            requirement=use.requirement, quantity_raw=use.quantity_raw,
                            evidence=[f"L{e.line}: {e.text}" for e in use.evidence],
                            source_hash=recipe.source_hash, annotation_hash=recipe.annotation_hash)
@@ -102,8 +107,11 @@ def build_backend_projection(recipes: list[DataRecipe], ontology: dict) -> tuple
         canonical_graph="data/processed/v2/graph.json",
         projection_graph="data/processed/v2/backend-graph.json",
         limitations=[
-            "The current recommendation algorithm has no choice-group solver.",
-            "Recipes with issues, unknown relations or any choice group are not candidates.",
+            "Closed food choice groups are solved; open and tool choice groups are not.",
+            (
+                "Recipes with issues, unknown relations, open groups or tool groups "
+                "are not candidates."
+            ),
             "Scoped ingredient aliases are not applied globally to user input.",
             "Ontology relations remain proposals until the team confirms them.",
         ],
