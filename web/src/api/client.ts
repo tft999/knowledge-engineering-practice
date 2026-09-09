@@ -103,6 +103,19 @@ export function parseRecommendationResponse(value: unknown): RecommendationRespo
           kind: nodeKind as "recipe" | "ingredient" | "category" | "tool",
         };
       }),
+      edges: array(explanation.edges, "explanation.edges").map((rawEdge) => {
+        const edge = record(rawEdge, "explanation edge");
+        const relation = text(edge.relation, "explanation edge.relation");
+        if (!["REQUIRES", "OPTIONALLY_USES", "IS_A", "SUBCLASS_OF"].includes(relation)) {
+          throw new ApiContractError("explanation edge.relation 无效");
+        }
+        return {
+          source: text(edge.source, "explanation edge.source"),
+          target: text(edge.target, "explanation edge.target"),
+          relation: relation as "REQUIRES" | "OPTIONALLY_USES" | "IS_A" | "SUBCLASS_OF",
+          evidence: strings(edge.evidence, "explanation edge.evidence"),
+        };
+      }),
     };
   });
   const reason = item.reason;
@@ -188,6 +201,7 @@ export function parseGraphNeighborhood(value: unknown): GraphNeighborhood {
         source: text(edge.source, "graph edge.source"),
         target: text(edge.target, "graph edge.target"),
         relation: relation as GraphEdge["relation"],
+        evidence: strings(edge.evidence, "graph edge.evidence"),
         excluded: edge.excluded === true,
       };
     }),

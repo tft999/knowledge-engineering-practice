@@ -45,9 +45,12 @@ def _relation(attrs):
     }.get(attrs.get("status"))
 
 
-def _edge_tuple(source, target, attrs):
-    return (source, target, _relation(attrs), attrs.get("status"),
-            tuple(attrs.get("quantity_raw") or []), tuple(attrs.get("evidence") or []))
+def _edge_payload(attrs):
+    return json.dumps(attrs, ensure_ascii=False, sort_keys=True)
+
+
+def _edge_tuple(source, target, relation, payload):
+    return (source, target, relation, payload)
 
 
 NODE_LABELS = {
@@ -95,6 +98,7 @@ def import_graph(graph: nx.DiGraph) -> dict:
             "status": attrs.get("status"),
             "quantity_raw": attrs.get("quantity_raw", []),
             "evidence": attrs.get("evidence", []),
+            "payload": _edge_payload(attrs),
         })
 
     def write(tx):
@@ -120,7 +124,7 @@ def import_graph(graph: nx.DiGraph) -> dict:
                     f"MATCH (t:{target_label} {{key: row.target_key}}) "
                     f"MERGE (s)-[e:COOKKG_{relation}]->(t) "
                     "SET e.status = row.status, e.quantity_raw = row.quantity_raw, "
-                    "e.evidence = row.evidence",
+                    "e.evidence = row.evidence, e.payload = row.payload",
                     rows=relation_rows[offset:offset + 1000],
                 ).consume()
 
@@ -146,7 +150,10 @@ def verify_graph(graph: nx.DiGraph) -> dict:
         (node_id, attrs["kind"], _node_payload(attrs))
         for node_id, attrs in graph.nodes(data=True)
     )
-    expected_edges = Counter(_edge_tuple(r, i, attrs) for r, i, attrs in graph.edges(data=True))
+    expected_edges = Counter(
+        _edge_tuple(source, target, _relation(attrs), _edge_payload(attrs))
+        for source, target, attrs in graph.edges(data=True)
+    )
     ingredients = sorted(
         node
         for node, attrs in graph.nodes(data=True)
@@ -162,14 +169,18 @@ def verify_graph(graph: nx.DiGraph) -> dict:
             "AND n.dataset = $dataset AND n.source_commit = $source_commit "
             "RETURN n.node_id AS node_id, n.kind AS kind, n.payload AS payload", **snapshot))
         relation_types = [f"COOKKG_{relation}" for relation in RELATION_ENDPOINTS]
-        actual_edges = Counter(_edge_tuple(row["source"], row["target"], row) for row in tx.run(
-            "MATCH (s)-[e]->(t) WHERE type(e) IN $relation_types "
-            "AND s.dataset = $dataset AND s.source_commit = $source_commit "
-            "AND t.dataset = $dataset AND t.source_commit = $source_commit "
-            "RETURN s.node_id AS source, t.node_id AS target, "
-            "replace(type(e), 'COOKKG_', '') AS relation, e.status AS status, "
-            "e.quantity_raw AS quantity_raw, e.evidence AS evidence",
-            relation_types=relation_types, **snapshot))
+        actual_edges = Counter(
+            _edge_tuple(row["source"], row["target"], row["relation"], row["payload"])
+            for row in tx.run(
+                "MATCH (s)-[e]->(t) WHERE type(e) IN $relation_types "
+                "AND s.dataset = $dataset AND s.source_commit = $source_commit "
+                "AND t.dataset = $dataset AND t.source_commit = $source_commit "
+                "RETURN s.node_id AS source, t.node_id AS target, "
+                "replace(type(e), 'COOKKG_', '') AS relation, e.payload AS payload",
+                relation_types=relation_types,
+                **snapshot,
+            )
+        )
         sample_actual = []
         if sample is not None:
             sample_actual = sorted(row["recipe"] for row in tx.run(

@@ -31,7 +31,12 @@ def graph_path(tmp_path: Path) -> Path:
             "dishes/meat/小炒肉.md",
             "小炒肉",
             [
-                IngredientUse(name="小米椒", status="required", quantity_raw=["小米椒 2 个"]),
+                IngredientUse(
+                    name="小米椒",
+                    status="required",
+                    quantity_raw=["小米椒 2 个"],
+                    evidence=["ingredients:1"],
+                ),
                 IngredientUse(name="猪肉", status="required", quantity_raw=["猪肉 200g"]),
             ],
             tools=["炒锅"],
@@ -89,6 +94,12 @@ def test_recommendation_returns_frontend_contract_and_hierarchy_explanation(grap
         "小米椒",
         "辣椒",
     ]
+    assert [edge["relation"] for edge in body["explanations"][0]["edges"]] == [
+        "REQUIRES",
+        "IS_A",
+    ]
+    assert body["explanations"][0]["edges"][0]["evidence"] == ["ingredients:1"]
+    assert body["explanations"][0]["edges"][1]["evidence"]
     assert "recipe_ids" not in body["plans"][0]
 
 
@@ -135,6 +146,7 @@ def test_recipe_path_and_neighborhood_exclusion_highlight(graph_path):
     highlighted = {node["label"] for node in body["nodes"] if node["excluded"]}
     assert {"小米椒", "辣椒"} <= highlighted
     assert any(edge["relation"] == "REQUIRES_TOOL" for edge in body["edges"])
+    assert any(edge["evidence"] for edge in body["edges"] if edge["relation"] == "IS_A")
 
 
 def test_missing_or_stale_graph_fails_during_lifespan(tmp_path):
@@ -147,6 +159,14 @@ def test_missing_or_stale_graph_fails_during_lifespan(tmp_path):
     dump_graph(stale, path)
     with pytest.raises(RuntimeError, match="cookkg build"):
         with TestClient(create_app(path)):
+            pass
+
+    graph = build_graph([], source_commit="fixture")
+    graph.graph["taxonomy_digest"] = "different-resource"
+    mismatched = tmp_path / "mismatched.json"
+    dump_graph(graph, mismatched)
+    with pytest.raises(RuntimeError, match="cookkg build"):
+        with TestClient(create_app(mismatched)):
             pass
 
 

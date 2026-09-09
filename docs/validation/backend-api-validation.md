@@ -18,7 +18,7 @@
 
 | 检查 | 结果 |
 | --- | --- |
-| pytest | 43 passed，1 skipped |
+| pytest | 44 passed，1 skipped |
 | Ruff | 通过 |
 | Vitest | 17 passed |
 | TypeScript + Vite build | 通过 |

@@ -38,6 +38,7 @@ def create_app(graph_path: Path) -> FastAPI:
         if (
             graph.graph.get("schema_version") != 2
             or graph.graph.get("taxonomy_version") != taxonomy.version
+            or graph.graph.get("taxonomy_digest") != taxonomy.digest()
         ):
             raise RuntimeError("CookKG 图谱版本过旧，请重新运行 cookkg build")
         app.state.service = CookKgService(graph)

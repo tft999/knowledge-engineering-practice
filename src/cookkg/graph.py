@@ -19,6 +19,7 @@ def build_graph(
         source_commit=source_commit,
         schema_version=2,
         taxonomy_version=taxonomy.version,
+        taxonomy_digest=taxonomy.digest(),
     )
     for recipe in recipes:
         rid = f"r:{recipe.id}"

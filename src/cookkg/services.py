@@ -1,7 +1,7 @@
 from typing import Literal
 
 import networkx as nx
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from cookkg.normalize import normalize_ingredient
 from cookkg.recommend import expand_exclusions
@@ -51,6 +51,7 @@ class GraphEdge(BaseModel):
         "SUBCLASS_OF",
         "REQUIRES_TOOL",
     ]
+    evidence: list[str] = Field(default_factory=list)
     excluded: bool = False
 
 
@@ -191,6 +192,7 @@ class CookKgService:
                     source=source,
                     target=target,
                     relation=relation,
+                    evidence=attrs.get("evidence", []),
                     excluded=(source, target) in excluded_edges,
                 )
             )

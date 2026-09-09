@@ -1,3 +1,4 @@
+import hashlib
 import json
 from importlib.resources import files
 from typing import Literal
@@ -27,21 +28,36 @@ class Taxonomy(BaseModel):
     memberships: list[Membership] = Field(default_factory=list)
     categories: list[CategoryRelation] = Field(default_factory=list)
 
+    def digest(self) -> str:
+        payload = json.dumps(
+            self.model_dump(mode="json"),
+            ensure_ascii=False,
+            separators=(",", ":"),
+            sort_keys=True,
+        )
+        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
     @model_validator(mode="after")
     def reviewed_categories_are_acyclic(self):
-        parents = {
-            relation.child: relation.parent
-            for relation in self.categories
-            if relation.reviewed
-        }
-        for start in parents:
-            seen = set()
-            current = start
-            while current in parents:
-                if current in seen:
-                    raise ValueError("食材类别层级不能包含循环")
-                seen.add(current)
-                current = parents[current]
+        parents: dict[str, set[str]] = {}
+        for relation in self.categories:
+            if relation.reviewed:
+                parents.setdefault(relation.child, set()).add(relation.parent)
+
+        states: dict[str, int] = {}
+
+        def visit(category: str) -> None:
+            if states.get(category) == 1:
+                raise ValueError("食材类别层级不能包含循环")
+            if states.get(category) == 2:
+                return
+            states[category] = 1
+            for parent in sorted(parents.get(category, set())):
+                visit(parent)
+            states[category] = 2
+
+        for category in sorted(parents):
+            visit(category)
         return self
 
 

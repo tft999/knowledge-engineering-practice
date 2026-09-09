@@ -40,6 +40,20 @@ const explanations: Explanation[] = [
       { id: "i:小米椒", label: "小米椒", kind: "ingredient" },
       { id: "c:辣椒", label: "辣椒", kind: "category" },
     ],
+    edges: [
+      {
+        source: "r:dishes/meat/小炒肉.md",
+        target: "i:小米椒",
+        relation: "REQUIRES",
+        evidence: ["ingredients:1"],
+      },
+      {
+        source: "i:小米椒",
+        target: "c:辣椒",
+        relation: "IS_A",
+        evidence: ["reviewed taxonomy"],
+      },
+    ],
   },
 ];
 

@@ -35,6 +35,12 @@ export type Explanation = {
   kind: "excluded_required" | "omitted_optional" | "normalization";
   message: string;
   path: Array<{ id: string; label: string; kind: ExplanationNodeKind }>;
+  edges: Array<{
+    source: string;
+    target: string;
+    relation: "REQUIRES" | "OPTIONALLY_USES" | "IS_A" | "SUBCLASS_OF";
+    evidence: string[];
+  }>;
 };
 
 export type RecommendationResponse = {
@@ -79,6 +85,7 @@ export type GraphEdge = {
   source: string;
   target: string;
   relation: GraphRelation;
+  evidence: string[];
   excluded?: boolean;
 };
 

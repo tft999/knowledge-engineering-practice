@@ -24,7 +24,14 @@ def graph():
         steps="烹饪步骤",
     )
     graph.add_node("i:盐", kind="ingredient", id="盐", name="盐")
-    graph.add_edge("r:a.md", "i:盐", status="required", quantity_raw=["少许"], evidence=["盐少许"])
+    graph.add_edge(
+        "r:a.md",
+        "i:盐",
+        status="required",
+        quantity_raw=["少许"],
+        evidence=["盐少许"],
+        reviewed=True,
+    )
     return graph
 
 
@@ -41,6 +48,15 @@ def connection(monkeypatch):
     return session
 
 
+def edge_row(source, target, relation, attrs):
+    return {
+        "source": source,
+        "target": target,
+        "relation": relation,
+        "payload": neo4j_store._edge_payload(attrs),
+    }
+
+
 def test_missing_config_is_actionable(monkeypatch, graph):
     monkeypatch.delenv("NEO4J_PASSWORD", raising=False)
     with pytest.raises(neo4j_store.Neo4jStoreError, match="NEO4J_PASSWORD"):
@@ -54,6 +70,7 @@ def test_import_replaces_only_snapshot_and_preserves_properties(graph, connectio
     edge_rows = [c.kwargs["rows"] for c in calls if "COOKKG_REQUIRES" in c.args[0]]
     assert edge_rows[0][0]["status"] == "required"
     assert edge_rows[0][0]["evidence"] == ["盐少许"]
+    assert '"reviewed": true' in edge_rows[0][0]["payload"]
     recipe_rows = [
         call.kwargs["rows"]
         for call in calls
@@ -81,8 +98,7 @@ def test_verify_rejects_equal_counts_but_wrong_edges(graph, connection):
             {"node_id": node, "kind": attrs["kind"], "payload": neo4j_store._node_payload(attrs)}
             for node, attrs in graph.nodes(data=True)
         ],
-        [{"source": "r:a.md", "target": "i:糖", "relation": "REQUIRES", "status": "required",
-          "quantity_raw": ["少许"], "evidence": ["盐少许"]}],
+        [edge_row("r:a.md", "i:糖", "REQUIRES", graph.edges["r:a.md", "i:盐"])],
         [{"recipe": "r:a.md"}],
     ]
     result = neo4j_store.verify_graph(graph)
@@ -146,14 +162,7 @@ def test_verify_supports_all_graph_node_and_relation_types(connection):
         for node, attrs in rich_graph.nodes(data=True)
     ]
     edge_rows = [
-        {
-            "source": source,
-            "target": target,
-            "relation": attrs["relation"],
-            "status": attrs.get("status"),
-            "quantity_raw": attrs.get("quantity_raw", []),
-            "evidence": attrs.get("evidence", []),
-        }
+        edge_row(source, target, attrs["relation"], attrs)
         for source, target, attrs in rich_graph.edges(data=True)
     ]
     connection.run.side_effect = [node_rows, edge_rows, [{"recipe": "r:pepper.md"}]]
@@ -167,13 +176,14 @@ def test_verify_supports_all_graph_node_and_relation_types(connection):
 
 @pytest.mark.parametrize("status, expected", [("required", True), ("optional", False)])
 def test_verify_compares_properties_and_sample_query(graph, connection, status, expected):
+    attrs = dict(graph.edges["r:a.md", "i:盐"])
+    attrs["status"] = status
     connection.run.side_effect = [
         [
             {"node_id": node, "kind": attrs["kind"], "payload": neo4j_store._node_payload(attrs)}
             for node, attrs in graph.nodes(data=True)
         ],
-        [{"source": "r:a.md", "target": "i:盐", "relation": "REQUIRES", "status": status,
-          "quantity_raw": ["少许"], "evidence": ["盐少许"]}],
+        [edge_row("r:a.md", "i:盐", "REQUIRES", attrs)],
         [{"recipe": "r:a.md"}],
     ]
     result = neo4j_store.verify_graph(graph)
@@ -191,16 +201,7 @@ def test_verify_rejects_wrong_node_payload(graph, connection):
                 "payload": neo4j_store._node_payload(graph.nodes["i:盐"]),
             },
         ],
-        [
-            {
-                "source": "r:a.md",
-                "target": "i:盐",
-                "relation": "REQUIRES",
-                "status": "required",
-                "quantity_raw": ["少许"],
-                "evidence": ["盐少许"],
-            }
-        ],
+        [edge_row("r:a.md", "i:盐", "REQUIRES", graph.edges["r:a.md", "i:盐"])],
         [{"recipe": "r:a.md"}],
     ]
     result = neo4j_store.verify_graph(graph)

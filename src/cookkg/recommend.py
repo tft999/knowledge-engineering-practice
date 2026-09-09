@@ -51,11 +51,19 @@ class ExplanationNode(BaseModel):
     kind: Literal["recipe", "ingredient", "category", "tool"]
 
 
+class ExplanationEdge(BaseModel):
+    source: str
+    target: str
+    relation: Literal["REQUIRES", "OPTIONALLY_USES", "IS_A", "SUBCLASS_OF"]
+    evidence: list[str] = Field(default_factory=list)
+
+
 class Explanation(BaseModel):
     id: str
     kind: Literal["excluded_required", "omitted_optional", "normalization"]
     message: str
     path: list[ExplanationNode]
+    edges: list[ExplanationEdge]
 
 
 class NormalizedInput(BaseModel):
@@ -147,6 +155,21 @@ def _explanation_path(
     ]
 
 
+def _explanation_edges(
+    graph: nx.DiGraph, recipe_node: str, path: list[str]
+) -> list[ExplanationEdge]:
+    nodes = [recipe_node, *path]
+    return [
+        ExplanationEdge(
+            source=source,
+            target=target,
+            relation=graph.edges[source, target]["relation"],
+            evidence=graph.edges[source, target].get("evidence", []),
+        )
+        for source, target in zip(nodes, nodes[1:])
+    ]
+
+
 def _plan_id(recipe_ids: list[str]) -> str:
     digest = hashlib.sha256("\0".join(recipe_ids).encode("utf-8")).hexdigest()[:16]
     return f"plan-{digest}"
@@ -187,6 +210,7 @@ def recommend(graph: nx.DiGraph, request: RecommendRequest) -> RecommendResult:
                             kind="excluded_required",
                             message=f"{attrs['name']} 必需使用{ingredient}；该食材命中排除条件。",
                             path=_explanation_path(graph, node, path),
+                            edges=_explanation_edges(graph, node, path),
                         ),
                     )
                 )

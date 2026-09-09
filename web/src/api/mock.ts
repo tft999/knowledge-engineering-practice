@@ -111,6 +111,20 @@ const success: RecommendationResponse = {
         { id: "ingredient:小米椒", label: "小米椒", kind: "ingredient" },
         { id: "category:辣椒", label: "辣椒", kind: "category" },
       ],
+      edges: [
+        {
+          source: "r:dishes/meat_dish/小炒肉.md",
+          target: "ingredient:小米椒",
+          relation: "REQUIRES",
+          evidence: ["HowToCook 原料章节"],
+        },
+        {
+          source: "ingredient:小米椒",
+          target: "category:辣椒",
+          relation: "IS_A",
+          evidence: ["CookKG taxonomy review 2026-09-09"],
+        },
+      ],
     },
   ],
 };
@@ -156,6 +170,7 @@ function graphFor(recipeId: string, exclude: string[] = []): GraphNeighborhood {
         source: `recipe:${recipeId}`,
         target: `ingredient:${item.name}`,
         relation: item.requirement === "optional" ? ("OPTIONALLY_USES" as const) : ("REQUIRES" as const),
+        evidence: ["HowToCook 原料章节"],
         excluded: exclude.includes("辣椒") && item.name === "小米椒",
       })),
       ...(pepper
@@ -164,6 +179,7 @@ function graphFor(recipeId: string, exclude: string[] = []): GraphNeighborhood {
             source: "ingredient:小米椒",
             target: "category:辣椒",
             relation: "IS_A" as const,
+            evidence: ["CookKG taxonomy review 2026-09-09"],
             excluded: true,
           }]
         : []),
@@ -172,6 +188,7 @@ function graphFor(recipeId: string, exclude: string[] = []): GraphNeighborhood {
         source: `recipe:${recipeId}`,
         target: "tool:炒锅",
         relation: "REQUIRES_TOOL",
+        evidence: [],
       },
     ],
   };
