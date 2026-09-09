@@ -11,6 +11,11 @@
 [项目定义与总体架构](docs/PROJECT.md)。后续工作已拆分为数据扩充、Web 演示、GraphRAG 和
 实验答辩四个阶段，详见 [v0.2—v1.0 实施计划](docs/superpowers/plans/2026-09-09-cookkg-roadmap.md)。
 
+当前小组讨论形成的联合课题定义、实体关系规则和职责安排见：
+
+- [问题定义与知识图谱初步标注规范](docs/problem-and-annotation-standard.md)
+- [小组成员分工](docs/team-roles.md)
+
 ## 快速开始
 
 需要 Python 3.13。以下命令在仓库根目录运行：
