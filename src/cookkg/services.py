@@ -4,7 +4,7 @@ import networkx as nx
 from pydantic import BaseModel, Field
 
 from cookkg.normalize import normalize_ingredient
-from cookkg.recommend import expand_exclusions
+from cookkg.recommend import expand_exclusions, recipe_is_available
 
 PUBLIC_RELATIONS = {
     "REQUIRES",
@@ -77,7 +77,7 @@ class CookKgService:
         ]
         if (
             attrs.get("kind") != "recipe"
-            or not attrs.get("reviewed")
+            or not recipe_is_available(attrs)
             or not attrs.get("eligible", True)
             or any(edge.get("status") == "pending" for edge in uses)
         ):
@@ -85,9 +85,19 @@ class CookKgService:
         return node
 
     def reviewed_recipe_count(self) -> int:
+        return sum(
+            bool(attrs.get("kind") == "recipe" and attrs.get("reviewed"))
+            for _, attrs in self.graph.nodes(data=True)
+        )
+
+    def integration_eligible_recipe_count(self) -> int:
         count = 0
         for _, attrs in self.graph.nodes(data=True):
-            if attrs.get("kind") != "recipe":
+            if (
+                attrs.get("kind") != "recipe"
+                or not attrs.get("integration_eligible")
+                or attrs.get("reviewed")
+            ):
                 continue
             try:
                 self._recipe_node(attrs["id"])
@@ -95,6 +105,9 @@ class CookKgService:
                 continue
             count += 1
         return count
+
+    def available_recipe_count(self) -> int:
+        return self.reviewed_recipe_count() + self.integration_eligible_recipe_count()
 
     def recipe_detail(self, recipe_id: str) -> RecipeDetail:
         node = self._recipe_node(recipe_id)

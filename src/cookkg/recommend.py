@@ -12,6 +12,10 @@ def _canon(values: set[str]) -> set[str]:
     return {normalize_ingredient(value) for value in values if value.strip()}
 
 
+def recipe_is_available(attrs: dict) -> bool:
+    return bool(attrs.get("reviewed") or attrs.get("integration_eligible"))
+
+
 class RecommendRequest(BaseModel):
     have: set[str] = Field(default_factory=set)
     pantry: set[str] = Field(default_factory=set)
@@ -124,6 +128,7 @@ def expand_exclusions(
 ) -> tuple[set[str], dict[str, list[str]]]:
     expanded = set(exclude)
     paths: dict[str, list[str]] = {}
+    category_aliases = graph.graph.get("category_aliases", {})
     ingredients = sorted(
         attrs["name"]
         for _, attrs in graph.nodes(data=True)
@@ -134,6 +139,7 @@ def expand_exclusions(
             paths[ingredient] = [f"i:{ingredient}"]
             continue
         for category in sorted(exclude):
+            category = category_aliases.get(category, category)
             path = _category_path(graph, ingredient, category)
             if path:
                 expanded.add(ingredient)
@@ -184,7 +190,7 @@ def recommend(graph: nx.DiGraph, request: RecommendRequest) -> RecommendResult:
     for node, attrs in graph.nodes(data=True):
         if (
             attrs.get("kind") != "recipe"
-            or not attrs.get("reviewed")
+            or not recipe_is_available(attrs)
             or not attrs.get("eligible", True)
         ):
             continue

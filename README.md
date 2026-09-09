@@ -82,6 +82,50 @@ pnpm e2e:real
 当前提交包含 10 道人工审核菜谱和版本化人工食材分类。规则解析结果中的 `pending` 食材、
 未审核菜谱和结构不完整菜谱不会进入推荐；只有分类资源中 `reviewed=true` 的关系参与推理。
 
+审核人员可以生成稳定的待审核队列并检查现有审核记录：
+
+```powershell
+.venv/Scripts/cookkg review-queue --limit 20
+.venv/Scripts/cookkg review-queue --limit 20 --json
+.venv/Scripts/cookkg review-check
+```
+
+`review-queue` 按“存在解析问题、问题数量较少、稳定菜谱 ID”的顺序选择样本，并显示原文
+路径、内容哈希、解析问题和预抽取结果。`review-check` 会验证审核字段、菜谱路径和 SHA-256。
+Zouyilin06 的首批 20 道 AI 辅助标注草稿位于
+[`docs/annotations/sample-20-zouyilin06-draft.json`](docs/annotations/sample-20-zouyilin06-draft.json)，
+食材层级草案位于
+[`src/cookkg/resources/ingredient_hierarchy.draft.json`](src/cookkg/resources/ingredient_hierarchy.draft.json)。
+二者都需要第二名标注人员独立复核，不会直接进入严格推荐。
+
+## Zouyilin06 的 v2 数据与图谱交付
+
+新增独立的 v2 数据管线：100 道真实 HowToCook 菜谱的 AI 辅助校读标注、262 个食材名称、
+选择组、工具、类别、结构化用量、加工形态和逐行证据。100 道均通过源哈希与逐字引文校验，
+**目前人工确认数为 0**；
+39 道含待裁决问题，不能把机器校验通过说成“100 道人工审核完成”。
+完整 v2 图谱保留全部语义；另生成与当前推荐 API 兼容的 `backend-graph.json`，仅将 46 道无语义阻断的
+菜谱标为兼容可用，39 道问题菜谱和 15 道含选择组菜谱明确排除。接口联调已在本地完成，人工课程签字仍为 0。
+
+```powershell
+.venv/Scripts/cookkg data-v2 build
+.venv/Scripts/cookkg data-v2 neo4j-import
+.venv/Scripts/cookkg data-v2 neo4j-verify
+.venv/Scripts/cookkg data-v2 neo4j-queries
+.venv/Scripts/cookkg data-v2 acceptance
+```
+
+本次工作环境使用 `.venv-data/Scripts/`，其中 Python 版本为 3.13.15。
+Neo4j 命令使用 `NEO4J_URI / NEO4J_USERNAME / NEO4J_PASSWORD / NEO4J_DATABASE` 环境变量。
+构建产物位于 `data/processed/v2/`：`recipes.jsonl`、`networkx.node-link.json`、`graph.json`、`backend-graph.json`、
+`neo4j-import.json`、本体、JSON Schema、质量报告、全源扫描、问题裁决队列、100 条评测输入草稿、
+旧解析器差异报告、兼容性报告、技术核对记录和 `review-100.html`。`acceptance` 会在人工审核、双人标注、交叉复核、
+接口确认或联调证据缺失时返回非零状态，防止把技术准备误报为课程任务完成。
+
+请从 [数据模块交接说明](docs/zouyilin06-handoff.md) 开始；
+详细字段见 [v2 数据契约](docs/data-contract-v2.md)，
+真实数据库测试结果见 [数据与图谱验收记录](docs/validation/zouyilin06-data-v2.md)。
+
 ## Neo4j
 
 复制 `.env.example` 中的变量到当前 shell 环境，然后执行：

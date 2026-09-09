@@ -10,6 +10,7 @@ from cookkg.graph import build_graph, dump_graph
 from cookkg.models import IngredientUse, Recipe
 from cookkg.normalize import normalize_ingredient
 from cookkg.parser import parse_recipe
+from cookkg.review import load_review_records
 
 
 def source_config() -> dict:
@@ -52,9 +53,13 @@ def fetch_dataset(destination: Path, force: bool = False) -> dict:
 
 
 def load_reviews(path: Path) -> dict:
-    if not path.exists():
-        return {}
-    return json.loads(path.read_text(encoding="utf-8"))
+    try:
+        return {
+            recipe_id: record.model_dump(mode="json")
+            for recipe_id, record in load_review_records(path).items()
+        }
+    except (ValueError, json.JSONDecodeError) as error:
+        raise RuntimeError(f"审核记录无效：{error}") from error
 
 
 def build_dataset(raw: Path, output: Path, commit: str, reviews_path: Path) -> dict:

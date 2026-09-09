@@ -1,0 +1,2081 @@
+{
+  "state": "pending_independent_second_review",
+  "method": "ai_assisted",
+  "source_commit": "2b19c9e9ee926fd925a68207a57582a338813f9c",
+  "recipes": [
+    {
+      "recipe_id": "dishes/aquatic/微波葱姜黑鳕鱼.md",
+      "sha256": "a93c5ee3fde811daa57f8de7806d2d54fb4ccddb733f81656cec6168f5cc27a3",
+      "decisions": [
+        "黑鳕鱼: required",
+        "青葱: required",
+        "姜: required",
+        "料酒: required",
+        "酱油: required",
+        "芝麻油: required",
+        "花生油: required"
+      ],
+      "evidence": [
+        {
+          "ingredient": "黑鳕鱼",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 黑鳕鱼，带皮"
+            },
+            {
+              "line": 32,
+              "text": "- 黑鳕鱼，带皮，2 片，450g（本菜谱主角，所有调料可根据鳕鱼的实际重量进行比例调整）"
+            }
+          ]
+        },
+        {
+          "ingredient": "青葱",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 青葱"
+            },
+            {
+              "line": 33,
+              "text": "- 青葱，葱白，25g。"
+            },
+            {
+              "line": 34,
+              "text": "- 青葱，葱绿，10g。"
+            }
+          ]
+        },
+        {
+          "ingredient": "姜",
+          "lines": [
+            {
+              "line": 18,
+              "text": "- 姜"
+            },
+            {
+              "line": 35,
+              "text": "- 姜，13g。"
+            }
+          ]
+        },
+        {
+          "ingredient": "料酒",
+          "lines": [
+            {
+              "line": 19,
+              "text": "- 料酒"
+            },
+            {
+              "line": 36,
+              "text": "- 料酒，5mL。"
+            }
+          ]
+        },
+        {
+          "ingredient": "酱油",
+          "lines": [
+            {
+              "line": 20,
+              "text": "- 酱油"
+            },
+            {
+              "line": 37,
+              "text": "- 酱油，25mL。"
+            }
+          ]
+        },
+        {
+          "ingredient": "芝麻油",
+          "lines": [
+            {
+              "line": 21,
+              "text": "- 芝麻油"
+            },
+            {
+              "line": 38,
+              "text": "- 芝麻油，2mL。"
+            }
+          ]
+        },
+        {
+          "ingredient": "花生油",
+          "lines": [
+            {
+              "line": 22,
+              "text": "- 花生油"
+            },
+            {
+              "line": 39,
+              "text": "- 花生油，50mL。"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "code": "needs_adjudication",
+          "detail": "其他鱼种需不同时间和份量；替代做法尚未展开，保留黑鳕鱼基准做法。",
+          "evidence": [
+            {
+              "line": 55,
+              "text": "### 使用海鲈鱼、罗非鱼、大比目鱼或者龙脷鱼"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/aquatic/清蒸生蚝.md",
+      "sha256": "82ffa51a226b8e31d95ca5184f63cd76c4e40ab10cd4ec89e18ee0828cfc6fca",
+      "decisions": [
+        "生蚝: required",
+        "蒜: required",
+        "姜: required",
+        "酱油: required",
+        "水: required",
+        "葱: unknown"
+      ],
+      "evidence": [
+        {
+          "ingredient": "生蚝",
+          "lines": [
+            {
+              "line": 11,
+              "text": "* 生蚝"
+            },
+            {
+              "line": 21,
+              "text": "* 生蚝 6 个"
+            }
+          ]
+        },
+        {
+          "ingredient": "蒜",
+          "lines": [
+            {
+              "line": 13,
+              "text": "* 蒜"
+            },
+            {
+              "line": 23,
+              "text": "* 蒜 6 瓣"
+            }
+          ]
+        },
+        {
+          "ingredient": "姜",
+          "lines": [
+            {
+              "line": 14,
+              "text": "* 姜"
+            },
+            {
+              "line": 24,
+              "text": "* 姜 1 小块"
+            }
+          ]
+        },
+        {
+          "ingredient": "酱油",
+          "lines": [
+            {
+              "line": 15,
+              "text": "* 酱油"
+            },
+            {
+              "line": 25,
+              "text": "* 酱油 每个生蚝 1 ml"
+            },
+            {
+              "line": 33,
+              "text": "5. 停火，用右手拿着抹布掀开烫锅盖，每个放 5ml 酱油。"
+            }
+          ]
+        },
+        {
+          "ingredient": "水",
+          "lines": [
+            {
+              "line": 20,
+              "text": "* 饮用水 1 升"
+            }
+          ]
+        },
+        {
+          "ingredient": "葱",
+          "lines": [
+            {
+              "line": 12,
+              "text": "* 葱"
+            },
+            {
+              "line": 22,
+              "text": "* 葱 3 颗"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "code": "needs_adjudication",
+          "detail": "酱油计算每蚝1ml，步骤33每蚝5ml，保留冲突。",
+          "evidence": [
+            {
+              "line": 25,
+              "text": "* 酱油 每个生蚝 1 ml"
+            }
+          ]
+        },
+        {
+          "code": "needs_adjudication",
+          "detail": "葱在清单和计算中出现，但步骤没有加入葱。",
+          "evidence": [
+            {
+              "line": 22,
+              "text": "* 葱 3 颗"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/aquatic/鲤鱼炖白菜/鲤鱼炖白菜.md",
+      "sha256": "d8296a55129d022054f274f45f296ffb4294133116160b0398cae535472dc203",
+      "decisions": [
+        "食用油: required",
+        "姜: required",
+        "蒜: required",
+        "鲤鱼: required",
+        "盐: required",
+        "老抽: required",
+        "生抽: required",
+        "桂皮: required",
+        "八角: required",
+        "郫县豆瓣酱: required",
+        "水: required",
+        "干辣椒: optional",
+        "粉条: optional",
+        "白菜心: one_of",
+        "娃娃菜: one_of"
+      ],
+      "evidence": [
+        {
+          "ingredient": "食用油",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 食用油"
+            },
+            {
+              "line": 32,
+              "text": "- 食用油：10ml"
+            }
+          ]
+        },
+        {
+          "ingredient": "姜",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 姜"
+            },
+            {
+              "line": 33,
+              "text": "- 姜：3 片"
+            }
+          ]
+        },
+        {
+          "ingredient": "蒜",
+          "lines": [
+            {
+              "line": 15,
+              "text": "- 蒜"
+            },
+            {
+              "line": 34,
+              "text": "- 蒜：3 瓣（切成块）"
+            }
+          ]
+        },
+        {
+          "ingredient": "鲤鱼",
+          "lines": [
+            {
+              "line": 16,
+              "text": "- 鲤鱼"
+            },
+            {
+              "line": 35,
+              "text": "- 鲤鱼：1.2 斤（清理过的）"
+            }
+          ]
+        },
+        {
+          "ingredient": "盐",
+          "lines": [
+            {
+              "line": 18,
+              "text": "- 盐"
+            },
+            {
+              "line": 37,
+              "text": "- 盐：5-8 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "老抽",
+          "lines": [
+            {
+              "line": 19,
+              "text": "- 老抽"
+            },
+            {
+              "line": 38,
+              "text": "- 老抽：3ml"
+            }
+          ]
+        },
+        {
+          "ingredient": "生抽",
+          "lines": [
+            {
+              "line": 20,
+              "text": "- 生抽"
+            },
+            {
+              "line": 39,
+              "text": "- 生抽：6ml"
+            }
+          ]
+        },
+        {
+          "ingredient": "桂皮",
+          "lines": [
+            {
+              "line": 21,
+              "text": "- 桂皮"
+            },
+            {
+              "line": 40,
+              "text": "- 桂皮：1 块"
+            }
+          ]
+        },
+        {
+          "ingredient": "八角",
+          "lines": [
+            {
+              "line": 22,
+              "text": "- 八角"
+            },
+            {
+              "line": 41,
+              "text": "- 八角：3 个"
+            }
+          ]
+        },
+        {
+          "ingredient": "郫县豆瓣酱",
+          "lines": [
+            {
+              "line": 23,
+              "text": "- 郫县豆瓣酱"
+            },
+            {
+              "line": 42,
+              "text": "- 郫县豆瓣酱：20 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "水",
+          "lines": [
+            {
+              "line": 51,
+              "text": "5. 加入“水”（水量尽量和鱼平齐，可以少一点点） 放入 “生抽” “老抽” “娃娃菜”"
+            }
+          ]
+        },
+        {
+          "ingredient": "干辣椒",
+          "lines": [
+            {
+              "line": 24,
+              "text": "- 干辣椒（不吃辣可以不放）"
+            },
+            {
+              "line": 43,
+              "text": "- 干辣椒：4-6 个（根据个人口味选择）"
+            }
+          ]
+        },
+        {
+          "ingredient": "粉条",
+          "lines": [
+            {
+              "line": 56,
+              "text": "- 也可以放一些粉条，粉条先凉水/热水，需要泡软，可以和娃娃菜一起放入"
+            }
+          ]
+        },
+        {
+          "ingredient": "白菜心",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 白菜心/娃娃菜"
+            }
+          ]
+        },
+        {
+          "ingredient": "娃娃菜",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 白菜心/娃娃菜"
+            },
+            {
+              "line": 36,
+              "text": "- 娃娃菜：13 片（可以多放一些，一顿就缩小了）"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/breakfast/完美水煮蛋.md",
+      "sha256": "689cd1b9ee39a857be1f3bfe7ff7feea88214e9bc4eb73e7d5ca05f32f97c885",
+      "decisions": [
+        "鸡蛋: required",
+        "水: required"
+      ],
+      "evidence": [
+        {
+          "ingredient": "鸡蛋",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 新鲜鸡蛋（推荐 AA 级）"
+            },
+            {
+              "line": 23,
+              "text": "- 鸡蛋 1 个（约 60g ）"
+            }
+          ]
+        },
+        {
+          "ingredient": "水",
+          "lines": [
+            {
+              "line": 24,
+              "text": "- 100°C 沸水 1500ml"
+            },
+            {
+              "line": 25,
+              "text": "- 30°C 温水 1500ml"
+            },
+            {
+              "line": 34,
+              "text": "6. 立即放入冰水（ 0 摄氏度）终止加热（维持 30 秒）"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [
+        "两口不同温度的锅；水的不同温度保留在证据。原文营养和杀菌结论未经本项目验证。"
+      ],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/breakfast/微波炉荷包蛋.md",
+      "sha256": "afc063198f44fa4d358c18a8177634b1b4da30f791910c82386acee1678a543b",
+      "decisions": [
+        "鸡蛋: required",
+        "芝麻油: required",
+        "盐: required",
+        "水: required"
+      ],
+      "evidence": [
+        {
+          "ingredient": "鸡蛋",
+          "lines": [
+            {
+              "line": 11,
+              "text": "- 鸡蛋"
+            },
+            {
+              "line": 21,
+              "text": "- 鸡蛋 2 个"
+            }
+          ]
+        },
+        {
+          "ingredient": "芝麻油",
+          "lines": [
+            {
+              "line": 12,
+              "text": "- 芝麻油"
+            },
+            {
+              "line": 23,
+              "text": "- 芝麻油 3ml"
+            }
+          ]
+        },
+        {
+          "ingredient": "盐",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 盐"
+            },
+            {
+              "line": 24,
+              "text": "- 盐 0.8g"
+            }
+          ]
+        },
+        {
+          "ingredient": "水",
+          "lines": [
+            {
+              "line": 22,
+              "text": "- 饮用水 35ml"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/breakfast/手抓饼.md",
+      "sha256": "beabe3569bde8a2149a357ee7158ff3447c2fd56f0c255b6295b22be5382fb88",
+      "decisions": [
+        "普通面粉: required",
+        "水: required",
+        "食用油: required",
+        "盐: required",
+        "鸡蛋: optional",
+        "生菜: optional",
+        "火腿: optional",
+        "芝士片: optional"
+      ],
+      "evidence": [
+        {
+          "ingredient": "普通面粉",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 普通面粉  "
+            },
+            {
+              "line": 31,
+              "text": "- 面粉 200 克  "
+            }
+          ]
+        },
+        {
+          "ingredient": "水",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 开水  "
+            },
+            {
+              "line": 15,
+              "text": "- 冷水  "
+            },
+            {
+              "line": 32,
+              "text": "- 开水 100 毫升  "
+            },
+            {
+              "line": 33,
+              "text": "- 冷水 50 毫升  "
+            }
+          ]
+        },
+        {
+          "ingredient": "食用油",
+          "lines": [
+            {
+              "line": 16,
+              "text": "- 食用油  "
+            },
+            {
+              "line": 34,
+              "text": "- 食用油 15 毫升  "
+            }
+          ]
+        },
+        {
+          "ingredient": "盐",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 盐  "
+            },
+            {
+              "line": 35,
+              "text": "- 盐 3 克  "
+            }
+          ]
+        },
+        {
+          "ingredient": "鸡蛋",
+          "lines": [
+            {
+              "line": 18,
+              "text": "- 鸡蛋  "
+            },
+            {
+              "line": 36,
+              "text": "- 鸡蛋 1 个  "
+            },
+            {
+              "line": 58,
+              "text": "- 可根据个人口味增减配料，建议配料总重控制在 100 克以内。  "
+            }
+          ]
+        },
+        {
+          "ingredient": "生菜",
+          "lines": [
+            {
+              "line": 19,
+              "text": "- 生菜  "
+            },
+            {
+              "line": 37,
+              "text": "- 生菜 30 克  "
+            },
+            {
+              "line": 58,
+              "text": "- 可根据个人口味增减配料，建议配料总重控制在 100 克以内。  "
+            }
+          ]
+        },
+        {
+          "ingredient": "火腿",
+          "lines": [
+            {
+              "line": 20,
+              "text": "- 火腿  "
+            },
+            {
+              "line": 38,
+              "text": "- 火腿 30 克  "
+            },
+            {
+              "line": 58,
+              "text": "- 可根据个人口味增减配料，建议配料总重控制在 100 克以内。  "
+            }
+          ]
+        },
+        {
+          "ingredient": "芝士片",
+          "lines": [
+            {
+              "line": 21,
+              "text": "- 芝士片"
+            },
+            {
+              "line": 39,
+              "text": "- 芝士片 1 片"
+            },
+            {
+              "line": 58,
+              "text": "- 可根据个人口味增减配料，建议配料总重控制在 100 克以内。  "
+            }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "code": "needs_adjudication",
+          "detail": "“增减配料”按可增减馅料理解；是否允许全部省略仍需人工裁决。",
+          "evidence": [
+            {
+              "line": 58,
+              "text": "- 可根据个人口味增减配料，建议配料总重控制在 100 克以内。  "
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/breakfast/温泉蛋/温泉蛋.md",
+      "sha256": "2fac5da5044dac69c687da52938d1dddce974d716dc71e6b3d5d9fde83dc918e",
+      "decisions": [
+        "鸡蛋: required",
+        "水: required",
+        "昆布酱油: optional",
+        "香葱: optional"
+      ],
+      "evidence": [
+        {
+          "ingredient": "鸡蛋",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 鸡蛋"
+            },
+            {
+              "line": 29,
+              "text": "- 鸡蛋的用量为 1 个，按照您的食量和锅的大小计算。"
+            }
+          ]
+        },
+        {
+          "ingredient": "水",
+          "lines": [
+            {
+              "line": 35,
+              "text": "1. 在锅中盛装一定量自来水，确保水面没过约鸡蛋 3cm，水中插入温度计"
+            },
+            {
+              "line": 39,
+              "text": "5. 准备一杯冰水"
+            }
+          ]
+        },
+        {
+          "ingredient": "昆布酱油",
+          "lines": [
+            {
+              "line": 22,
+              "text": "额外用作点缀的食材，可选"
+            },
+            {
+              "line": 24,
+              "text": "- 昆布酱油（一种日式的少盐酱油，用于为温泉蛋调味）"
+            }
+          ]
+        },
+        {
+          "ingredient": "香葱",
+          "lines": [
+            {
+              "line": 22,
+              "text": "额外用作点缀的食材，可选"
+            },
+            {
+              "line": 25,
+              "text": "- 香葱"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [
+        "不采用原文未经验证的杀菌保证。"
+      ],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/breakfast/苏格兰蛋/苏格兰蛋.md",
+      "sha256": "01459abafb904ebc0aa08ae899468dbf1a6a7a65fcce7c95b7801e9b1a7b572a",
+      "decisions": [
+        "鸡蛋: required",
+        "手抓饼皮: required",
+        "芝士片: required",
+        "培根: required",
+        "水: required",
+        "食用油: unknown"
+      ],
+      "evidence": [
+        {
+          "ingredient": "鸡蛋",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 鸡蛋"
+            },
+            {
+              "line": 24,
+              "text": "- 鸡蛋 50g（约 1 颗）"
+            }
+          ]
+        },
+        {
+          "ingredient": "手抓饼皮",
+          "lines": [
+            {
+              "line": 15,
+              "text": "- 手抓饼皮"
+            },
+            {
+              "line": 25,
+              "text": "- 手抓饼 1 份-2 份（看鸡蛋大小）"
+            }
+          ]
+        },
+        {
+          "ingredient": "芝士片",
+          "lines": [
+            {
+              "line": 26,
+              "text": "- 芝士片 1-2 片"
+            }
+          ]
+        },
+        {
+          "ingredient": "培根",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 培根"
+            },
+            {
+              "line": 27,
+              "text": "- 培根片 1-2 片"
+            }
+          ]
+        },
+        {
+          "ingredient": "水",
+          "lines": [
+            {
+              "line": 31,
+              "text": "1. 用冷水下锅水开 3 分钟后捞出"
+            },
+            {
+              "line": 32,
+              "text": "2. 鸡蛋捞出，放入冰水中剥壳更快速也更完整"
+            }
+          ]
+        },
+        {
+          "ingredient": "食用油",
+          "lines": [
+            {
+              "line": 36,
+              "text": "6. 油温 6 成下锅（油面波动，有青烟，筷子插入油中周围泛起气泡即是 6 成温度） 炸制金黄即可"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "code": "needs_adjudication",
+          "detail": "食用油仅油炸分支需要；空气炸锅分支与油炸分支的材料依赖尚未展开。",
+          "evidence": [
+            {
+              "line": 36,
+              "text": "6. 油温 6 成下锅（油面波动，有青烟，筷子插入油中周围泛起气泡即是 6 成温度） 炸制金黄即可"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/breakfast/金枪鱼酱三明治.md",
+      "sha256": "9b8bcd91d44e0617fb5cf9c7fc3ed031cdb3d8e2cb743eeb62d8fffa52899132",
+      "decisions": [
+        "水浸金枪鱼罐头: required",
+        "方形吐司片: required",
+        "蛋黄酱: required",
+        "俄式酸黄瓜汁: required",
+        "芝士片: optional",
+        "火腿片: optional"
+      ],
+      "evidence": [
+        {
+          "ingredient": "水浸金枪鱼罐头",
+          "lines": [
+            {
+              "line": 11,
+              "text": "- 水浸金枪鱼罐头（不建议用油浸，会很腻）"
+            },
+            {
+              "line": 21,
+              "text": "- 水浸金枪鱼 65g"
+            }
+          ]
+        },
+        {
+          "ingredient": "方形吐司片",
+          "lines": [
+            {
+              "line": 12,
+              "text": "- 方形吐司片"
+            },
+            {
+              "line": 22,
+              "text": "- 方形吐司片 2 片"
+            }
+          ]
+        },
+        {
+          "ingredient": "蛋黄酱",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 蛋黄酱"
+            },
+            {
+              "line": 23,
+              "text": "- 蛋黄酱 50 mL"
+            }
+          ]
+        },
+        {
+          "ingredient": "俄式酸黄瓜汁",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 俄式酸黄瓜汁"
+            },
+            {
+              "line": 24,
+              "text": "- 俄式酸黄瓜汁 10-15mL（可根据个人口味调整）"
+            }
+          ]
+        },
+        {
+          "ingredient": "芝士片",
+          "lines": [
+            {
+              "line": 15,
+              "text": "- 芝士片（可选）"
+            }
+          ]
+        },
+        {
+          "ingredient": "火腿片",
+          "lines": [
+            {
+              "line": 16,
+              "text": "- 火腿片（可选）"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [
+        "水浸是罐头规格，不据此添加一项烹饪用水；不猜测罐头或蛋黄酱完整配料。"
+      ],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/condiment/炸串酱料.md",
+      "sha256": "4db122f6e6a4098bbab9fafada352aa062d9f9fe5756d0f6a27e5f7e2cb7343e",
+      "decisions": [
+        "干辣椒面: required",
+        "孜然粉: required",
+        "胡椒粉: required",
+        "五香粉: required",
+        "花椒粉: required",
+        "十三香: required",
+        "麻辣鲜: required",
+        "白芝麻: required",
+        "盐: required",
+        "鸡精: required",
+        "食用油: required",
+        "香油: optional",
+        "生抽: optional",
+        "花椒油: optional",
+        "蚝油: optional"
+      ],
+      "evidence": [
+        {
+          "ingredient": "干辣椒面",
+          "lines": [
+            {
+              "line": 12,
+              "text": "- 干辣椒面（粗细都准备）"
+            },
+            {
+              "line": 23,
+              "text": "- 干辣椒面 60 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "孜然粉",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 孜然粉"
+            },
+            {
+              "line": 24,
+              "text": "- 孜然粉 20 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "胡椒粉",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 胡椒粉"
+            },
+            {
+              "line": 25,
+              "text": "- 胡椒粉 10 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "五香粉",
+          "lines": [
+            {
+              "line": 15,
+              "text": "- 五香粉"
+            },
+            {
+              "line": 26,
+              "text": "- 五香粉 15 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "花椒粉",
+          "lines": [
+            {
+              "line": 16,
+              "text": "- 花椒粉"
+            },
+            {
+              "line": 28,
+              "text": "- 花椒粉 15 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "十三香",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 十三香"
+            },
+            {
+              "line": 30,
+              "text": "- 十三香 5 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "麻辣鲜",
+          "lines": [
+            {
+              "line": 18,
+              "text": "- 麻辣鲜"
+            },
+            {
+              "line": 31,
+              "text": "- 麻辣鲜 5 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "白芝麻",
+          "lines": [
+            {
+              "line": 19,
+              "text": "- 白芝麻"
+            },
+            {
+              "line": 32,
+              "text": "- 白芝麻 30 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "盐",
+          "lines": [
+            {
+              "line": 27,
+              "text": "- 食盐 20 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "鸡精",
+          "lines": [
+            {
+              "line": 29,
+              "text": "- 鸡精 8 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "食用油",
+          "lines": [
+            {
+              "line": 37,
+              "text": "2. 锅里烧热油，油的用量以在容器内没过所有原材料为佳。"
+            }
+          ]
+        },
+        {
+          "ingredient": "香油",
+          "lines": [
+            {
+              "line": 39,
+              "text": "4. 最后放入香油 10ml，生抽 10ml，花椒油 10ml，蚝油 10ml。"
+            },
+            {
+              "line": 43,
+              "text": "- 最后一步的调味可按自己喜好添加。"
+            }
+          ]
+        },
+        {
+          "ingredient": "生抽",
+          "lines": [
+            {
+              "line": 39,
+              "text": "4. 最后放入香油 10ml，生抽 10ml，花椒油 10ml，蚝油 10ml。"
+            },
+            {
+              "line": 43,
+              "text": "- 最后一步的调味可按自己喜好添加。"
+            }
+          ]
+        },
+        {
+          "ingredient": "花椒油",
+          "lines": [
+            {
+              "line": 39,
+              "text": "4. 最后放入香油 10ml，生抽 10ml，花椒油 10ml，蚝油 10ml。"
+            },
+            {
+              "line": 43,
+              "text": "- 最后一步的调味可按自己喜好添加。"
+            }
+          ]
+        },
+        {
+          "ingredient": "蚝油",
+          "lines": [
+            {
+              "line": 39,
+              "text": "4. 最后放入香油 10ml，生抽 10ml，花椒油 10ml，蚝油 10ml。"
+            },
+            {
+              "line": 43,
+              "text": "- 最后一步的调味可按自己喜好添加。"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/condiment/草莓酱/草莓酱.md",
+      "sha256": "a05d9558624d69b558da95a2a2580a4d830bb491e1ae86c133da9566d3940b39",
+      "decisions": [
+        "草莓: required",
+        "白砂糖: required"
+      ],
+      "evidence": [
+        {
+          "ingredient": "草莓",
+          "lines": [
+            {
+              "line": 11,
+              "text": "- 草莓"
+            },
+            {
+              "line": 19,
+              "text": "- 草莓 1200 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "白砂糖",
+          "lines": [
+            {
+              "line": 12,
+              "text": "- 白砂糖"
+            },
+            {
+              "line": 20,
+              "text": "- 白糖 400 克 （如需要低糖饮食，可以考虑降低到 200g）"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [
+        "本篇白糖指清单中的白砂糖，仅作篇内归一化。"
+      ],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/condiment/蒜香酱油.md",
+      "sha256": "4bb77a2455d08cd2bf5d621a75c3aacdc08f1d89f9174ddd60f797ca1ae17192",
+      "decisions": [
+        "蒜: required",
+        "花生油: required",
+        "酱油: required",
+        "白芝麻: unknown"
+      ],
+      "evidence": [
+        {
+          "ingredient": "蒜",
+          "lines": [
+            {
+              "line": 11,
+              "text": "- 蒜头"
+            },
+            {
+              "line": 19,
+              "text": "- 蒜头 2 瓣"
+            }
+          ]
+        },
+        {
+          "ingredient": "花生油",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 花生油"
+            },
+            {
+              "line": 21,
+              "text": "- 花生油 15 毫升"
+            }
+          ]
+        },
+        {
+          "ingredient": "酱油",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 酱油"
+            },
+            {
+              "line": 22,
+              "text": "- 酱油 30 毫升"
+            }
+          ]
+        },
+        {
+          "ingredient": "白芝麻",
+          "lines": [
+            {
+              "line": 12,
+              "text": "- 白芝麻"
+            },
+            {
+              "line": 20,
+              "text": "- 白芝麻 5 克"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "code": "needs_adjudication",
+          "detail": "白芝麻列出但操作未说明何时加入。",
+          "evidence": [
+            {
+              "line": 20,
+              "text": "- 白芝麻 5 克"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/condiment/蔗糖糖浆/蔗糖糖浆.md",
+      "sha256": "39c41d22e9352849a05d541d7d225091f2e06ffc84fb9a87b72f287b5e83b287",
+      "decisions": [
+        "白砂糖: required",
+        "水: required"
+      ],
+      "evidence": [
+        {
+          "ingredient": "白砂糖",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 白砂糖"
+            },
+            {
+              "line": 27,
+              "text": "- 白砂糖 100 克"
+            }
+          ]
+        },
+        {
+          "ingredient": "水",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 水"
+            },
+            {
+              "line": 26,
+              "text": "- 水 100 克"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/dessert/反沙芋头/反沙芋头.md",
+      "sha256": "f74d93a38759cc44b6eb021ea23fefb7bc354ce4aab6227c23de817cc1f38e29",
+      "decisions": [
+        "荔浦芋头: required",
+        "水: required",
+        "葱: required",
+        "食用油: required",
+        "白砂糖: one_of",
+        "冰糖: one_of"
+      ],
+      "evidence": [
+        {
+          "ingredient": "荔浦芋头",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 荔浦芋头（电商平台购买即可，实惠新鲜）"
+            },
+            {
+              "line": 20,
+              "text": "- 荔浦芋头 200g"
+            }
+          ]
+        },
+        {
+          "ingredient": "水",
+          "lines": [
+            {
+              "line": 15,
+              "text": "- 水"
+            },
+            {
+              "line": 22,
+              "text": "- 水 15g"
+            }
+          ]
+        },
+        {
+          "ingredient": "葱",
+          "lines": [
+            {
+              "line": 16,
+              "text": "- 葱"
+            },
+            {
+              "line": 31,
+              "text": "6. 倒入葱花和芋头，关火翻炒，此时等温度下来，糖就会有反沙的效果"
+            }
+          ]
+        },
+        {
+          "ingredient": "食用油",
+          "lines": [
+            {
+              "line": 27,
+              "text": "2. 加入可以没过芋头的油，等油温起来（插入筷子冒小泡即可）"
+            }
+          ]
+        },
+        {
+          "ingredient": "白砂糖",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 白砂糖或冰糖"
+            },
+            {
+              "line": 21,
+              "text": "- 白砂糖 30g"
+            }
+          ]
+        },
+        {
+          "ingredient": "冰糖",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 白砂糖或冰糖"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [
+        "步骤中油为额外原料；糖种互为选择，不同时必需。"
+      ],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/dessert/奥利奥冰淇淋/奥利奥冰淇淋.md",
+      "sha256": "0b261683191da7c69e3e8350c4f5938ad9fbc340e45cf6ef68ec5d94f6f7623a",
+      "decisions": [
+        "淡奶油: required",
+        "原味奥利奥: required",
+        "白砂糖: required"
+      ],
+      "evidence": [
+        {
+          "ingredient": "淡奶油",
+          "lines": [
+            {
+              "line": 11,
+              "text": "- 淡奶油（推荐品牌 安佳动物淡奶油）"
+            },
+            {
+              "line": 24,
+              "text": "- 淡奶油 250 毫升"
+            }
+          ]
+        },
+        {
+          "ingredient": "原味奥利奥",
+          "lines": [
+            {
+              "line": 12,
+              "text": "- 原味奥利奥"
+            },
+            {
+              "line": 22,
+              "text": "- 奥利奥 6 块"
+            }
+          ]
+        },
+        {
+          "ingredient": "白砂糖",
+          "lines": [
+            {
+              "line": 23,
+              "text": "- 白砂糖 18 克"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "code": "needs_adjudication",
+          "detail": "去夹心工具为开放选择；预碎饼干替代规格未展开。",
+          "evidence": [
+            {
+              "line": 15,
+              "text": "- 小刀（或者可以去除夹心的工具）"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "原味奥利奥需要去夹心；不推断其完整成分。"
+      ],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/dessert/提拉米苏/提拉米苏.md",
+      "sha256": "32ed5bcd667f2019cfe267952e7114bf2130ef8245d0412f624c4d4b01121066",
+      "decisions": [
+        "马斯卡彭芝士: required",
+        "手指饼干: required",
+        "浓缩咖啡: required",
+        "无菌鸡蛋: required",
+        "白砂糖: required",
+        "可可粉: required",
+        "朗姆酒: optional"
+      ],
+      "evidence": [
+        {
+          "ingredient": "马斯卡彭芝士",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 马斯卡彭芝士"
+            },
+            {
+              "line": 25,
+              "text": "- 马斯卡彭芝士 450g"
+            }
+          ]
+        },
+        {
+          "ingredient": "手指饼干",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 手指饼干"
+            },
+            {
+              "line": 26,
+              "text": "- 手指饼干 1 包"
+            }
+          ]
+        },
+        {
+          "ingredient": "浓缩咖啡",
+          "lines": [
+            {
+              "line": 15,
+              "text": "- 放凉浓缩咖啡"
+            },
+            {
+              "line": 27,
+              "text": "- 放凉浓缩咖啡 350ml"
+            }
+          ]
+        },
+        {
+          "ingredient": "无菌鸡蛋",
+          "lines": [
+            {
+              "line": 16,
+              "text": "- 无菌鸡蛋"
+            },
+            {
+              "line": 28,
+              "text": "- 无菌鸡蛋 4 个"
+            }
+          ]
+        },
+        {
+          "ingredient": "白砂糖",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 白砂糖"
+            },
+            {
+              "line": 29,
+              "text": "- 白砂糖 50g"
+            }
+          ]
+        },
+        {
+          "ingredient": "可可粉",
+          "lines": [
+            {
+              "line": 18,
+              "text": "- 可可粉"
+            },
+            {
+              "line": 30,
+              "text": "- 可可粉 10g"
+            }
+          ]
+        },
+        {
+          "ingredient": "朗姆酒",
+          "lines": [
+            {
+              "line": 19,
+              "text": "- 朗姆酒（不喜欢酒的朋友可省略，可按照自己口味调节）"
+            },
+            {
+              "line": 31,
+              "text": "- 朗姆酒 35ml"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/dessert/烤箱版巴斯克芝士蛋糕/烤箱版巴斯克芝士蛋糕.md",
+      "sha256": "f6ee0f91fdc3eade61a1361f341ea60be1f8c8c1efbe79eda5c9f593d89bd60c",
+      "decisions": [
+        "奶油奶酪: required",
+        "白砂糖: required",
+        "鸡蛋: required",
+        "鸡蛋黄: required",
+        "淡奶油: required",
+        "低筋面粉: required",
+        "巧克力: optional"
+      ],
+      "evidence": [
+        {
+          "ingredient": "奶油奶酪",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 奶油奶酪：212g （这是一块的质量，比较方便，原教程是 250g）"
+            }
+          ]
+        },
+        {
+          "ingredient": "白砂糖",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 白砂糖：60g"
+            }
+          ]
+        },
+        {
+          "ingredient": "鸡蛋",
+          "lines": [
+            {
+              "line": 15,
+              "text": "- 鸡蛋：2 个"
+            }
+          ]
+        },
+        {
+          "ingredient": "鸡蛋黄",
+          "lines": [
+            {
+              "line": 16,
+              "text": "- 鸡蛋黄：1 个"
+            }
+          ]
+        },
+        {
+          "ingredient": "淡奶油",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 淡奶油：120g"
+            }
+          ]
+        },
+        {
+          "ingredient": "低筋面粉",
+          "lines": [
+            {
+              "line": 18,
+              "text": "- 低筋面粉：10g"
+            }
+          ]
+        },
+        {
+          "ingredient": "巧克力",
+          "lines": [
+            {
+              "line": 20,
+              "text": "可选（巧克力味）"
+            },
+            {
+              "line": 22,
+              "text": "- 巧克力：38g（只尝试过将普通巧克力融化，在淡奶油那一步加入搅拌均匀即可）"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [
+        "2个全蛋与1个蛋黄分开；不将总数误写成2个蛋。"
+      ],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/dessert/烤蛋挞/烤蛋挞.md",
+      "sha256": "72577e8341cd47da755241aa8933b9563e0a8866291272061856d181e1691765",
+      "decisions": [
+        "蛋挞皮: required",
+        "鸡蛋黄: required",
+        "牛奶: required",
+        "淡奶油: required",
+        "白砂糖: required"
+      ],
+      "evidence": [
+        {
+          "ingredient": "蛋挞皮",
+          "lines": [
+            {
+              "line": 15,
+              "text": "- 蛋挞皮 品牌不限"
+            },
+            {
+              "line": 31,
+              "text": "- 蛋挞皮 品牌不限 整包蛋挞皮约为 30 只"
+            }
+          ]
+        },
+        {
+          "ingredient": "鸡蛋黄",
+          "lines": [
+            {
+              "line": 42,
+              "text": "4. 取 8 个蛋黄加入 蛋清可留作他用"
+            }
+          ]
+        },
+        {
+          "ingredient": "牛奶",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 牛奶"
+            },
+            {
+              "line": 33,
+              "text": "- 牛奶 200 毫升 普通袋装牛奶即可"
+            }
+          ]
+        },
+        {
+          "ingredient": "淡奶油",
+          "lines": [
+            {
+              "line": 18,
+              "text": "- 淡奶油"
+            },
+            {
+              "line": 34,
+              "text": "- 淡奶油 450 毫升 烘焙店或超市即有售"
+            }
+          ]
+        },
+        {
+          "ingredient": "白砂糖",
+          "lines": [
+            {
+              "line": 19,
+              "text": "- 白砂糖"
+            },
+            {
+              "line": 35,
+              "text": "- 白砂糖 80 克 普通砂糖即可 细砂糖更优 易于融化"
+            }
+          ]
+        }
+      ],
+      "issues": [],
+      "notes": [
+        "实际使用8个蛋黄，蛋清另用；不把鸡蛋和蛋黄重复计购。牛奶/奶油密度1仅为来源约定，未作物理换算。"
+      ],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/dessert/胡萝卜甜糕.md",
+      "sha256": "ffe7e6fc04c41c7562563fb58b412d0b528ea1a53374c58c50503f46829d1ef1",
+      "decisions": [
+        "胡萝卜: required",
+        "全脂牛奶: required",
+        "糖: required",
+        "小豆蔻粉: required",
+        "腰果: required",
+        "杏仁: required",
+        "葡萄干: required",
+        "酥油: one_of",
+        "黄油: one_of"
+      ],
+      "evidence": [
+        {
+          "ingredient": "胡萝卜",
+          "lines": [
+            {
+              "line": 11,
+              "text": "- 胡萝卜（建议选用红色胡萝卜）"
+            },
+            {
+              "line": 28,
+              "text": "- 胡萝卜 500g（约 5-6 根中等大小）"
+            }
+          ]
+        },
+        {
+          "ingredient": "全脂牛奶",
+          "lines": [
+            {
+              "line": 12,
+              "text": "- 全脂牛奶"
+            },
+            {
+              "line": 29,
+              "text": "- 全脂牛奶 500ml"
+            }
+          ]
+        },
+        {
+          "ingredient": "糖",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 糖"
+            },
+            {
+              "line": 30,
+              "text": "- 糖 80g（可根据个人口味调整至 60g-100g）"
+            }
+          ]
+        },
+        {
+          "ingredient": "小豆蔻粉",
+          "lines": [
+            {
+              "line": 15,
+              "text": "- 小豆蔻粉(Cardamom Powder)"
+            },
+            {
+              "line": 32,
+              "text": "- 小豆蔻粉 3g"
+            }
+          ]
+        },
+        {
+          "ingredient": "腰果",
+          "lines": [
+            {
+              "line": 16,
+              "text": "- 腰果"
+            },
+            {
+              "line": 33,
+              "text": "- 腰果 15g"
+            }
+          ]
+        },
+        {
+          "ingredient": "杏仁",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 杏仁"
+            },
+            {
+              "line": 34,
+              "text": "- 杏仁 15g"
+            }
+          ]
+        },
+        {
+          "ingredient": "葡萄干",
+          "lines": [
+            {
+              "line": 18,
+              "text": "- 葡萄干"
+            },
+            {
+              "line": 35,
+              "text": "- 葡萄干 15g"
+            }
+          ]
+        },
+        {
+          "ingredient": "酥油",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 酥油(Ghee)— 可用黄油替代"
+            },
+            {
+              "line": 31,
+              "text": "- 酥油 40g"
+            }
+          ]
+        },
+        {
+          "ingredient": "黄油",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 酥油(Ghee)— 可用黄油替代"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "code": "needs_adjudication",
+          "detail": "部分牛奶可换淡奶油的分量依赖未展开。",
+          "evidence": [
+            {
+              "line": 56,
+              "text": "- 如果想要更浓郁的口感，可以用淡奶油替代部分牛奶。"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    },
+    {
+      "recipe_id": "dishes/dessert/芋泥雪媚娘/芋泥雪媚娘.md",
+      "sha256": "3329bf50ef9eadcbf26981581dd5024e8da8b928e021014ba9c2fc8977643663",
+      "decisions": [
+        "荔浦芋头: required",
+        "紫薯粉: required",
+        "牛奶: required",
+        "糯米粉: required",
+        "玉米淀粉: required",
+        "黄油: required",
+        "淡奶油: required",
+        "白砂糖: required",
+        "水: required"
+      ],
+      "evidence": [
+        {
+          "ingredient": "荔浦芋头",
+          "lines": [
+            {
+              "line": 13,
+              "text": "- 荔浦芋头（电商平台购买即可，实惠新鲜）"
+            },
+            {
+              "line": 28,
+              "text": "- 荔浦芋头 200g"
+            }
+          ]
+        },
+        {
+          "ingredient": "紫薯粉",
+          "lines": [
+            {
+              "line": 14,
+              "text": "- 紫薯粉"
+            },
+            {
+              "line": 29,
+              "text": "- 紫薯粉 3g"
+            }
+          ]
+        },
+        {
+          "ingredient": "牛奶",
+          "lines": [
+            {
+              "line": 15,
+              "text": "- 牛奶"
+            },
+            {
+              "line": 30,
+              "text": "- 牛奶 165g"
+            }
+          ]
+        },
+        {
+          "ingredient": "糯米粉",
+          "lines": [
+            {
+              "line": 16,
+              "text": "- 糯米粉"
+            },
+            {
+              "line": 31,
+              "text": "- 糯米粉 a 50g"
+            },
+            {
+              "line": 32,
+              "text": "- 糯米粉 b 75g"
+            }
+          ]
+        },
+        {
+          "ingredient": "玉米淀粉",
+          "lines": [
+            {
+              "line": 17,
+              "text": "- 玉米淀粉"
+            },
+            {
+              "line": 33,
+              "text": "- 玉米淀粉 22g"
+            }
+          ]
+        },
+        {
+          "ingredient": "黄油",
+          "lines": [
+            {
+              "line": 18,
+              "text": "- 黄油"
+            },
+            {
+              "line": 34,
+              "text": "- 黄油 30g"
+            }
+          ]
+        },
+        {
+          "ingredient": "淡奶油",
+          "lines": [
+            {
+              "line": 19,
+              "text": "- 淡奶油"
+            },
+            {
+              "line": 35,
+              "text": "- 淡奶油（推荐安佳） 145g"
+            }
+          ]
+        },
+        {
+          "ingredient": "白砂糖",
+          "lines": [
+            {
+              "line": 20,
+              "text": "- 白砂糖"
+            },
+            {
+              "line": 24,
+              "text": "- 白砂糖"
+            },
+            {
+              "line": 36,
+              "text": "- 白砂糖 26g"
+            },
+            {
+              "line": 42,
+              "text": "3. 再向内加入 3g 紫薯粉，18g 白砂糖，继续搅拌打成细腻芋泥"
+            },
+            {
+              "line": 43,
+              "text": "4. 取出另一个碗，加入全部糯米粉 b，22g 玉米淀粉，135g 牛奶，50g 白砂糖，混匀并过筛一遍，保鲜膜盖上并扎小洞，中火蒸半个小时"
+            },
+            {
+              "line": 46,
+              "text": "7. 取出另一只碗，加入 120g 淡奶油，8g 白砂糖，打发至有纹路，装进裱花袋备用"
+            }
+          ]
+        },
+        {
+          "ingredient": "水",
+          "lines": [
+            {
+              "line": 40,
+              "text": "1. 芋头切块，大火煮熟至软（40 分钟即可），全部放入料理机"
+            }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "code": "needs_adjudication",
+          "detail": "白砂糖计算26g，步骤分别18g、50g、8g共76g，不能擅自选择其中一个总量。",
+          "evidence": [
+            {
+              "line": 36,
+              "text": "- 白砂糖 26g"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "糯米粉a/b为同种粉的两次使用，原文两个用量均保留。"
+      ],
+      "authoritative_annotation": "src/cookkg/resources/annotations_v2.json"
+    }
+  ]
+}
