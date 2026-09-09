@@ -104,8 +104,9 @@ Zouyilin06 的首批 20 道 AI 辅助标注草稿位于
 选择组、工具、类别、结构化用量、加工形态和逐行证据。100 道均通过源哈希与逐字引文校验，
 **目前人工确认数为 0**；
 39 道含待裁决问题，不能把机器校验通过说成“100 道人工审核完成”。
-完整 v2 图谱保留全部语义；另生成与当前推荐 API 兼容的 `backend-graph.json`，仅将 46 道无语义阻断的
-菜谱标为兼容可用，39 道问题菜谱和 15 道含选择组菜谱明确排除。接口联调已在本地完成，人工课程签字仍为 0。
+完整 v2 图谱保留全部语义；另生成与当前推荐 API 兼容的 `backend-graph.json`。后端已支持
+封闭食材选择组，当前有 53 道草稿可用于技术联调；其余记录因来源/标注问题、缺少公开菜名或
+工具选择组被明确阻断。这里的“兼容可用”不等于人工审核通过，人工课程签字仍为 0。
 
 ```powershell
 .venv/Scripts/cookkg data-v2 build
@@ -115,7 +116,6 @@ Zouyilin06 的首批 20 道 AI 辅助标注草稿位于
 .venv/Scripts/cookkg data-v2 acceptance
 ```
 
-本次工作环境使用 `.venv-data/Scripts/`，其中 Python 版本为 3.13.15。
 Neo4j 命令使用 `NEO4J_URI / NEO4J_USERNAME / NEO4J_PASSWORD / NEO4J_DATABASE` 环境变量。
 构建产物位于 `data/processed/v2/`：`recipes.jsonl`、`networkx.node-link.json`、`graph.json`、`backend-graph.json`、
 `neo4j-import.json`、本体、JSON Schema、质量报告、全源扫描、问题裁决队列、100 条评测输入草稿、
@@ -125,6 +125,7 @@ Neo4j 命令使用 `NEO4J_URI / NEO4J_USERNAME / NEO4J_PASSWORD / NEO4J_DATABASE
 请从 [数据模块交接说明](docs/zouyilin06-handoff.md) 开始；
 详细字段见 [v2 数据契约](docs/data-contract-v2.md)，
 真实数据库测试结果见 [数据与图谱验收记录](docs/validation/zouyilin06-data-v2.md)。
+两位成员提交合并后的结果见[第一阶段整合验收记录](docs/validation/stage1-integration.md)。
 
 ## Neo4j
 
@@ -143,6 +144,11 @@ Neo4j 命令使用 `NEO4J_URI / NEO4J_USERNAME / NEO4J_PASSWORD / NEO4J_DATABASE
 ```powershell
 .venv/Scripts/python -m pytest -q
 .venv/Scripts/ruff check .
+cd web
+pnpm test -- --run
+pnpm build
+pnpm e2e
+pnpm e2e:real
 ```
 
 详细设计见 [设计文档](docs/superpowers/specs/2026-09-08-cook-graph-design.md)，执行记录见

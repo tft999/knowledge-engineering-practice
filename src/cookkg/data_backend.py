@@ -17,6 +17,8 @@ def load_v2_recipes(path: Path) -> list[DataRecipe]:
 
 
 def compatibility_reason(recipe: DataRecipe) -> str | None:
+    if not recipe.name:
+        return "missing_public_fields"
     if recipe.issues:
         return "source_or_annotation_issue"
     if any(use.requirement == "unknown" for use in recipe.ingredients):

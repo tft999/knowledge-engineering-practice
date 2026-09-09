@@ -52,6 +52,7 @@ def test_projection_is_loss_aware_and_supports_category_alias():
     ({"ingredients": [dict(use_id="u1", id="小米椒", surface="小米椒",
         requirement="unknown", review_state="pending", resource_kind="food",
         evidence=[dict(line=3, text="- 小米椒")])]}, "unknown_ingredient_relation"),
+    ({"name": ""}, "missing_public_fields"),
     ({"ingredients": [dict(use_id="u1", id="小米椒", surface="小米椒",
         requirement="one_of", review_state="pending", group_id="g", resource_kind="food",
         evidence=[dict(line=3, text="- 小米椒")])],
