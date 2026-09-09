@@ -7,3 +7,7 @@ data/
 .env
 dist/
 build/
+node_modules/
+playwright-report/
+test-results/
+*.tsbuildinfo
