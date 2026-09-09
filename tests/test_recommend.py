@@ -1,3 +1,6 @@
+import pytest
+from pydantic import ValidationError
+
 from cookkg.graph import build_graph
 from cookkg.models import IngredientUse, Recipe
 from cookkg.recommend import RecommendRequest, recommend
@@ -42,7 +45,7 @@ def test_excluded_required_rejects_and_excluded_optional_is_omitted():
 
     no_meat = recommend(
         build_graph(RECIPES),
-        RecommendRequest(have={"辣椒", "猪肉"}, exclude={"猪肉"}),
+        RecommendRequest(have={"辣椒"}, exclude={"猪肉"}),
     )
     assert all("c.md" not in plan.recipe_ids for plan in no_meat.plans)
 
@@ -84,3 +87,36 @@ def test_ranking_matches_independent_exhaustive_enumeration():
             expected.append((len(to_buy), -len(covered), tuple(ids), ids))
     expected.sort()
     assert [plan.recipe_ids for plan in result.plans] == [item[3] for item in expected[:5]]
+
+
+def test_category_exclusion_filters_descendants_and_returns_path_explanation():
+    pepper = recipe("pepper.md", "小炒肉", ["小米椒", "猪肉"])
+    safe = recipe("safe.md", "番茄蛋", ["西红柿", "鸡蛋"])
+
+    result = recommend(
+        build_graph([pepper, safe]),
+        RecommendRequest(have={"小米椒", "猪肉", "西红柿", "鸡蛋"}, exclude={"辣椒"}),
+    )
+
+    assert [item.id for item in result.plans[0].recipes] == ["safe.md"]
+    assert {"辣椒", "小米椒", "朝天椒", "青椒"} <= set(result.excluded_ingredients)
+    explanation = result.explanations[0]
+    assert explanation.kind == "excluded_required"
+    assert [node.label for node in explanation.path] == ["小炒肉", "小米椒", "辣椒"]
+
+
+def test_normalized_available_and_excluded_inputs_conflict():
+    with pytest.raises(ValidationError, match="归一化后同时出现在可用与排除条件"):
+        RecommendRequest(have={"番茄"}, exclude={"西红柿"})
+
+
+def test_plan_ids_and_ranks_are_stable():
+    graph = build_graph(RECIPES)
+    request = RecommendRequest(have={"西红柿"}, pantry={"盐"}, count=2, max_buy=4)
+
+    first = recommend(graph, request)
+    second = recommend(graph, request)
+
+    assert [plan.id for plan in first.plans] == [plan.id for plan in second.plans]
+    assert [plan.rank for plan in first.plans] == list(range(1, len(first.plans) + 1))
+    assert first.normalized_input.have == ["西红柿"]

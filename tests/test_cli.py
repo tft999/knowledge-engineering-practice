@@ -36,7 +36,9 @@ def test_recommend_json_command(tmp_path):
         ],
     )
     assert result.exit_code == 0, result.output
-    assert json.loads(result.output)["plans"][0]["recipes"] == ["土豆菜"]
+    assert json.loads(result.output)["plans"][0]["recipes"] == [
+        {"id": "dishes/x.md", "name": "土豆菜", "source_url": "https://example/x"}
+    ]
 
 
 def test_recommend_text_includes_source_and_shopping_list(tmp_path):
@@ -73,3 +75,21 @@ def test_verify_command_fails_when_snapshot_does_not_match(tmp_path, monkeypatch
     result = CliRunner().invoke(app, ["verify-neo4j", "--graph", str(graph_path)])
     assert result.exit_code == 1
     assert '"ok": false' in result.output
+
+
+def test_serve_starts_fastapi_with_selected_graph(tmp_path, monkeypatch):
+    graph_path = tmp_path / "graph.json"
+    called = {}
+
+    def fake_run(app, *, host, port):
+        called.update(app=app, host=host, port=port)
+
+    monkeypatch.setattr("uvicorn.run", fake_run)
+    result = CliRunner().invoke(
+        app,
+        ["serve", "--graph", str(graph_path), "--host", "127.0.0.1", "--port", "8123"],
+    )
+
+    assert result.exit_code == 0, result.output
+    assert called["host"] == "127.0.0.1"
+    assert called["port"] == 8123

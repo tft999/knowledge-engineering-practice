@@ -6,6 +6,8 @@ import networkx as nx
 import pytest
 
 from cookkg import neo4j_store
+from cookkg.graph import build_graph
+from cookkg.models import IngredientUse, Recipe
 
 
 @pytest.fixture
@@ -49,7 +51,7 @@ def test_import_replaces_only_snapshot_and_preserves_properties(graph, connectio
     result = neo4j_store.import_graph(graph)
     assert result["nodes"] == 2 and result["edges"] == 1
     calls = connection.run.call_args_list
-    edge_rows = [c.kwargs["rows"] for c in calls if "COOKKG_USES" in c.args[0]]
+    edge_rows = [c.kwargs["rows"] for c in calls if "COOKKG_REQUIRES" in c.args[0]]
     assert edge_rows[0][0]["status"] == "required"
     assert edge_rows[0][0]["evidence"] == ["盐少许"]
     recipe_rows = [
@@ -61,12 +63,16 @@ def test_import_replaces_only_snapshot_and_preserves_properties(graph, connectio
     delete_calls = [c for c in calls if "DETACH DELETE" in c.args[0]]
     assert len(delete_calls) == 1
     assert delete_calls[0].kwargs == {"dataset": "howtocook", "source_commit": "fixture"}
-    old_key = edge_rows[0][0]["recipe_key"]
+    old_key = edge_rows[0][0]["source_key"]
     connection.reset_mock()
     graph.graph["source_commit"] = "second"
     neo4j_store.import_graph(graph)
-    rows = [c.kwargs["rows"] for c in connection.run.call_args_list if "COOKKG_USES" in c.args[0]]
-    assert rows[0][0]["recipe_key"] != old_key
+    rows = [
+        c.kwargs["rows"]
+        for c in connection.run.call_args_list
+        if "COOKKG_REQUIRES" in c.args[0]
+    ]
+    assert rows[0][0]["source_key"] != old_key
 
 
 def test_verify_rejects_equal_counts_but_wrong_edges(graph, connection):
@@ -75,7 +81,7 @@ def test_verify_rejects_equal_counts_but_wrong_edges(graph, connection):
             {"node_id": node, "kind": attrs["kind"], "payload": neo4j_store._node_payload(attrs)}
             for node, attrs in graph.nodes(data=True)
         ],
-        [{"recipe": "r:a.md", "ingredient": "i:糖", "status": "required",
+        [{"source": "r:a.md", "target": "i:糖", "relation": "REQUIRES", "status": "required",
           "quantity_raw": ["少许"], "evidence": ["盐少许"]}],
         [{"recipe": "r:a.md"}],
     ]
@@ -92,6 +98,73 @@ def test_database_error_does_not_expose_credentials(graph, connection):
     assert "secret" not in str(error.value)
 
 
+def test_import_supports_category_tool_and_typed_relations(connection):
+    rich_graph = build_graph(
+        [
+            Recipe(
+                id="pepper.md",
+                name="辣椒菜",
+                category="test",
+                source_url="https://example.org/pepper",
+                source_hash="hash",
+                reviewed=True,
+                ingredients=[IngredientUse(name="小米椒", status="required")],
+                tools=["炒锅"],
+            )
+        ],
+        source_commit="fixture",
+    )
+
+    result = neo4j_store.import_graph(rich_graph)
+
+    queries = [call.args[0] for call in connection.run.call_args_list]
+    assert result["nodes"] == rich_graph.number_of_nodes()
+    assert any("CookKGCategory" in query and "MERGE" in query for query in queries)
+    assert any("CookKGTool" in query and "MERGE" in query for query in queries)
+    assert any("COOKKG_IS_A" in query for query in queries)
+    assert any("COOKKG_REQUIRES_TOOL" in query for query in queries)
+
+
+def test_verify_supports_all_graph_node_and_relation_types(connection):
+    rich_graph = build_graph(
+        [
+            Recipe(
+                id="pepper.md",
+                name="辣椒菜",
+                category="test",
+                source_url="https://example.org/pepper",
+                source_hash="hash",
+                reviewed=True,
+                ingredients=[IngredientUse(name="小米椒", status="required")],
+                tools=["炒锅"],
+            )
+        ],
+        source_commit="fixture",
+    )
+    node_rows = [
+        {"node_id": node, "kind": attrs["kind"], "payload": neo4j_store._node_payload(attrs)}
+        for node, attrs in rich_graph.nodes(data=True)
+    ]
+    edge_rows = [
+        {
+            "source": source,
+            "target": target,
+            "relation": attrs["relation"],
+            "status": attrs.get("status"),
+            "quantity_raw": attrs.get("quantity_raw", []),
+            "evidence": attrs.get("evidence", []),
+        }
+        for source, target, attrs in rich_graph.edges(data=True)
+    ]
+    connection.run.side_effect = [node_rows, edge_rows, [{"recipe": "r:pepper.md"}]]
+
+    result = neo4j_store.verify_graph(rich_graph)
+
+    assert result["ok"]
+    assert result["nodes"] == rich_graph.number_of_nodes()
+    assert result["edges"] == rich_graph.number_of_edges()
+
+
 @pytest.mark.parametrize("status, expected", [("required", True), ("optional", False)])
 def test_verify_compares_properties_and_sample_query(graph, connection, status, expected):
     connection.run.side_effect = [
@@ -99,7 +172,7 @@ def test_verify_compares_properties_and_sample_query(graph, connection, status, 
             {"node_id": node, "kind": attrs["kind"], "payload": neo4j_store._node_payload(attrs)}
             for node, attrs in graph.nodes(data=True)
         ],
-        [{"recipe": "r:a.md", "ingredient": "i:盐", "status": status,
+        [{"source": "r:a.md", "target": "i:盐", "relation": "REQUIRES", "status": status,
           "quantity_raw": ["少许"], "evidence": ["盐少许"]}],
         [{"recipe": "r:a.md"}],
     ]
@@ -120,8 +193,9 @@ def test_verify_rejects_wrong_node_payload(graph, connection):
         ],
         [
             {
-                "recipe": "r:a.md",
-                "ingredient": "i:盐",
+                "source": "r:a.md",
+                "target": "i:盐",
+                "relation": "REQUIRES",
                 "status": "required",
                 "quantity_raw": ["少许"],
                 "evidence": ["盐少许"],

@@ -85,16 +85,30 @@ def recommend_command(
         typer.echo(result.reason)
         return
     for index, plan in enumerate(result.plans, 1):
-        typer.echo(f"方案 {index}：{'、'.join(plan.recipes)}")
+        typer.echo(f"方案 {index}：{'、'.join(recipe.name for recipe in plan.recipes)}")
         typer.echo(f"补购：{'、'.join(plan.to_buy) if plan.to_buy else '无需补购'}")
         typer.echo(f"已覆盖：{'、'.join(plan.covered) if plan.covered else '无'}")
         if plan.omitted_optional:
             typer.echo(f"省略可选项：{'、'.join(plan.omitted_optional)}")
-        for source in plan.source_urls:
-            typer.echo(f"来源：{source}")
+        for recipe in plan.recipes:
+            typer.echo(f"来源：{recipe.source_url}")
 
 
 app.command("recommend")(recommend_command)
+
+
+@app.command()
+def serve(
+    graph: Annotated[Path, typer.Option("--graph")] = DEFAULT_PROCESSED / "graph.json",
+    host: Annotated[str, typer.Option("--host")] = "127.0.0.1",
+    port: Annotated[int, typer.Option("--port", min=1, max=65535)] = 8000,
+) -> None:
+    """启动 CookKG FastAPI 服务。"""
+    import uvicorn
+
+    from cookkg.api import create_app
+
+    uvicorn.run(create_app(graph), host=host, port=port)
 
 
 @app.command("import-neo4j")
