@@ -57,7 +57,7 @@ def create_app(
             raise RuntimeError("CookKG 图谱版本过旧，请重新运行 cookkg build")
         app.state.service = CookKgService(graph)
         evidence = (
-            load_evidence(evidence_path)
+            load_evidence(evidence_path, str(graph.graph["source_commit"]))
             if evidence_path is not None and evidence_path.is_file()
             else build_evidence_from_graph(graph)
         )

@@ -176,6 +176,17 @@ def test_index_cli_writes_reproducible_evidence_and_metadata(tmp_path: Path):
     assert output.read_bytes() == first
 
 
+def test_evidence_snapshot_validation_rejects_stale_or_modified_index(tmp_path: Path):
+    path = tmp_path / "evidence.jsonl"
+    dump_evidence(build_evidence_from_graph(recipe_graph()), path, "fixture")
+    assert load_evidence(path, "fixture")
+    with pytest.raises(ValueError, match="snapshot"):
+        load_evidence(path, "different")
+    path.write_text(path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="snapshot"):
+        load_evidence(path, "fixture")
+
+
 def test_neo4j_expansion_uses_fixed_parameterized_cypher():
     calls = []
 

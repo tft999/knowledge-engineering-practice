@@ -130,9 +130,17 @@ def dump_evidence(items: list[Evidence], path: Path, source_commit: str) -> dict
     return metadata
 
 
-def load_evidence(path: Path) -> list[Evidence]:
+def load_evidence(path: Path, source_commit: str | None = None) -> list[Evidence]:
     if not path.is_file():
         raise FileNotFoundError(path)
+    if source_commit is not None:
+        metadata_path = path.with_suffix(path.suffix + ".meta.json")
+        if not metadata_path.is_file():
+            raise ValueError("Evidence metadata is missing")
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        if metadata.get("source_commit") != source_commit or metadata.get("sha256") != digest:
+            raise ValueError("Evidence index does not match the graph snapshot")
     return [
         Evidence.model_validate_json(line)
         for line in path.read_text(encoding="utf-8").splitlines()
