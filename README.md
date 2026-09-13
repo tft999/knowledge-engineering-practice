@@ -104,6 +104,8 @@ $env:LLM_API_KEY='optional-key'
 `POST /api/v1/answers` 支持 `vector`、`vector_cypher`、`hybrid`、
 `hybrid_cypher` 和 `auto`。模型只接收编号证据；引用缺失或越界时重试一次，仍不合格则
 返回证据摘要并标记 `insufficient_evidence=true`。菜单硬约束始终走确定性规划器。
+当前离线向量召回使用确定性哈希嵌入，便于无外部服务时复现实验管线；最终语义向量实验
+仍需接入并冻结真实嵌入模型，不能把离线哈希结果当作真实模型效果。
 
 人工评测集完成后运行：
 
