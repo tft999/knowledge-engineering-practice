@@ -205,18 +205,28 @@ class GraphExpandedRetriever:
     def search(self, query: str, top_k: int = 5) -> list[Evidence]:
         if top_k < 1:
             return []
-        seeds = self.base.search(query, max(top_k, 5))
+        seeds = self.base.search(query, top_k)
         if not seeds:
             return []
-        seed_score = {item.evidence_id: item.score for item in seeds}
-        recipe_ids = self.expander.related_recipe_ids({item.recipe_id for item in seeds})
-        candidates = []
-        for item in self.evidence:
-            if item.recipe_id not in recipe_ids:
-                continue
-            score = seed_score.get(item.evidence_id, 0.0) + 0.001
-            candidates.append(_copy(item, score, self.name))
-        return sorted(candidates, key=lambda item: (-item.score, item.evidence_id))[:top_k]
+        seed_recipe_ids = {item.recipe_id for item in seeds}
+        expanded_recipe_ids = self.expander.related_recipe_ids(seed_recipe_ids) - seed_recipe_ids
+        if not expanded_recipe_ids or top_k == 1:
+            return [_copy(item, item.score, self.name) for item in seeds]
+
+        full_ranking = self.base.search(query, len(self.evidence))
+        expanded = [item for item in full_ranking if item.recipe_id in expanded_recipe_ids]
+        if not expanded:
+            return [_copy(item, item.score, self.name) for item in seeds]
+
+        graph_slots = min(max(1, top_k // 3), len(expanded))
+        direct = seeds[: top_k - graph_slots]
+        score_floor = direct[-1].score if direct else seeds[0].score
+        graph_items = [
+            _copy(item, score_floor - (index + 1) * 1e-9, self.name)
+            for index, item in enumerate(expanded[:graph_slots])
+        ]
+        result = [*[_copy(item, item.score, self.name) for item in direct], *graph_items]
+        return sorted(result, key=lambda item: (-item.score, item.evidence_id))
 
 
 def build_retrievers(

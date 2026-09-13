@@ -86,6 +86,45 @@ def test_four_retrievers_return_stable_deduplicated_source_evidence():
         assert all(item.source_url.startswith("https://example/") for item in result)
 
 
+def test_graph_expansion_returns_a_recipe_reached_through_shared_ingredient():
+    recipes = [
+        Recipe(
+            id="dishes/seed.md",
+            name="鸡蛋做法",
+            category="test",
+            source_url="https://example/seed",
+            source_hash="a" * 64,
+            reviewed=True,
+            ingredients=[IngredientUse(name="鸡蛋", status="required")],
+            steps="把鸡蛋打散。",
+        ),
+        Recipe(
+            id="dishes/related.md",
+            name="葱香煎饼",
+            category="test",
+            source_url="https://example/related",
+            source_hash="b" * 64,
+            reviewed=True,
+            ingredients=[IngredientUse(name="鸡蛋", status="required")],
+            steps="加入完全无关措辞并煎熟。",
+        ),
+    ]
+    graph = build_graph(recipes, source_commit="fixture")
+    evidence = build_evidence_from_graph(graph)
+    retrievers = build_retrievers(evidence, graph)
+
+    base_ids = {
+        item.recipe_id for item in retrievers["vector"].search("打散鸡蛋", top_k=2)
+    }
+    expanded_ids = {
+        item.recipe_id
+        for item in retrievers["vector_cypher"].search("打散鸡蛋", top_k=2)
+    }
+
+    assert "dishes/related.md" not in base_ids
+    assert "dishes/related.md" in expanded_ids
+
+
 @pytest.mark.parametrize(
     ("question", "target"),
     [

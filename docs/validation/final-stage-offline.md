@@ -6,7 +6,7 @@
 | --- | --- |
 | 固定 HowToCook 全量构建 | 扫描 370，排除模板 1，正式人工审核可用 10 |
 | Evidence 索引 | 121 chunks，SHA-256 `f7ac97dba7104b9042d0473279284b0400159767710d60575586bc92f2ff6fe4` |
-| Python 测试 | 118 passed，2 个需在线 Neo4j 的测试 skipped |
+| Python 测试 | 120 passed，2 个需在线 Neo4j 的测试 skipped |
 | Ruff | passed |
 | Vitest | 19 passed |
 | TypeScript 与 Vite 生产构建 | passed |
