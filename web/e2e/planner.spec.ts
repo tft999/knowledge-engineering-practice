@@ -36,3 +36,19 @@ test("completes the CookKG demo flow without horizontal overflow", async ({ cont
   );
   expect(overflow).toBe(false);
 });
+
+test("answers a graph question and opens its fixed source evidence", async ({ context, page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "菜谱问答" }).click();
+  await page.getByRole("button", { name: "查询知识库" }).click();
+  await expect(page.getByText("HybridCypher")).toBeVisible();
+  await expect(page.getByText(/小炒肉必需使用小米椒/)).toBeVisible();
+  await expect(page.getByRole("link", { name: "跳转到证据 E1" })).toBeVisible();
+
+  await context.route("https://github.com/**", (route) =>
+    route.fulfill({ status: 200, contentType: "text/html", body: "<title>Evidence source</title>" }),
+  );
+  const popupPromise = context.waitForEvent("page");
+  await page.getByRole("link", { name: "查看固定版本原文" }).first().click();
+  await expect(await popupPromise).toHaveTitle("Evidence source");
+});

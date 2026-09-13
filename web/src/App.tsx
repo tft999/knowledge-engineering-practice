@@ -4,11 +4,13 @@ import type { CookKgApi, RecommendationRequest, RecommendationResponse } from ".
 import { ApiHttpError } from "./api/client";
 import { PlanCard } from "./components/PlanCard";
 import { PlannerForm } from "./components/PlannerForm";
+import { AnswerPanel } from "./components/AnswerPanel";
 
 type Props = { api: CookKgApi; isMock: boolean };
 type RequestState = "idle" | "loading" | "success" | "error";
 
 export function App({ api, isMock }: Props) {
+  const [view, setView] = useState<"planner" | "qa">("planner");
   const [status, setStatus] = useState<RequestState>("idle");
   const [result, setResult] = useState<RecommendationResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -49,8 +51,8 @@ export function App({ api, isMock }: Props) {
               CK
             </div>
             <div>
-              <h1 className="text-base font-semibold tracking-tight text-slate-950">CookKG 菜单规划器</h1>
-              <p className="text-xs text-slate-500">知识图谱约束推荐 · 联合补购优化</p>
+              <h1 className="text-base font-semibold tracking-tight text-slate-950">CookKG</h1>
+              <p className="text-xs text-slate-500">约束菜单规划 · 可引用 GraphRAG</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -70,7 +72,14 @@ export function App({ api, isMock }: Props) {
         </div>
       </header>
 
-      <main className="mx-auto grid max-w-[1440px] gap-6 px-6 py-7 lg:grid-cols-[360px_minmax(0,1fr)] lg:px-8">
+      <nav aria-label="主要功能" className="mx-auto flex max-w-[1440px] gap-2 px-6 pt-5 lg:px-8">
+        <button aria-pressed={view === "planner"} className={`rounded-xl px-4 py-2 text-sm font-semibold ${view === "planner" ? "bg-blue-600 text-white" : "bg-white text-slate-600"}`} onClick={() => setView("planner")} type="button">菜单规划</button>
+        <button aria-pressed={view === "qa"} className={`rounded-xl px-4 py-2 text-sm font-semibold ${view === "qa" ? "bg-blue-600 text-white" : "bg-white text-slate-600"}`} onClick={() => setView("qa")} type="button">菜谱问答</button>
+      </nav>
+
+      {view === "qa" ? (
+        <main className="mx-auto max-w-[1000px] px-6 py-7 lg:px-8"><AnswerPanel api={api} /></main>
+      ) : <main className="mx-auto grid max-w-[1440px] gap-6 px-6 py-7 lg:grid-cols-[360px_minmax(0,1fr)] lg:px-8">
         <aside className="self-start rounded-2xl border border-slate-200 bg-white p-5 shadow-sm lg:sticky lg:top-6">
           <PlannerForm isLoading={status === "loading"} onSubmit={run} />
         </aside>
@@ -129,7 +138,7 @@ export function App({ api, isMock }: Props) {
             </>
           ) : null}
         </section>
-      </main>
+      </main>}
     </div>
   );
 }

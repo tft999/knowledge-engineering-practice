@@ -8,6 +8,8 @@ from collections import Counter
 import networkx as nx
 from neo4j import GraphDatabase
 
+from cookkg.evidence import Evidence
+
 
 class Neo4jStoreError(RuntimeError):
     """A concise public error that never includes connection secrets."""
@@ -211,3 +213,81 @@ def verify_graph(graph: nx.DiGraph) -> dict:
         "sample_query": {"ingredient": sample, "expected": sample_expected,
                          "actual": sample_actual, "match": sample_match},
     }
+
+
+def import_evidence(graph: nx.DiGraph, evidence: list[Evidence]) -> dict:
+    """Idempotently attach reviewed text evidence to one graph snapshot."""
+    uri, username, password, database = _config()
+    snapshot = _snapshot(graph)
+    rows = [
+        {
+            **snapshot,
+            "key": _key(snapshot, item.evidence_id),
+            "evidence_id": item.evidence_id,
+            "recipe_key": _key(snapshot, f"r:{item.recipe_id}"),
+            "recipe_id": item.recipe_id,
+            "text": item.text,
+            "source_url": item.source_url,
+            "line_start": item.line_start,
+            "line_end": item.line_end,
+            "section": item.section,
+        }
+        for item in evidence
+    ]
+
+    def write(tx):
+        tx.run(
+            "MATCH (e:CookKGEvidence) WHERE e.dataset = $dataset "
+            "AND e.source_commit = $source_commit DETACH DELETE e",
+            **snapshot,
+        ).consume()
+        for offset in range(0, len(rows), 1000):
+            tx.run(
+                "UNWIND $rows AS row "
+                "MATCH (r:CookKGRecipe {key: row.recipe_key}) "
+                "MERGE (e:CookKGEvidence {key: row.key}) SET e += row "
+                "MERGE (r)-[:COOKKG_HAS_EVIDENCE]->(e)",
+                rows=rows[offset : offset + 1000],
+            ).consume()
+
+    try:
+        with GraphDatabase.driver(uri, auth=(username, password)) as driver:
+            with driver.session(database=database) as session:
+                session.run(
+                    "CREATE CONSTRAINT cookkgevidence_key IF NOT EXISTS "
+                    "FOR (e:CookKGEvidence) REQUIRE e.key IS UNIQUE"
+                ).consume()
+                session.run(
+                    "CREATE FULLTEXT INDEX cookkg_evidence_text IF NOT EXISTS "
+                    "FOR (e:CookKGEvidence) ON EACH [e.text]"
+                ).consume()
+                session.execute_write(write)
+    except Exception:
+        raise Neo4jStoreError(
+            "Neo4j evidence import failed; check connection, credentials and permissions"
+        ) from None
+    return {**snapshot, "evidence": len(rows)}
+
+
+def verify_evidence(graph: nx.DiGraph, evidence: list[Evidence]) -> dict:
+    """Verify evidence identities and that each chunk is attached to its recipe."""
+    uri, username, password, database = _config()
+    snapshot = _snapshot(graph)
+    expected = sorted(item.evidence_id for item in evidence)
+    try:
+        with GraphDatabase.driver(uri, auth=(username, password)) as driver:
+            with driver.session(database=database) as session:
+                actual = sorted(
+                    row["evidence_id"]
+                    for row in session.run(
+                        "MATCH (r:CookKGRecipe)-[:COOKKG_HAS_EVIDENCE]->(e:CookKGEvidence) "
+                        "WHERE e.dataset = $dataset AND e.source_commit = $source_commit "
+                        "RETURN e.evidence_id AS evidence_id",
+                        **snapshot,
+                    )
+                )
+    except Exception:
+        raise Neo4jStoreError(
+            "Neo4j evidence verification failed; check connection and credentials"
+        ) from None
+    return {**snapshot, "ok": actual == expected, "expected": len(expected), "actual": len(actual)}

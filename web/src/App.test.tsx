@@ -6,6 +6,32 @@ import { createMockApi } from "./api/mock";
 import { App } from "./App";
 
 describe("CookKG planner page", () => {
+  it("answers with a routed retriever and traceable citations", async () => {
+    const user = userEvent.setup();
+    render(<App api={createMockApi({ delayMs: 0 })} isMock />);
+
+    await user.click(screen.getByRole("button", { name: "菜谱问答" }));
+    await user.click(screen.getByRole("button", { name: "查询知识库" }));
+
+    expect(await screen.findByText("HybridCypher")).toBeInTheDocument();
+    expect(screen.getByText(/小炒肉必需使用小米椒/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "跳转到证据 E1" })).toHaveAttribute(
+      "href", "#citation-E1"
+    );
+    const source = screen.getAllByRole("link", { name: "查看固定版本原文" })[0];
+    expect(source).toHaveAttribute("target", "_blank");
+    expect(source).toHaveAttribute("rel", expect.stringContaining("noopener"));
+  });
+
+  it("shows an explicit insufficient-evidence state", async () => {
+    const user = userEvent.setup();
+    render(<App api={createMockApi({ delayMs: 0, scenario: "answer-empty" })} isMock />);
+    await user.click(screen.getByRole("button", { name: "菜谱问答" }));
+    await user.click(screen.getByRole("button", { name: "查询知识库" }));
+    expect(await screen.findByText(/证据不足：系统拒绝/)).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "查看固定版本原文" })).not.toBeInTheDocument();
+  });
+
   it("runs the demo flow and presents ranked plans with evidence", async () => {
     const user = userEvent.setup();
     render(<App api={createMockApi({ delayMs: 0 })} isMock />);

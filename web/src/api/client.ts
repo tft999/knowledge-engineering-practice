@@ -1,5 +1,6 @@
 import type {
   CookKgApi,
+  AnswerResponse,
   GraphEdge,
   GraphNeighborhood,
   GraphNode,
@@ -8,6 +9,37 @@ import type {
   RecommendationRequest,
   RecommendationResponse,
 } from "./types";
+
+const retrieverNames = ["vector", "vector_cypher", "hybrid", "hybrid_cypher"] as const;
+
+export function parseAnswerResponse(value: unknown): AnswerResponse {
+  const item = record(value, "answer response");
+  const retriever = text(item.retriever, "answer.retriever");
+  if (!retrieverNames.includes(retriever as (typeof retrieverNames)[number])) {
+    throw new ApiContractError("answer.retriever 无效");
+  }
+  if (typeof item.insufficient_evidence !== "boolean") {
+    throw new ApiContractError("answer.insufficient_evidence 必须是布尔值");
+  }
+  return {
+    answer: text(item.answer, "answer.answer"),
+    retriever: retriever as AnswerResponse["retriever"],
+    route_reason: text(item.route_reason, "answer.route_reason"),
+    insufficient_evidence: item.insufficient_evidence,
+    citations: array(item.citations, "answer.citations").map((raw) => {
+      const citation = record(raw, "citation");
+      return {
+        evidence_id: text(citation.evidence_id, "citation.evidence_id"),
+        record_id: text(citation.record_id, "citation.record_id"),
+        recipe_id: text(citation.recipe_id, "citation.recipe_id"),
+        text: text(citation.text, "citation.text"),
+        source_url: text(citation.source_url, "citation.source_url"),
+        line_start: number(citation.line_start, "citation.line_start"),
+        line_end: number(citation.line_end, "citation.line_end"),
+      };
+    }),
+  };
+}
 
 type JsonRecord = Record<string, unknown>;
 
@@ -236,6 +268,15 @@ async function responseJson(response: Response): Promise<unknown> {
 export function createHttpApi(baseUrl: string, fetcher: typeof fetch = fetch): CookKgApi {
   const base = baseUrl.replace(/\/$/, "");
   return {
+    async answer(input, signal) {
+      const response = await fetcher(`${base}/api/v1/answers`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+        signal,
+      });
+      return parseAnswerResponse(await responseJson(response));
+    },
     async recommend(input, signal) {
       const response = await fetcher(`${base}/api/v1/recommendations`, {
         method: "POST",

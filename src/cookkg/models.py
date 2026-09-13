@@ -22,6 +22,7 @@ class Recipe(BaseModel):
     ingredients: list[IngredientUse] = Field(default_factory=list)
     tools: list[str] = Field(default_factory=list)
     steps: str = ""
+    step_evidence: list[str] = Field(default_factory=list)
     reviewed: bool = False
     eligible: bool = True
 

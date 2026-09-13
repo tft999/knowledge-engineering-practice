@@ -1,11 +1,12 @@
 import type {
   CookKgApi,
+  AnswerResponse,
   GraphNeighborhood,
   RecipeDetail,
   RecommendationResponse,
 } from "./types";
 
-type MockScenario = "success" | "empty" | "error" | "graph-error";
+type MockScenario = "success" | "empty" | "error" | "graph-error" | "answer-error" | "answer-empty";
 type MockOptions = { delayMs?: number; scenario?: MockScenario };
 
 const commit = "2b19c9e9ee926fd925a68207a57582a338813f9c";
@@ -197,6 +198,37 @@ function graphFor(recipeId: string, exclude: string[] = []): GraphNeighborhood {
 export function createMockApi(options: MockOptions = {}): CookKgApi {
   const { delayMs = 350, scenario = "success" } = options;
   return {
+    async answer(_input, signal) {
+      await wait(delayMs, signal);
+      if (scenario === "answer-error") throw new Error("问答服务暂时不可用");
+      const response: AnswerResponse = {
+        answer: scenario === "answer-empty" ? "当前证据不足，无法可靠回答。" : "小炒肉必需使用小米椒，而小米椒属于辣椒类别。[E1][E2]",
+        retriever: "hybrid_cypher",
+        route_reason: "问题同时涉及菜谱、食材和类别关系",
+        insufficient_evidence: scenario === "answer-empty",
+        citations: scenario === "answer-empty" ? [] : [
+          {
+            evidence_id: "E1",
+            record_id: "ev-xiaochao-pepper",
+            recipe_id: "dishes/meat_dish/小炒肉.md",
+            text: "小米椒 2 个",
+            source_url: source("dishes/meat_dish/小炒肉.md"),
+            line_start: 12,
+            line_end: 12,
+          },
+          {
+            evidence_id: "E2",
+            record_id: "ev-pepper-category",
+            recipe_id: "dishes/meat_dish/小炒肉.md",
+            text: "小米椒属于辣椒类别。",
+            source_url: source("dishes/meat_dish/小炒肉.md"),
+            line_start: 12,
+            line_end: 12,
+          },
+        ],
+      };
+      return response;
+    },
     async recommend(_input, signal) {
       await wait(delayMs, signal);
       if (scenario === "error") throw new Error("演示推荐服务暂时不可用");

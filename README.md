@@ -4,8 +4,9 @@
 的固定版本构建食材知识图谱，根据已有食材、常备调料和排除项推荐 1—3 道菜，
 并以“联合菜单所需补购食材种类最少”为主要优化目标。
 
-当前版本已经打通固定数据构建、知识图谱推理、联合菜单推荐、FastAPI 和 React 页面。
-向量检索和 LLM 问答安排在后续阶段，本项目当前不称为 GraphRAG 系统。
+当前版本已经打通固定数据构建、知识图谱推理、联合菜单推荐、四种证据检索、
+带引用的 GraphRAG 问答、FastAPI 和 React 页面。GraphRAG 只有在模型服务已配置且
+健康检查返回 `graphrag_ready=true` 时才视为可用。
 
 项目的完整问题定义、用户故事、创新边界、总体架构和课程完成标准见
 [项目定义与总体架构](docs/PROJECT.md)。后续工作已拆分为数据扩充、Web 演示、GraphRAG 和
@@ -25,6 +26,7 @@ python -m venv .venv
 .venv/Scripts/python -m pip install -e '.[dev]'
 .venv/Scripts/cookkg fetch
 .venv/Scripts/cookkg build
+.venv/Scripts/cookkg index
 .venv/Scripts/cookkg recommend --have '鸡蛋,洋葱,面包片' `
   --pantry '盐,食用油,黄油,料酒' --exclude '辣椒' --count 2 --max-buy 2
 .venv/Scripts/cookkg serve
@@ -39,8 +41,8 @@ python -m venv .venv
 
 ## Web 演示界面
 
-`web/` 提供桌面优先、兼容平板的 React 单页菜单规划器。默认使用明确标识的演示数据；
-切换环境变量后可连接真实 FastAPI，展示联合补购结果、菜谱详情和红色忌口推理路径。
+`web/` 提供“菜单规划”和“菜谱问答”两个入口。默认使用明确标识的演示数据；
+切换环境变量后可连接真实 FastAPI，展示联合补购、图谱路径、检索路由和原文引用。
 
 ```powershell
 cd web
@@ -81,6 +83,37 @@ pnpm e2e:real
 
 当前提交包含 10 道人工审核菜谱和版本化人工食材分类。规则解析结果中的 `pending` 食材、
 未审核菜谱和结构不完整菜谱不会进入推荐；只有分类资源中 `reviewed=true` 的关系参与推理。
+
+最终目标是 100 道人工审核菜谱。v2 的 100 道自动草稿仍须两位成员复核与组长裁决；
+`cookkg index` 只索引通过审核门禁的数据，`cookkg evaluate` 会拒绝任何
+`human_reviewed=false` 的最终评测题，因此当前仓库不会把草稿统计成最终成果。
+
+## GraphRAG 问答与评测
+
+先构建标准图和证据索引，再配置 OpenAI 兼容模型服务：
+
+```powershell
+.venv/Scripts/cookkg build
+.venv/Scripts/cookkg index
+$env:LLM_BASE_URL='http://localhost:11434/v1'
+$env:LLM_MODEL='your-model'
+$env:LLM_API_KEY='optional-key'
+.venv/Scripts/cookkg serve
+```
+
+`POST /api/v1/answers` 支持 `vector`、`vector_cypher`、`hybrid`、
+`hybrid_cypher` 和 `auto`。模型只接收编号证据；引用缺失或越界时重试一次，仍不合格则
+返回证据摘要并标记 `insufficient_evidence=true`。菜单硬约束始终走确定性规划器。
+
+人工评测集完成后运行：
+
+```powershell
+.venv/Scripts/cookkg evaluate --questions docs/evaluation/questions-100.json `
+  --output data/evaluation/final
+```
+
+命令生成逐题 JSONL、汇总 CSV 和 Markdown 报告。流程和字段见
+[最终阶段工作与验收](docs/final-stage-plan.md)及[评测协议](docs/evaluation-protocol.md)。
 
 审核人员可以生成稳定的待审核队列并检查现有审核记录：
 

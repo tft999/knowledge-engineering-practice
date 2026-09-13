@@ -98,6 +98,9 @@ def parse_recipe(text: str, path: str, commit: str) -> ParseResult:
 
     operation_text = "\n".join(line for _, line in operation_lines)
     recipe.steps = operation_text
+    recipe.step_evidence = [
+        f"{path}:{number}" for number, line in operation_lines if line.strip()
+    ]
     for candidate in sorted(STEP_ONLY_CANDIDATES):
         canonical = normalize_ingredient(candidate)
         if candidate in operation_text and canonical not in known:

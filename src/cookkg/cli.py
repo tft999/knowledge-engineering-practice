@@ -7,6 +7,8 @@ from typing import Annotated
 import typer
 
 from cookkg.data_cli import app as data_app
+from cookkg.evaluation import evaluate_retrievers, load_evaluation_cases, write_evaluation_report
+from cookkg.evidence import build_evidence_from_graph, dump_evidence
 from cookkg.graph import load_graph
 from cookkg.pipeline import build_dataset, fetch_dataset, source_config
 from cookkg.recommend import RecommendRequest, recommend
@@ -166,25 +168,84 @@ def serve(
     use_v2: Annotated[bool, typer.Option("--v2")] = False,
     host: Annotated[str, typer.Option("--host")] = "127.0.0.1",
     port: Annotated[int, typer.Option("--port", min=1, max=65535)] = 8000,
+    evidence: Annotated[Path | None, typer.Option("--evidence")] = None,
 ) -> None:
     """启动 CookKG FastAPI 服务。"""
     import uvicorn
 
     from cookkg.api import create_app
 
-    uvicorn.run(create_app(_resolve_graph(graph, use_v2)), host=host, port=port)
+    graph_path = _resolve_graph(graph, use_v2)
+    evidence_path = evidence or graph_path.with_name("evidence.jsonl")
+    uvicorn.run(create_app(graph_path, evidence_path), host=host, port=port)
+
+
+@app.command("index")
+def index_command(
+    graph: Annotated[Path | None, typer.Option("--graph")] = None,
+    use_v2: Annotated[bool, typer.Option("--v2")] = False,
+    output: Annotated[Path | None, typer.Option("--output")] = None,
+) -> None:
+    """从已审核菜谱生成稳定、可追溯的 GraphRAG 证据索引。"""
+    graph_path = _resolve_graph(graph, use_v2)
+    output_path = output or graph_path.with_name("evidence.jsonl")
+    try:
+        graph_data = load_graph(graph_path)
+        evidence = build_evidence_from_graph(graph_data)
+        metadata = dump_evidence(
+            evidence,
+            output_path,
+            source_commit=str(graph_data.graph.get("source_commit", "")),
+        )
+    except Exception as error:
+        typer.echo(f"证据索引构建失败：{error}", err=True)
+        raise typer.Exit(1) from error
+    typer.echo(json_module.dumps(metadata, ensure_ascii=False, indent=2))
+
+
+@app.command("evaluate")
+def evaluate_command(
+    questions: Annotated[Path, typer.Option("--questions")],
+    graph: Annotated[Path | None, typer.Option("--graph")] = None,
+    use_v2: Annotated[bool, typer.Option("--v2")] = False,
+    evidence: Annotated[Path | None, typer.Option("--evidence")] = None,
+    output: Annotated[Path, typer.Option("--output")] = Path("data/evaluation/latest"),
+    top_k: Annotated[int, typer.Option("--top-k", min=1, max=20)] = 5,
+) -> None:
+    """在人工审核评测集上比较四种检索器并保存原始结果。"""
+    graph_path = _resolve_graph(graph, use_v2)
+    evidence_path = evidence or graph_path.with_name("evidence.jsonl")
+    try:
+        from cookkg.evidence import load_evidence
+
+        cases = load_evaluation_cases(questions, require_reviewed=True)
+        report = evaluate_retrievers(
+            cases, load_evidence(evidence_path), load_graph(graph_path), top_k
+        )
+        write_evaluation_report(report, output)
+    except Exception as error:
+        typer.echo(f"评测失败：{error}", err=True)
+        raise typer.Exit(1) from error
+    typer.echo(json_module.dumps(report["metrics"], ensure_ascii=False, indent=2))
 
 
 @app.command("import-neo4j")
 def import_neo4j(
     graph: Annotated[Path | None, typer.Option("--graph")] = None,
     use_v2: Annotated[bool, typer.Option("--v2")] = False,
+    evidence: Annotated[Path | None, typer.Option("--evidence")] = None,
 ) -> None:
     """幂等导入当前图谱快照到 Neo4j。"""
-    from cookkg.neo4j_store import import_graph
+    from cookkg.evidence import load_evidence
+    from cookkg.neo4j_store import import_evidence, import_graph
 
     try:
-        result = import_graph(load_graph(_resolve_graph(graph, use_v2)))
+        graph_path = _resolve_graph(graph, use_v2)
+        graph_data = load_graph(graph_path)
+        result = import_graph(graph_data)
+        evidence_path = evidence or graph_path.with_name("evidence.jsonl")
+        if evidence_path.is_file():
+            result.update(import_evidence(graph_data, load_evidence(evidence_path)))
     except Exception as error:
         typer.echo(f"Neo4j 导入失败：{error}", err=True)
         raise typer.Exit(1) from error
@@ -195,12 +256,21 @@ def import_neo4j(
 def verify_neo4j(
     graph: Annotated[Path | None, typer.Option("--graph")] = None,
     use_v2: Annotated[bool, typer.Option("--v2")] = False,
+    evidence: Annotated[Path | None, typer.Option("--evidence")] = None,
 ) -> None:
     """验证 Neo4j 当前快照与标准图一致。"""
-    from cookkg.neo4j_store import verify_graph
+    from cookkg.evidence import load_evidence
+    from cookkg.neo4j_store import verify_evidence, verify_graph
 
     try:
-        result = verify_graph(load_graph(_resolve_graph(graph, use_v2)))
+        graph_path = _resolve_graph(graph, use_v2)
+        graph_data = load_graph(graph_path)
+        result = verify_graph(graph_data)
+        evidence_path = evidence or graph_path.with_name("evidence.jsonl")
+        if evidence_path.is_file():
+            evidence_result = verify_evidence(graph_data, load_evidence(evidence_path))
+            result["evidence"] = evidence_result
+            result["ok"] = result["ok"] and evidence_result["ok"]
     except Exception as error:
         typer.echo(f"Neo4j 验证失败：{error}", err=True)
         raise typer.Exit(1) from error

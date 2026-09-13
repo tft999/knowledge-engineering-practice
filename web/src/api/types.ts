@@ -100,7 +100,34 @@ export type GraphNeighborhoodOptions = {
   exclude?: string[];
 };
 
+export type RetrieverName = "vector" | "vector_cypher" | "hybrid" | "hybrid_cypher";
+
+export type AnswerRequest = {
+  question: string;
+  retriever: "auto" | RetrieverName;
+  top_k: number;
+};
+
+export type Citation = {
+  evidence_id: string;
+  record_id: string;
+  recipe_id: string;
+  text: string;
+  source_url: string;
+  line_start: number;
+  line_end: number;
+};
+
+export type AnswerResponse = {
+  answer: string;
+  citations: Citation[];
+  retriever: RetrieverName;
+  route_reason: string;
+  insufficient_evidence: boolean;
+};
+
 export interface CookKgApi {
+  answer(input: AnswerRequest, signal?: AbortSignal): Promise<AnswerResponse>;
   recommend(
     input: RecommendationRequest,
     signal?: AbortSignal,

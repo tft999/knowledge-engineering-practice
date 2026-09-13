@@ -6,6 +6,7 @@ import networkx as nx
 import pytest
 
 from cookkg import neo4j_store
+from cookkg.evidence import Evidence
 from cookkg.graph import build_graph
 from cookkg.models import IngredientUse, Recipe
 
@@ -139,6 +140,30 @@ def test_import_supports_category_tool_and_typed_relations(connection):
     assert any("CookKGTool" in query and "MERGE" in query for query in queries)
     assert any("COOKKG_IS_A" in query for query in queries)
     assert any("COOKKG_REQUIRES_TOOL" in query for query in queries)
+
+
+def test_import_evidence_is_snapshot_scoped_and_idempotent(connection, graph):
+    evidence = [Evidence(
+        evidence_id="ev:1", recipe_id="a.md", text="盐少许",
+        source_url="https://example.org", line_start=3, line_end=3,
+    )]
+    result = neo4j_store.import_evidence(graph, evidence)
+    queries = [call.args[0] for call in connection.run.call_args_list]
+    assert result["evidence"] == 1
+    assert any("CookKGEvidence" in query and "MERGE" in query for query in queries)
+    assert any("COOKKG_HAS_EVIDENCE" in query for query in queries)
+    assert any("FULLTEXT INDEX" in query for query in queries)
+
+
+def test_verify_evidence_checks_recipe_links(connection, graph):
+    evidence = [Evidence(
+        evidence_id="ev:1", recipe_id="a.md", text="盐少许",
+        source_url="https://example.org", line_start=3, line_end=3,
+    )]
+    connection.run.return_value = [{"evidence_id": "ev:1"}]
+    assert neo4j_store.verify_evidence(graph, evidence)["ok"]
+    connection.run.return_value = []
+    assert not neo4j_store.verify_evidence(graph, evidence)["ok"]
 
 
 def test_verify_supports_all_graph_node_and_relation_types(connection):

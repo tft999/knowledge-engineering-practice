@@ -41,6 +41,10 @@ def test_parse_recipe_extracts_and_cross_checks_sections():
     assert "ingredient_only_in_steps:食用油" in result.issues
     assert result.recipe.ingredients[0].quantity_raw == ["西红柿 = 1 个 * 份数"]
     assert result.recipe.source_url.endswith("/blob/abc/dishes/vegetable/西红柿炒鸡蛋.md")
+    assert result.recipe.step_evidence == [
+        "dishes/vegetable/西红柿炒鸡蛋.md:21",
+        "dishes/vegetable/西红柿炒鸡蛋.md:22",
+    ]
 
 
 def test_missing_ingredient_section_is_not_silently_accepted():
