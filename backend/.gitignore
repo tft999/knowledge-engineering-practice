@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 测试与静态检查缓存
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# 实验生成结果（可复现生成，不提交）
+results/
+
+# 原始 HowToCook 数据（不提交）
+raw_data/
+
+# 本目录的 data/ 是样例标准数据（源码），非生成物，需提交
+!data/
+!data/*

@@ -1,0 +1,17 @@
+{"relation":"IS_A","child":"小米椒","parent":"辣椒","review_state":"confirmed"}
+{"relation":"IS_A","child":"朝天椒","parent":"辣椒","review_state":"confirmed"}
+{"relation":"IS_A","child":"青椒","parent":"辣椒","review_state":"confirmed"}
+{"relation":"SUBCLASS_OF","child":"辣椒","parent":"蔬菜","review_state":"confirmed"}
+{"relation":"IS_A","child":"西红柿","parent":"蔬菜","review_state":"confirmed"}
+{"relation":"IS_A","child":"土豆","parent":"蔬菜","review_state":"confirmed"}
+{"relation":"IS_A","child":"豆芽","parent":"蔬菜","review_state":"confirmed"}
+{"relation":"IS_A","child":"花菜","parent":"蔬菜","review_state":"confirmed"}
+{"relation":"IS_A","child":"生菜","parent":"蔬菜","review_state":"confirmed"}
+{"relation":"IS_A","child":"青菜","parent":"蔬菜","review_state":"confirmed"}
+{"relation":"IS_A","child":"黄瓜","parent":"蔬菜","review_state":"confirmed"}
+{"relation":"IS_A","child":"胡萝卜","parent":"蔬菜","review_state":"confirmed"}
+{"relation":"IS_A","child":"鸡蛋","parent":"蛋类","review_state":"confirmed"}
+{"relation":"IS_A","child":"五花肉","parent":"猪肉","review_state":"confirmed"}
+{"relation":"IS_A","child":"豆瓣酱","parent":"酱料","review_state":"confirmed"}
+{"relation":"HAS_COMPONENT","child":"豆瓣酱","parent":"辣椒","review_state":"confirmed"}
+{"relation":"IS_A","child":"蒜","parent":"香辛料","review_state":"confirmed"}
