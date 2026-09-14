@@ -15,6 +15,9 @@ export default defineConfig({
   ],
   webServer: {
     command: "pnpm dev --host 127.0.0.1 --port 4173",
+    env: {
+      VITE_USE_MOCKS: "true",
+    },
     url: "http://127.0.0.1:4173",
     reuseExistingServer: true,
   },
