@@ -14,13 +14,25 @@ describe("CookKG planner page", () => {
     await user.click(screen.getByRole("button", { name: "查询知识库" }));
 
     expect(await screen.findByText("HybridCypher")).toBeInTheDocument();
-    expect(screen.getByText(/小炒肉必需使用小米椒/)).toBeInTheDocument();
+    expect(screen.getByText(/美式炒蛋、鸡蛋三明治、洋葱炒鸡蛋/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "跳转到证据 E1" })).toHaveAttribute(
       "href", "#citation-E1"
     );
     const source = screen.getAllByRole("link", { name: "查看固定版本原文" })[0];
     expect(source).toHaveAttribute("target", "_blank");
     expect(source).toHaveAttribute("rel", expect.stringContaining("noopener"));
+  });
+
+  it("offers demo questions for different retrieval paths", async () => {
+    const user = userEvent.setup();
+    render(<App api={createMockApi({ delayMs: 0 })} isMock />);
+
+    await user.click(screen.getByRole("button", { name: "菜谱问答" }));
+    await user.click(screen.getByRole("button", { name: /步骤.*空气炸锅面包片/ }));
+    await user.click(screen.getByRole("button", { name: "查询知识库" }));
+
+    expect(await screen.findByText("Vector")).toBeInTheDocument();
+    expect(screen.getAllByText(/200°C 烘烤 5 分钟/)).toHaveLength(2);
   });
 
   it("shows an explicit insufficient-evidence state", async () => {

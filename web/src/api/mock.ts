@@ -195,38 +195,107 @@ function graphFor(recipeId: string, exclude: string[] = []): GraphNeighborhood {
   };
 }
 
+function answerFor(question: string): AnswerResponse {
+  if (question.includes("空气炸锅面包片")) {
+    return {
+      answer: "空气炸锅面包片使用 200°C 烘烤 5 分钟。[E1]",
+      retriever: "vector",
+      route_reason: "问题主要询问单道菜的原文事实或步骤",
+      insufficient_evidence: false,
+      citations: [{
+        evidence_id: "E1",
+        record_id: "ev-air-fryer-step",
+        recipe_id: "dishes/breakfast/空气炸锅面包片.md",
+        text: "菜谱“空气炸锅面包片”的操作步骤：3. 200°C 烘烤 5 分钟",
+        source_url: source("dishes/breakfast/空气炸锅面包片.md"),
+        line_start: 24,
+        line_end: 24,
+      }],
+    };
+  }
+  if (question.includes("洋葱炒鸡蛋") && question.includes("几个鸡蛋")) {
+    return {
+      answer: "洋葱炒鸡蛋需要鸡蛋 2 个。[E1]",
+      retriever: "vector",
+      route_reason: "问题主要询问单道菜的原文事实或步骤",
+      insufficient_evidence: false,
+      citations: [{
+        evidence_id: "E1",
+        record_id: "ev-onion-egg-quantity",
+        recipe_id: "dishes/vegetable_dish/洋葱炒鸡蛋/洋葱炒鸡蛋.md",
+        text: "菜谱“洋葱炒鸡蛋”的必需食材：鸡蛋 2 个。",
+        source_url: source("dishes/vegetable_dish/洋葱炒鸡蛋/洋葱炒鸡蛋.md"),
+        line_start: 12,
+        line_end: 12,
+      }],
+    };
+  }
+  if (question.includes("小炒肉") && question.includes("必需食材")) {
+    return {
+      answer: "小炒肉的必需食材包括五花肉、小米椒和朝天椒等。[E1][E2][E3]",
+      retriever: "vector_cypher",
+      route_reason: "问题需要从文本证据扩展到图谱关系",
+      insufficient_evidence: false,
+      citations: [
+        {
+          evidence_id: "E1", record_id: "ev-xiaochao-pork", recipe_id: "dishes/meat_dish/小炒肉.md",
+          text: "菜谱“小炒肉”的必需食材：五花肉 500g。", source_url: source("dishes/meat_dish/小炒肉.md"), line_start: 10, line_end: 10,
+        },
+        {
+          evidence_id: "E2", record_id: "ev-xiaochao-millet-pepper", recipe_id: "dishes/meat_dish/小炒肉.md",
+          text: "菜谱“小炒肉”的必需食材：小米椒 4 颗。", source_url: source("dishes/meat_dish/小炒肉.md"), line_start: 12, line_end: 12,
+        },
+        {
+          evidence_id: "E3", record_id: "ev-xiaochao-chili", recipe_id: "dishes/meat_dish/小炒肉.md",
+          text: "菜谱“小炒肉”的必需食材：朝天椒 4 条。", source_url: source("dishes/meat_dish/小炒肉.md"), line_start: 11, line_end: 11,
+        },
+      ],
+    };
+  }
+  if (question.includes("哪些菜") && question.includes("鸡蛋")) {
+    return {
+      answer: "当前证据中，美式炒蛋、鸡蛋三明治、洋葱炒鸡蛋和莴笋叶煎饼都使用鸡蛋。[E1][E2][E3][E4]",
+      retriever: "hybrid_cypher",
+      route_reason: "问题需要跨菜谱或跨实体关系检索",
+      insufficient_evidence: false,
+      citations: [
+        { evidence_id: "E1", record_id: "ev-american-eggs", recipe_id: "dishes/breakfast/美式炒蛋.md", text: "菜谱“美式炒蛋”的必需食材：鸡蛋。", source_url: source("dishes/breakfast/美式炒蛋.md"), line_start: 11, line_end: 11 },
+        { evidence_id: "E2", record_id: "ev-sandwich-eggs", recipe_id: "dishes/breakfast/鸡蛋三明治.md", text: "菜谱“鸡蛋三明治”的必需食材：鸡蛋 1 个。", source_url: source("dishes/breakfast/鸡蛋三明治.md"), line_start: 11, line_end: 11 },
+        { evidence_id: "E3", record_id: "ev-onion-eggs", recipe_id: "dishes/vegetable_dish/洋葱炒鸡蛋/洋葱炒鸡蛋.md", text: "菜谱“洋葱炒鸡蛋”的必需食材：鸡蛋 2 个。", source_url: source("dishes/vegetable_dish/洋葱炒鸡蛋/洋葱炒鸡蛋.md"), line_start: 12, line_end: 12 },
+        { evidence_id: "E4", record_id: "ev-lettuce-eggs", recipe_id: "dishes/vegetable_dish/莴笋叶煎饼.md", text: "菜谱“莴笋叶煎饼”的必需食材：鸡蛋。", source_url: source("dishes/vegetable_dish/莴笋叶煎饼.md"), line_start: 12, line_end: 12 },
+      ],
+    };
+  }
+  return {
+    answer: "小炒肉必需使用小米椒，而小米椒属于辣椒类别。[E1][E2]",
+    retriever: "hybrid_cypher",
+    route_reason: "问题同时涉及菜谱、食材和类别关系",
+    insufficient_evidence: false,
+    citations: [
+      {
+        evidence_id: "E1", record_id: "ev-xiaochao-pepper", recipe_id: "dishes/meat_dish/小炒肉.md",
+        text: "小米椒 4 颗", source_url: source("dishes/meat_dish/小炒肉.md"), line_start: 12, line_end: 12,
+      },
+      {
+        evidence_id: "E2", record_id: "ev-pepper-category", recipe_id: "dishes/meat_dish/小炒肉.md",
+        text: "小米椒属于辣椒类别。", source_url: source("dishes/meat_dish/小炒肉.md"), line_start: 12, line_end: 12,
+      },
+    ],
+  };
+}
+
 export function createMockApi(options: MockOptions = {}): CookKgApi {
   const { delayMs = 350, scenario = "success" } = options;
   return {
-    async answer(_input, signal) {
+    async answer(input, signal) {
       await wait(delayMs, signal);
       if (scenario === "answer-error") throw new Error("问答服务暂时不可用");
-      const response: AnswerResponse = {
-        answer: scenario === "answer-empty" ? "当前证据不足，无法可靠回答。" : "小炒肉必需使用小米椒，而小米椒属于辣椒类别。[E1][E2]",
-        retriever: "hybrid_cypher",
-        route_reason: "问题同时涉及菜谱、食材和类别关系",
-        insufficient_evidence: scenario === "answer-empty",
-        citations: scenario === "answer-empty" ? [] : [
-          {
-            evidence_id: "E1",
-            record_id: "ev-xiaochao-pepper",
-            recipe_id: "dishes/meat_dish/小炒肉.md",
-            text: "小米椒 2 个",
-            source_url: source("dishes/meat_dish/小炒肉.md"),
-            line_start: 12,
-            line_end: 12,
-          },
-          {
-            evidence_id: "E2",
-            record_id: "ev-pepper-category",
-            recipe_id: "dishes/meat_dish/小炒肉.md",
-            text: "小米椒属于辣椒类别。",
-            source_url: source("dishes/meat_dish/小炒肉.md"),
-            line_start: 12,
-            line_end: 12,
-          },
-        ],
-      };
+      const response = scenario === "answer-empty"
+        ? {
+            answer: "当前证据不足，无法可靠回答。", retriever: "vector" as const,
+            route_reason: "问题主要询问单道菜的原文事实或步骤", insufficient_evidence: true, citations: [],
+          }
+        : answerFor(input.question);
       return response;
     },
     async recommend(_input, signal) {

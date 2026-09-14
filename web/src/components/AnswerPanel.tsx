@@ -11,8 +11,15 @@ const labels: Record<RetrieverName, string> = {
   hybrid_cypher: "HybridCypher",
 };
 
+const demoQuestions = [
+  { label: "步骤", question: "空气炸锅面包片要用多少度、烤多久？" },
+  { label: "用量", question: "洋葱炒鸡蛋需要几个鸡蛋？" },
+  { label: "组成", question: "小炒肉需要哪些必需食材？" },
+  { label: "关联", question: "哪些菜都使用鸡蛋？" },
+] as const;
+
 export function AnswerPanel({ api }: { api: CookKgApi }) {
-  const [question, setQuestion] = useState("为什么不推荐小炒肉？");
+  const [question, setQuestion] = useState("哪些菜都使用鸡蛋？");
   const [state, setState] = useState<State>("idle");
   const [result, setResult] = useState<AnswerResponse | null>(null);
   const [error, setError] = useState("");
@@ -43,12 +50,28 @@ export function AnswerPanel({ api }: { api: CookKgApi }) {
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">GraphRAG 菜谱问答</p>
         <h2 className="mt-2 text-2xl font-semibold text-slate-950">从图关系和菜谱原文中寻找答案</h2>
         <p className="mt-2 text-sm leading-6 text-slate-500">系统自动选择检索器。硬约束菜单仍由确定性算法处理。</p>
+        <div className="mt-5">
+          <p className="text-sm font-medium text-slate-800">演示问题</p>
+          <div className="mt-2 flex flex-wrap gap-2" aria-label="演示问题">
+            {demoQuestions.map((item) => (
+              <button
+                className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-left text-xs text-slate-700 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                key={item.question}
+                onClick={() => setQuestion(item.question)}
+                type="button"
+              >
+                <span className="mr-1 font-semibold text-blue-700">{item.label}</span>
+                {item.question}
+              </button>
+            ))}
+          </div>
+        </div>
         <label className="mt-5 block text-sm font-medium text-slate-800" htmlFor="question">问题</label>
         <textarea
           className="mt-2 min-h-28 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           id="question"
           onChange={(event) => setQuestion(event.target.value)}
-          placeholder="例如：为什么不推荐小炒肉？"
+          placeholder="例如：哪些菜都使用鸡蛋？"
           value={question}
         />
         <button className="mt-3 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-60" disabled={state === "loading" || !question.trim()} type="submit">
