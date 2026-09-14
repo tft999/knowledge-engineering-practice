@@ -120,7 +120,14 @@ def acceptance_report(report: dict, recipes: list[dict], team: dict | None = Non
         integrated_with_backend=bool(team.get("integration_evidence")),
         report_and_rehearsal=bool(team.get("report_and_rehearsal_evidence")),
     )
-    return dict(complete=all(checks.values()), checks=checks,
+    annotation_checks = (
+        "hundred_source_bound_drafts",
+        "hundred_human_reviewed",
+        "strict_dataset_available",
+        "strict_data_has_no_pending",
+    )
+    return dict(annotation_complete=all(checks[name] for name in annotation_checks),
+                complete=all(checks.values()), checks=checks,
                 incomplete=[name for name, ok in checks.items() if not ok],
                 valid_cross_reviews=len(valid_cross),
                 note="Team review records are self-declared evidence. This is not proof of "

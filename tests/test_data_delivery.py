@@ -5,6 +5,7 @@ def test_technical_build_cannot_claim_course_completion():
     result = acceptance_report(dict(source_hashes_validated=100, human_confirmed=0,
                                     strict_eligible=0), [])
     assert not result["complete"]
+    assert not result["annotation_complete"]
     assert "hundred_human_reviewed" in result["incomplete"]
     assert "first_twenty_independent_and_adjudicated" in result["incomplete"]
 
@@ -22,6 +23,23 @@ def test_cross_review_is_distinct_and_bound_to_current_hashes():
     assert acceptance_report(report, [recipe], team)["valid_cross_reviews"] == 1
     review["annotation_hash"] = "c" * 64
     assert acceptance_report(report, [recipe], team)["valid_cross_reviews"] == 0
+
+
+def test_annotation_scope_can_complete_before_team_delivery():
+    recipe = dict(
+        id="dishes/a.md",
+        source_hash="a" * 64,
+        annotation_hash="b" * 64,
+        review_state="confirmed",
+        strict_eligible=True,
+        issues=[],
+        ingredients=[{"review_state": "confirmed", "requirement": "required"}],
+    )
+    report = dict(source_hashes_validated=100, human_confirmed=100, strict_eligible=1)
+    result = acceptance_report(report, [recipe])
+
+    assert result["annotation_complete"]
+    assert not result["complete"]
 
 
 def test_source_ambiguity_is_not_replaced_with_a_guessed_amount():
