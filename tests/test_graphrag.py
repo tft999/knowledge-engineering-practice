@@ -133,6 +133,7 @@ def test_graph_expansion_returns_a_recipe_reached_through_shared_ingredient():
         ("小米椒属于什么类别", "vector_cypher"),
         ("想吃清淡的洋葱炒鸡蛋", "hybrid"),
         ("哪些菜都使用鸡蛋，它们需要什么工具", "hybrid_cypher"),
+        ("为什么不推荐小炒肉", "hybrid_cypher"),
     ],
 )
 def test_router_is_deterministic_and_explains_choice(question: str, target: str):

@@ -4,11 +4,41 @@ import {
   ApiContractError,
   ApiHttpError,
   createHttpApi,
+  parseAgentResponse,
   parseRecommendationResponse,
 } from "./client";
 import { createMockApi } from "./mock";
 
 describe("recommendation API contract", () => {
+  it("parses a planner response from the controlled agent", () => {
+    const result = parseAgentResponse({
+      mode: "planner",
+      answer: "已完成均衡规划。",
+      route_reason: "包含菜单约束",
+      normalized_terms: [
+        { raw: "番茄", canonical: "西红柿", field: "have", source: "alias" },
+      ],
+      tool_trace: [
+        { tool: "plan_menu", status: "success", summary: "完成菜单规划" },
+      ],
+      recommendation: {
+        plans: [],
+        reason: "没有满足当前约束的菜单组合",
+        candidate_count: 0,
+        normalized_input: { have: ["西红柿"], pantry: [], exclude: [] },
+        excluded_ingredients: [],
+        explanations: [],
+      },
+      citations: [],
+      retriever: null,
+      insufficient_evidence: false,
+      clarification_question: null,
+    });
+
+    expect(result.mode).toBe("planner");
+    expect(result.normalized_terms[0].canonical).toBe("西红柿");
+  });
+
   it("rejects a response without plans", () => {
     expect(() => parseRecommendationResponse({ candidate_count: 1 })).toThrow(
       ApiContractError,
@@ -29,6 +59,14 @@ describe("recommendation API contract", () => {
               to_buy: ["葱"],
               covered: ["鸡蛋"],
               omitted_optional: [],
+              diversity: {
+                categories: ["vegetable_dish"],
+                repeated_core_ingredients: [],
+                same_category_pairs: 0,
+                max_ingredient_similarity: 0,
+                category_count: 1,
+                summary: "单道菜",
+              },
             },
           ],
           reason: null,

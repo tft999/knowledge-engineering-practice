@@ -22,8 +22,20 @@ test("plans a menu and explains a hierarchical exclusion with the real API", asy
   await expect(dialog).toBeVisible();
   await dialog.getByRole("button", { name: "小炒肉（已排除）" }).click();
   await expect(dialog.getByText("小米椒", { exact: true })).toBeVisible();
-  await expect(dialog.getByText("辣椒", { exact: true })).toBeVisible();
+  await expect(dialog.getByText(/^辣椒(类)?$/)).toBeVisible();
 
   const excludedPepper = dialog.locator(".react-flow__node", { hasText: "小米椒" });
   await expect(excludedPepper).toHaveCSS("border-color", "rgb(220, 38, 38)");
+});
+
+test("routes a natural-language hard constraint through the real agent API", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "智能问答" }).click();
+  await page.getByRole("button", { name: /约束.*我有鸡蛋/ }).click();
+  await page.getByRole("button", { name: "交给 CookKG Agent" }).click();
+
+  await expect(page.getByText(/已按2道菜、最多补购2种/)).toBeVisible();
+  await expect(page.getByText(/辣.*辣椒类/)).toBeVisible();
+  await expect(page.locator("article").nth(1).getByText(/补购 \d+ 种/)).toBeVisible();
+  await expect(page.getByText(/没有重复核心食材/).first()).toBeVisible();
 });

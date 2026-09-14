@@ -4,6 +4,18 @@ import { RecipeDisclosure } from "./RecipeDisclosure";
 
 type Props = { api: CookKgApi; exclude: string[]; explanations: Explanation[]; plan: MenuPlan };
 
+const categoryLabels: Record<string, string> = {
+  breakfast: "早餐",
+  dessert: "甜品",
+  meat_dish: "荤菜",
+  vegetable_dish: "素菜",
+  aquatic: "水产",
+  soup: "汤",
+  staple: "主食",
+  condiment: "调味品",
+  unknown: "未分类",
+};
+
 function TagList({ empty, items, tone }: { empty: string; items: string[]; tone: string }) {
   if (!items.length) return <p className="mt-2 text-sm text-slate-400">{empty}</p>;
   return (
@@ -49,6 +61,24 @@ export function PlanCard({ api, exclude, explanations, plan }: Props) {
             tone="bg-slate-100 text-slate-600"
           />
         </div>
+      </div>
+
+      <div className="mt-5 rounded-xl border border-violet-100 bg-violet-50 p-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="text-xs font-semibold text-violet-700">均衡推荐</p>
+          <span className="text-xs text-violet-600">{plan.diversity.category_count} 个菜品类别</span>
+        </div>
+        <p className="mt-2 text-sm text-violet-900">{plan.diversity.summary}</p>
+        <TagList
+          empty="未标注菜品类别"
+          items={plan.diversity.categories.map((category) => categoryLabels[category] ?? category)}
+          tone="bg-white text-violet-700"
+        />
+        <TagList
+          empty="没有重复核心食材"
+          items={plan.diversity.repeated_core_ingredients}
+          tone="bg-white text-violet-700"
+        />
       </div>
 
       <div className="mt-5 divide-y divide-slate-100 border-t border-slate-100">

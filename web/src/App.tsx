@@ -74,7 +74,7 @@ export function App({ api, isMock }: Props) {
 
       <nav aria-label="主要功能" className="mx-auto flex max-w-[1440px] gap-2 px-6 pt-5 lg:px-8">
         <button aria-pressed={view === "planner"} className={`rounded-xl px-4 py-2 text-sm font-semibold ${view === "planner" ? "bg-blue-600 text-white" : "bg-white text-slate-600"}`} onClick={() => setView("planner")} type="button">菜单规划</button>
-        <button aria-pressed={view === "qa"} className={`rounded-xl px-4 py-2 text-sm font-semibold ${view === "qa" ? "bg-blue-600 text-white" : "bg-white text-slate-600"}`} onClick={() => setView("qa")} type="button">菜谱问答</button>
+        <button aria-pressed={view === "qa"} className={`rounded-xl px-4 py-2 text-sm font-semibold ${view === "qa" ? "bg-blue-600 text-white" : "bg-white text-slate-600"}`} onClick={() => setView("qa")} type="button">智能问答</button>
       </nav>
 
       {view === "qa" ? (
@@ -103,7 +103,7 @@ export function App({ api, isMock }: Props) {
             <>
               <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
                 <Metric label="可行候选" value={`${result.candidate_count} 道`} />
-                <Metric label="最少补购" tone="amber" value={`${primaryPlan.to_buy.length} 种`} />
+                <Metric label="首选补购" tone="amber" value={`${primaryPlan.to_buy.length} 种`} />
                 <Metric label="库存利用" tone="green" value={`${primaryPlan.covered.length} 种`} />
                 <Metric label="约束检查" tone="blue" value="满足全部约束" />
               </div>
@@ -122,7 +122,7 @@ export function App({ api, isMock }: Props) {
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">推荐结果</p>
                   <h2 className="mt-1 text-2xl font-semibold tracking-tight text-slate-950">找到 {result.plans.length} 组菜单</h2>
                 </div>
-                <p className="text-xs text-slate-500">按补购少、库存利用多排序</p>
+                <p className="text-xs text-slate-500">满足补购上限后，优先食材与类别更丰富</p>
               </div>
               <div className="space-y-4">
                 {result.plans.map((plan) => (

@@ -1,4 +1,8 @@
 import hashlib
+import json
+from collections import Counter
+from functools import lru_cache
+from importlib.resources import files
 from itertools import combinations
 from typing import Literal
 
@@ -76,6 +80,15 @@ class NormalizedInput(BaseModel):
     exclude: list[str]
 
 
+class DiversitySummary(BaseModel):
+    categories: list[str]
+    repeated_core_ingredients: list[str]
+    same_category_pairs: int
+    max_ingredient_similarity: float
+    category_count: int
+    summary: str
+
+
 class MenuPlan(BaseModel):
     id: str
     rank: int
@@ -83,6 +96,7 @@ class MenuPlan(BaseModel):
     to_buy: list[str]
     covered: list[str]
     omitted_optional: list[str]
+    diversity: DiversitySummary
 
     @property
     def recipe_ids(self) -> list[str]:
@@ -100,6 +114,45 @@ class RecommendResult(BaseModel):
     normalized_input: NormalizedInput
     excluded_ingredients: list[str] = Field(default_factory=list)
     explanations: list[Explanation] = Field(default_factory=list)
+
+
+@lru_cache(maxsize=1)
+def _neutral_ingredients() -> frozenset[str]:
+    resource = files("cookkg").joinpath("resources/diversity.json")
+    payload = json.loads(resource.read_text(encoding="utf-8"))
+    return frozenset(payload["neutral_ingredients"])
+
+
+def _diversity_summary(
+    graph: nx.DiGraph, nodes: list[str], required_sets: list[set[str]]
+) -> DiversitySummary:
+    core_sets = [required - _neutral_ingredients() for required in required_sets]
+    counts = Counter(ingredient for required in core_sets for ingredient in required)
+    repeated = sorted(name for name, count in counts.items() if count > 1)
+    categories = sorted({str(graph.nodes[node].get("category") or "unknown") for node in nodes})
+    category_values = [str(graph.nodes[node].get("category") or "unknown") for node in nodes]
+    same_category_pairs = sum(
+        1 for left, right in combinations(category_values, 2) if left == right
+    )
+    similarities = []
+    for left, right in combinations(core_sets, 2):
+        union = left | right
+        similarities.append(len(left & right) / len(union) if union else 0.0)
+    maximum = max(similarities, default=0.0)
+    if not repeated and same_category_pairs == 0:
+        summary = "菜品类别不同，且没有重复核心食材"
+    elif repeated:
+        summary = f"重复核心食材：{'、'.join(repeated)}"
+    else:
+        summary = "部分菜品属于相同类别"
+    return DiversitySummary(
+        categories=categories,
+        repeated_core_ingredients=repeated,
+        same_category_pairs=same_category_pairs,
+        max_ingredient_similarity=round(maximum, 4),
+        category_count=len(categories),
+        summary=summary,
+    )
 
 
 def _category_path(graph: nx.DiGraph, ingredient: str, category: str) -> list[str] | None:
@@ -218,6 +271,7 @@ def recommend(graph: nx.DiGraph, request: RecommendRequest) -> RecommendResult:
             attrs.get("kind") != "recipe"
             or not recipe_is_available(attrs)
             or not attrs.get("eligible", True)
+            or attrs.get("category") == "condiment"
         ):
             continue
         uses = [
@@ -275,6 +329,14 @@ def recommend(graph: nx.DiGraph, request: RecommendRequest) -> RecommendResult:
             *((item[5] & expanded_exclude) | item[6] for item in chosen)
         )
         nodes = sorted((item[3] for item in chosen), key=lambda node: graph.nodes[node]["id"])
+        required_by_node = {item[3]: item[4] for item in chosen}
+        diversity = _diversity_summary(
+            graph, nodes, [required_by_node[node] for node in nodes]
+        )
+        core_ingredients = frozenset(
+            set().union(*(required_by_node[node] for node in nodes))
+            - _neutral_ingredients()
+        )
         plan = MenuPlan(
             id=_plan_id(ids),
             rank=0,
@@ -289,10 +351,43 @@ def recommend(graph: nx.DiGraph, request: RecommendRequest) -> RecommendResult:
             to_buy=sorted(to_buy),
             covered=sorted(covered),
             omitted_optional=sorted(omitted),
+            diversity=diversity,
         )
-        ranked.append((len(to_buy), -len(covered), tuple(ids), plan))
-    ranked.sort(key=lambda item: item[:3])
-    plans = [item[3] for item in ranked[: request.limit]]
+        ranked.append(
+            (
+                len(diversity.repeated_core_ingredients),
+                diversity.same_category_pairs,
+                diversity.max_ingredient_similarity,
+                len(to_buy),
+                -len(covered),
+                tuple(ids),
+                plan,
+                core_ingredients,
+            )
+        )
+    ranked.sort(key=lambda item: item[:6])
+    pool = [(item[6], item[7], index) for index, item in enumerate(ranked[:30])]
+    selected: list[tuple[MenuPlan, frozenset[str], int]] = []
+    if pool:
+        selected.append(pool.pop(0))
+    while pool and len(selected) < request.limit:
+        selected_ids = [set(plan.recipe_ids) for plan, _, _ in selected]
+        selected_cores = [core for _, core, _ in selected]
+
+        def selection_key(
+            item: tuple[MenuPlan, frozenset[str], int]
+        ) -> tuple[int, int, int, int]:
+            plan, core, base_rank = item
+            return (
+                max(len(set(plan.recipe_ids) & ids) for ids in selected_ids),
+                max(len(core & selected_core) for selected_core in selected_cores),
+                len(plan.diversity.repeated_core_ingredients),
+                base_rank,
+            )
+
+        pool.sort(key=selection_key)
+        selected.append(pool.pop(0))
+    plans = [plan for plan, _, _ in selected]
     for rank, plan in enumerate(plans, 1):
         plan.rank = rank
     explanations.sort(key=lambda item: item[:2])

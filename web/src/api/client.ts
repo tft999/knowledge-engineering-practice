@@ -1,5 +1,6 @@
 import type {
   CookKgApi,
+  AgentResponse,
   AnswerResponse,
   GraphEdge,
   GraphNeighborhood,
@@ -38,6 +39,79 @@ export function parseAnswerResponse(value: unknown): AnswerResponse {
         line_end: number(citation.line_end, "citation.line_end"),
       };
     }),
+  };
+}
+
+export function parseAgentResponse(value: unknown): AgentResponse {
+  const item = record(value, "agent response");
+  const mode = text(item.mode, "agent.mode");
+  if (!["help", "planner", "graphrag", "clarification"].includes(mode)) {
+    throw new ApiContractError("agent.mode 无效");
+  }
+  const retrieverValue = item.retriever;
+  if (
+    retrieverValue !== null &&
+    (!retrieverNames.includes(retrieverValue as (typeof retrieverNames)[number]))
+  ) {
+    throw new ApiContractError("agent.retriever 无效");
+  }
+  const clarification = item.clarification_question;
+  if (clarification !== null && typeof clarification !== "string") {
+    throw new ApiContractError("agent.clarification_question 必须是字符串或 null");
+  }
+  if (typeof item.insufficient_evidence !== "boolean") {
+    throw new ApiContractError("agent.insufficient_evidence 必须是布尔值");
+  }
+  const recommendation = item.recommendation;
+  return {
+    mode: mode as AgentResponse["mode"],
+    answer: text(item.answer, "agent.answer"),
+    route_reason: text(item.route_reason, "agent.route_reason"),
+    normalized_terms: array(item.normalized_terms, "agent.normalized_terms").map((raw) => {
+      const term = record(raw, "normalized term");
+      const field = text(term.field, "normalized term.field");
+      const source = text(term.source, "normalized term.source");
+      if (!["have", "pantry", "exclude"].includes(field)) {
+        throw new ApiContractError("normalized term.field 无效");
+      }
+      if (!["exact", "alias", "entity_linker", "category_linker"].includes(source)) {
+        throw new ApiContractError("normalized term.source 无效");
+      }
+      return {
+        raw: text(term.raw, "normalized term.raw"),
+        canonical: text(term.canonical, "normalized term.canonical"),
+        field: field as AgentResponse["normalized_terms"][number]["field"],
+        source: source as AgentResponse["normalized_terms"][number]["source"],
+      };
+    }),
+    tool_trace: array(item.tool_trace, "agent.tool_trace").map((raw) => {
+      const trace = record(raw, "tool trace");
+      const tool = text(trace.tool, "tool trace.tool");
+      const status = text(trace.status, "tool trace.status");
+      if (!["plan_menu", "answer_knowledge"].includes(tool)) {
+        throw new ApiContractError("tool trace.tool 无效");
+      }
+      if (!["success", "empty"].includes(status)) {
+        throw new ApiContractError("tool trace.status 无效");
+      }
+      return {
+        tool: tool as AgentResponse["tool_trace"][number]["tool"],
+        status: status as AgentResponse["tool_trace"][number]["status"],
+        summary: text(trace.summary, "tool trace.summary"),
+      };
+    }),
+    recommendation:
+      recommendation === null ? null : parseRecommendationResponse(recommendation),
+    citations: parseAnswerResponse({
+      answer: item.answer,
+      citations: item.citations,
+      retriever: retrieverValue ?? "vector",
+      route_reason: item.route_reason,
+      insufficient_evidence: item.insufficient_evidence,
+    }).citations,
+    retriever: retrieverValue as AgentResponse["retriever"],
+    insufficient_evidence: item.insufficient_evidence,
+    clarification_question: clarification,
   };
 }
 
@@ -93,6 +167,7 @@ function array(value: unknown, label: string): unknown[] {
 
 function parsePlan(value: unknown): MenuPlan {
   const item = record(value, "plan");
+  const diversity = record(item.diversity, "plan.diversity");
   return {
     id: text(item.id, "plan.id"),
     rank: number(item.rank, "plan.rank"),
@@ -107,6 +182,23 @@ function parsePlan(value: unknown): MenuPlan {
     to_buy: strings(item.to_buy, "plan.to_buy"),
     covered: strings(item.covered, "plan.covered"),
     omitted_optional: strings(item.omitted_optional, "plan.omitted_optional"),
+    diversity: {
+      categories: strings(diversity.categories, "plan.diversity.categories"),
+      repeated_core_ingredients: strings(
+        diversity.repeated_core_ingredients,
+        "plan.diversity.repeated_core_ingredients",
+      ),
+      same_category_pairs: number(
+        diversity.same_category_pairs,
+        "plan.diversity.same_category_pairs",
+      ),
+      max_ingredient_similarity: number(
+        diversity.max_ingredient_similarity,
+        "plan.diversity.max_ingredient_similarity",
+      ),
+      category_count: number(diversity.category_count, "plan.diversity.category_count"),
+      summary: text(diversity.summary, "plan.diversity.summary"),
+    },
   };
 }
 
@@ -268,6 +360,15 @@ async function responseJson(response: Response): Promise<unknown> {
 export function createHttpApi(baseUrl: string, fetcher: typeof fetch = fetch): CookKgApi {
   const base = baseUrl.replace(/\/$/, "");
   return {
+    async agent(input, signal) {
+      const response = await fetcher(`${base}/api/v1/agent`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+        signal,
+      });
+      return parseAgentResponse(await responseJson(response));
+    },
     async answer(input, signal) {
       const response = await fetcher(`${base}/api/v1/answers`, {
         method: "POST",

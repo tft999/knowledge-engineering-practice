@@ -20,6 +20,14 @@ export type MenuPlan = {
   to_buy: string[];
   covered: string[];
   omitted_optional: string[];
+  diversity: {
+    categories: string[];
+    repeated_core_ingredients: string[];
+    same_category_pairs: number;
+    max_ingredient_similarity: number;
+    category_count: number;
+    summary: string;
+  };
 };
 
 export type NormalizedInput = {
@@ -126,7 +134,37 @@ export type AnswerResponse = {
   insufficient_evidence: boolean;
 };
 
+export type AgentRequest = {
+  question: string;
+  top_k: number;
+};
+
+export type AgentMode = "help" | "planner" | "graphrag" | "clarification";
+
+export type AgentResponse = {
+  mode: AgentMode;
+  answer: string;
+  route_reason: string;
+  normalized_terms: Array<{
+    raw: string;
+    canonical: string;
+    field: "have" | "pantry" | "exclude";
+    source: "exact" | "alias" | "entity_linker" | "category_linker";
+  }>;
+  tool_trace: Array<{
+    tool: "plan_menu" | "answer_knowledge";
+    status: "success" | "empty";
+    summary: string;
+  }>;
+  recommendation: RecommendationResponse | null;
+  citations: Citation[];
+  retriever: RetrieverName | null;
+  insufficient_evidence: boolean;
+  clarification_question: string | null;
+};
+
 export interface CookKgApi {
+  agent(input: AgentRequest, signal?: AbortSignal): Promise<AgentResponse>;
   answer(input: AnswerRequest, signal?: AbortSignal): Promise<AnswerResponse>;
   recommend(
     input: RecommendationRequest,

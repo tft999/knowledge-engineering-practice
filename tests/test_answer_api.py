@@ -54,3 +54,14 @@ def test_answer_endpoint_reports_missing_model_without_leaking_configuration(tmp
 
     assert response.status_code == 503
     assert response.json()["detail"] == "问答模型尚未配置"
+
+
+def test_agent_endpoint_handles_greeting_without_model(tmp_path: Path):
+    with TestClient(create_app(graph_path(tmp_path))) as client:
+        response = client.post(
+            "/api/v1/agent",
+            json={"question": "你好", "top_k": 5},
+        )
+
+    assert response.status_code == 200
+    assert response.json()["mode"] == "help"

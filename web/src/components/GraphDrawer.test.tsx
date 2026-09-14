@@ -24,6 +24,14 @@ const plan: MenuPlan = {
   to_buy: ["葱"],
   covered: ["鸡蛋", "洋葱", "面包片"],
   omitted_optional: [],
+  diversity: {
+    categories: ["breakfast", "vegetable_dish"],
+    repeated_core_ingredients: [],
+    same_category_pairs: 0,
+    max_ingredient_similarity: 0,
+    category_count: 2,
+    summary: "菜品类别不同，且没有重复核心食材",
+  },
 };
 
 const explanations: Explanation[] = [

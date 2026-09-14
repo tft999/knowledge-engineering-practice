@@ -1,5 +1,6 @@
 import type {
   CookKgApi,
+  AgentResponse,
   AnswerResponse,
   GraphNeighborhood,
   RecipeDetail,
@@ -81,6 +82,14 @@ const success: RecommendationResponse = {
       to_buy: ["葱"],
       covered: ["鸡蛋", "洋葱", "面包片"],
       omitted_optional: [],
+      diversity: {
+        categories: ["breakfast", "vegetable_dish"],
+        repeated_core_ingredients: [],
+        same_category_pairs: 0,
+        max_ingredient_similarity: 0,
+        category_count: 2,
+        summary: "菜品类别不同，且没有重复核心食材",
+      },
     },
     {
       id: "plan-2",
@@ -92,6 +101,14 @@ const success: RecommendationResponse = {
       to_buy: ["培根", "蛋黄酱"],
       covered: ["鸡蛋", "洋葱", "面包片"],
       omitted_optional: ["酸黄瓜"],
+      diversity: {
+        categories: ["breakfast", "vegetable_dish"],
+        repeated_core_ingredients: ["鸡蛋"],
+        same_category_pairs: 0,
+        max_ingredient_similarity: 0.2,
+        category_count: 2,
+        summary: "重复核心食材：鸡蛋",
+      },
     },
   ],
   reason: null,
@@ -284,9 +301,96 @@ function answerFor(question: string): AnswerResponse {
   };
 }
 
+function agentFor(question: string): AgentResponse {
+  if (/^(你好|您好)/.test(question)) {
+    return {
+      mode: "help",
+      answer: "你好，我可以规划约束菜单，也可以查询菜谱原文和图谱关系。",
+      route_reason: "识别为问候或使用帮助",
+      normalized_terms: [],
+      tool_trace: [],
+      recommendation: null,
+      citations: [],
+      retriever: null,
+      insufficient_evidence: false,
+      clarification_question: null,
+    };
+  }
+  if (question.includes("神秘果")) {
+    return {
+      mode: "clarification",
+      answer: "需要补充或修改输入后才能继续。",
+      route_reason: "实体未通过受控校验",
+      normalized_terms: [],
+      tool_trace: [],
+      recommendation: null,
+      citations: [],
+      retriever: null,
+      insufficient_evidence: false,
+      clarification_question: "我无法识别“神秘果”，请换成更明确的食材名称。",
+    };
+  }
+  if (/不吃|不含|补购|搭配|我有|家里有|消耗/.test(question)) {
+    return {
+      mode: "planner",
+      answer: "已按2道菜、最多补购2种进行均衡规划。",
+      route_reason: "问题包含库存、忌口或菜单搭配约束",
+      normalized_terms: [
+        { raw: "鸡蛋", canonical: "鸡蛋", field: "have", source: "exact" },
+        { raw: "辣的", canonical: "辣椒", field: "exclude", source: "category_linker" },
+      ],
+      tool_trace: [
+        {
+          tool: "plan_menu",
+          status: "success",
+          summary: "完成类别排除、联合补购和多样性排序",
+        },
+      ],
+      recommendation: structuredClone(success),
+      citations: [],
+      retriever: null,
+      insufficient_evidence: false,
+      clarification_question: null,
+    };
+  }
+  const knowledge = answerFor(question);
+  return {
+    mode: "graphrag",
+    answer: knowledge.answer,
+    route_reason: knowledge.route_reason,
+    normalized_terms: [],
+    tool_trace: [
+      {
+        tool: "answer_knowledge",
+        status: knowledge.insufficient_evidence ? "empty" : "success",
+        summary: `使用${knowledge.retriever}检索并检查引用`,
+      },
+    ],
+    recommendation: null,
+    citations: knowledge.citations,
+    retriever: knowledge.retriever,
+    insufficient_evidence: knowledge.insufficient_evidence,
+    clarification_question: null,
+  };
+}
+
 export function createMockApi(options: MockOptions = {}): CookKgApi {
   const { delayMs = 350, scenario = "success" } = options;
   return {
+    async agent(input, signal) {
+      await wait(delayMs, signal);
+      if (scenario === "answer-error") throw new Error("Agent 服务暂时不可用");
+      const response = agentFor(input.question);
+      if (scenario === "answer-empty" && response.mode === "graphrag") {
+        return {
+          ...response,
+          answer: "当前证据不足，无法可靠回答。",
+          citations: [],
+          insufficient_evidence: true,
+        };
+      }
+      return response;
+    },
     async answer(input, signal) {
       await wait(delayMs, signal);
       if (scenario === "answer-error") throw new Error("问答服务暂时不可用");

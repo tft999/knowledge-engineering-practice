@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from neo4j import GraphDatabase
 from pydantic import Field
 
+from cookkg.agent import AgentRequest, AgentResponse, AgentService
 from cookkg.answering import (
     AnswerRequest,
     AnswerResponse,
@@ -90,13 +91,16 @@ def create_app(
         app.state.answer_service = (
             AnswerService(app.state.retrievers, configured_llm) if configured_llm else None
         )
+        app.state.agent_service = AgentService(
+            graph, configured_llm, app.state.answer_service
+        )
         try:
             yield
         finally:
             if app.state.neo4j_driver is not None:
                 app.state.neo4j_driver.close()
 
-    app = FastAPI(title="CookKG API", version="0.2.0", lifespan=lifespan)
+    app = FastAPI(title="CookKG API", version="0.3.0", lifespan=lifespan)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=_cors_origins(),
@@ -125,6 +129,7 @@ def create_app(
             "edges": graph.number_of_edges(),
             "evidence_chunks": request.app.state.evidence_count,
             "graphrag_ready": request.app.state.answer_service is not None,
+            "agent_ready": request.app.state.agent_service is not None,
             "graph_backend": request.app.state.graph_backend,
         }
 
@@ -164,6 +169,13 @@ def create_app(
             )
         except PlannerQuestionError as error:
             raise HTTPException(status_code=409, detail=str(error)) from None
+        except LlmUnavailableError:
+            raise HTTPException(status_code=503, detail="问答模型调用失败") from None
+
+    @app.post("/api/v1/agent", response_model=AgentResponse)
+    def agent(payload: AgentRequest, request: Request) -> AgentResponse:
+        try:
+            return request.app.state.agent_service.run(payload.question, payload.top_k)
         except LlmUnavailableError:
             raise HTTPException(status_code=503, detail="问答模型调用失败") from None
 

@@ -39,8 +39,8 @@ test("completes the CookKG demo flow without horizontal overflow", async ({ cont
 
 test("answers a graph question and opens its fixed source evidence", async ({ context, page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "菜谱问答" }).click();
-  await page.getByRole("button", { name: "查询知识库" }).click();
+  await page.getByRole("button", { name: "智能问答" }).click();
+  await page.getByRole("button", { name: "交给 CookKG Agent" }).click();
   await expect(page.getByText("HybridCypher")).toBeVisible();
   await expect(page.getByText(/美式炒蛋、鸡蛋三明治、洋葱炒鸡蛋/)).toBeVisible();
   await expect(page.getByRole("link", { name: "跳转到证据 E1" })).toBeVisible();
