@@ -124,6 +124,7 @@ def test_shipped_hundred_build_exports_backend_compatibility(tmp_path):
 
     with TestClient(create_app(tmp_path / "backend-graph.json")) as client:
         health = client.get("/api/health").json()
+        assert health["reviewed_recipes"] == report["integration_eligible"]
         assert health["available_recipes"] == report["integration_eligible"]
         response = client.post(
             "/api/v1/recommendations",

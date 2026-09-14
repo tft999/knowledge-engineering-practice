@@ -9,7 +9,7 @@ from pydantic import ValidationError
 from typer.testing import CliRunner
 
 from cookkg.cli import app
-from cookkg.data_models import Annotation, DataRecipe, validate_recipe_id
+from cookkg.data_models import Annotation, Approvals, DataRecipe, validate_recipe_id
 from cookkg.data_neo4j import snapshot_rows
 from cookkg.data_pipeline import (
     build_v2,
@@ -198,6 +198,20 @@ def test_shipped_hundred_annotations_are_honest_and_consistent():
     optional = {u.id for u in by_name["凉拌莴笋"].ingredients if u.requirement == "optional"}
     assert "萝卜" in optional
     assert any("76g" in issue.detail for issue in by_name["芋泥雪媚娘"].issues)
+
+
+def test_shipped_batch_approval_binds_all_annotations_and_ontology():
+    bundle = resource_json("annotations_v2.json")
+    ontology = resource_json("ontology_v2.json")
+    approvals = Approvals.model_validate(resource_json("approvals_v2.json"))
+
+    assert approvals.standard_frozen
+    assert approvals.ontology_hash == digest(ontology)
+    assert set(approvals.recipes) == {item["id"] for item in bundle["annotations"]}
+    for item in bundle["annotations"]:
+        approval = approvals.recipes[item["id"]]
+        assert approval.source_hash == item["source_hash"]
+        assert approval.annotation_hash == digest(item)
 
 
 def test_neo4j_rejects_untyped_payload_before_connecting(case):

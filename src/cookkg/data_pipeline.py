@@ -198,8 +198,12 @@ def build_v2(raw: Path, output: Path, annotations_path: Path | None = None,
     annotations = [Annotation.model_validate(a) for a in bundle["annotations"]]
     if len({a.id for a in annotations}) != len(annotations):
         raise ValueError("Duplicate recipe annotation")
-    approvals = (Approvals.model_validate_json(approvals_path.read_text(encoding="utf-8"))
-                 if approvals_path else Approvals())
+    if approvals_path:
+        approvals = Approvals.model_validate_json(approvals_path.read_text(encoding="utf-8"))
+    elif annotations_path is None and ontology_path is None:
+        approvals = Approvals.model_validate(resource_json("approvals_v2.json"))
+    else:
+        approvals = Approvals()
     if set(approvals.recipes) - {a.id for a in annotations}:
         raise ValueError("Approval refers to an unknown recipe")
     validate_ontology(ontology, {u.id for a in annotations for u in a.ingredients}, raw)
@@ -275,7 +279,7 @@ def build_v2(raw: Path, output: Path, annotations_path: Path | None = None,
                   accuracy="Not measured: no independent adjudicated human reference set.",
                   review_status="AI-assisted drafts; human course sign-off remains outstanding."
                   if not all(r["review_state"] == "confirmed" for r in recipes)
-                  else "Human confirmed")
+                  else "Group-lead batch approval after automated source/evidence validation")
     # All validations complete before writing any deliverable.
     output.mkdir(parents=True, exist_ok=True)
     (output / "recipes.jsonl").write_text("".join(canonical_json(r) + "\n" for r in recipes),

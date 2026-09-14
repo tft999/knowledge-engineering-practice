@@ -63,7 +63,8 @@ def build_backend_projection(recipes: list[DataRecipe], ontology: dict) -> tuple
         graph.add_node(node, kind="recipe", id=recipe.id, name=recipe.name,
                        category=recipe.category, source_url=recipe.source_url,
                        source_hash=recipe.source_hash, difficulty=recipe.difficulty,
-                       steps=recipe.steps, reviewed=False,
+                       steps=recipe.steps,
+                       reviewed=recipe.review_state == "confirmed" and reason is None,
                        integration_eligible=reason is None, eligible=reason is None,
                        compatibility_blocker=reason,
                        annotation_hash=recipe.annotation_hash,
@@ -100,7 +101,13 @@ def build_backend_projection(recipes: list[DataRecipe], ontology: dict) -> tuple
         graph.add_node(target, kind="category", id=relation["parent"],
                        name=relation["parent"])
         basis = relation["basis"].replace("AI辅助拟定，需成员人工审核。", "")
-        graph.add_edge(source, target, relation=kind, reviewed=False, basis=basis)
+        graph.add_edge(
+            source,
+            target,
+            relation=kind,
+            reviewed=relation.get("review_state") == "confirmed",
+            basis=basis,
+        )
     report = dict(
         source_commit=graph.graph["source_commit"], ontology_hash=ontology_hash,
         total_recipes=len(recipes), integration_eligible=len(eligible_ids),
@@ -115,7 +122,7 @@ def build_backend_projection(recipes: list[DataRecipe], ontology: dict) -> tuple
                 "are not candidates."
             ),
             "Scoped ingredient aliases are not applied globally to user input.",
-            "Ontology relations remain proposals until the team confirms them.",
+            "Only ontology relations marked confirmed participate in strict inference.",
         ],
         eligible_recipe_ids=eligible_ids,
     )

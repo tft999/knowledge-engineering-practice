@@ -1,0 +1,608 @@
+{
+  "standard_frozen": true,
+  "ontology_hash": "db532e5bcd39f2ea5282b3269f190e29bdc98f963139630fc43e1101f2e5b3a0",
+  "ontology_reviewer": "tft999（组长，机器校验后批准）",
+  "ontology_reviewed_on": "2026-09-14",
+  "recipes": {
+    "dishes/aquatic/微波葱姜黑鳕鱼.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "a93c5ee3fde811daa57f8de7806d2d54fb4ccddb733f81656cec6168f5cc27a3",
+      "annotation_hash": "e16bf4c9752d57a4e4f99731ce5212650db8c1774cc9ce1dfea1db152ad3d083"
+    },
+    "dishes/aquatic/清蒸生蚝.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "82ffa51a226b8e31d95ca5184f63cd76c4e40ab10cd4ec89e18ee0828cfc6fca",
+      "annotation_hash": "ea6aeebddf45b8e3fb625296bc23dc965f54f0c370f5c5b3f368e9dd3e6db887"
+    },
+    "dishes/aquatic/鲤鱼炖白菜/鲤鱼炖白菜.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "d8296a55129d022054f274f45f296ffb4294133116160b0398cae535472dc203",
+      "annotation_hash": "91b0f3dc30469e35eee8ce5d91703a6a1abce564f8828fc91dad3fd396a0b2c8"
+    },
+    "dishes/breakfast/完美水煮蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "689cd1b9ee39a857be1f3bfe7ff7feea88214e9bc4eb73e7d5ca05f32f97c885",
+      "annotation_hash": "0fa8a8bd4aa2e2abb167d5306a7f23027c4fd300b0fb7c4e863f7bd49951e40b"
+    },
+    "dishes/breakfast/微波炉荷包蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "afc063198f44fa4d358c18a8177634b1b4da30f791910c82386acee1678a543b",
+      "annotation_hash": "bb791d45cbe90e0a45e534e1d477a69ed504369d2747cc1050afc3966cd6a258"
+    },
+    "dishes/breakfast/手抓饼.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "beabe3569bde8a2149a357ee7158ff3447c2fd56f0c255b6295b22be5382fb88",
+      "annotation_hash": "09b9c2a1cf58d7eeb0ddbb44587b8f947d0867877769582280af750dfe0afaba"
+    },
+    "dishes/breakfast/温泉蛋/温泉蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "2fac5da5044dac69c687da52938d1dddce974d716dc71e6b3d5d9fde83dc918e",
+      "annotation_hash": "a87d7a3b3bd67897c6318ef74a5fc754e65a919e0c0fe56b1e63b90dd117471c"
+    },
+    "dishes/breakfast/苏格兰蛋/苏格兰蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "01459abafb904ebc0aa08ae899468dbf1a6a7a65fcce7c95b7801e9b1a7b572a",
+      "annotation_hash": "6ba395eb6fb5f724689b1808a667f37569e7ef12c158340e06b110892e8f4365"
+    },
+    "dishes/breakfast/金枪鱼酱三明治.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "9b8bcd91d44e0617fb5cf9c7fc3ed031cdb3d8e2cb743eeb62d8fffa52899132",
+      "annotation_hash": "325eb8fa68e171c7e855b3200ef36b6f206df6458c58810b9678fe030a560b81"
+    },
+    "dishes/condiment/炸串酱料.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "4db122f6e6a4098bbab9fafada352aa062d9f9fe5756d0f6a27e5f7e2cb7343e",
+      "annotation_hash": "cf52813ff297ed4cfed9d167b1c6582f93085ef22ad92e931d520190c20c6054"
+    },
+    "dishes/condiment/草莓酱/草莓酱.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "a05d9558624d69b558da95a2a2580a4d830bb491e1ae86c133da9566d3940b39",
+      "annotation_hash": "7b73b4bfb71ee9833bc92c159236d2d68a9bc7a9792b80cd2c7200e4d11801b8"
+    },
+    "dishes/condiment/蒜香酱油.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "4bb77a2455d08cd2bf5d621a75c3aacdc08f1d89f9174ddd60f797ca1ae17192",
+      "annotation_hash": "0c5da80bf6e19967f241b698638f67f2b877f244c179b462ab4faa79d1ce635a"
+    },
+    "dishes/condiment/蔗糖糖浆/蔗糖糖浆.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "39c41d22e9352849a05d541d7d225091f2e06ffc84fb9a87b72f287b5e83b287",
+      "annotation_hash": "58f9feda53d3cf8ba332ed619cfb3676c17fc209ef5ccf349cc3056662a22c29"
+    },
+    "dishes/dessert/反沙芋头/反沙芋头.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "f74d93a38759cc44b6eb021ea23fefb7bc354ce4aab6227c23de817cc1f38e29",
+      "annotation_hash": "50637e28cf5cc4ca0453880d43c6617f06fbb9d16d079f409a25f0ba7b515758"
+    },
+    "dishes/dessert/奥利奥冰淇淋/奥利奥冰淇淋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "0b261683191da7c69e3e8350c4f5938ad9fbc340e45cf6ef68ec5d94f6f7623a",
+      "annotation_hash": "2a0f3c28312b17dd97110f2f59aa6de6da32bfffd6e840158aa011b037084edf"
+    },
+    "dishes/dessert/提拉米苏/提拉米苏.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "32ed5bcd667f2019cfe267952e7114bf2130ef8245d0412f624c4d4b01121066",
+      "annotation_hash": "e3cbf8194e08be0b1595bd449f8cb8ec7242926aee7f6e356ed8c9476b36e761"
+    },
+    "dishes/dessert/烤箱版巴斯克芝士蛋糕/烤箱版巴斯克芝士蛋糕.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "f6ee0f91fdc3eade61a1361f341ea60be1f8c8c1efbe79eda5c9f593d89bd60c",
+      "annotation_hash": "2292dcff03b94698e52995388b118d34f210d58c3b756665c482b4fae875b094"
+    },
+    "dishes/dessert/烤蛋挞/烤蛋挞.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "72577e8341cd47da755241aa8933b9563e0a8866291272061856d181e1691765",
+      "annotation_hash": "d4724dccda1d7b732cef5ea0cc93fb0b98d160a3beb8b839d4bb9b4ce787ba01"
+    },
+    "dishes/dessert/胡萝卜甜糕.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "ffe7e6fc04c41c7562563fb58b412d0b528ea1a53374c58c50503f46829d1ef1",
+      "annotation_hash": "cd3c7537c66a1da048566b9b76365f284d8c951dca8cbd9faf3762e5a667b434"
+    },
+    "dishes/dessert/芋泥雪媚娘/芋泥雪媚娘.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "3329bf50ef9eadcbf26981581dd5024e8da8b928e021014ba9c2fc8977643663",
+      "annotation_hash": "18aabd8a2d2bc339b8e99febd1bdbd4ba75522a9602843cf9149f9c4a56c7dab"
+    },
+    "dishes/vegetable_dish/话梅煮毛豆/话梅煮毛豆.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "cabe2b4a0bb5f1a6817b2c9e092c3f6408e091e23f337264ff81c069c9e0e70e",
+      "annotation_hash": "2b862cf420080b3d79ad3910021a3e58ce1ccd9a9bda738bcc9c3f7c7cce7b92"
+    },
+    "dishes/vegetable_dish/洋葱炒鸡蛋/洋葱炒鸡蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "d744b2afa5588f756970ee237cbe0393434eaac84d4d0f04f15c773afb9c85b2",
+      "annotation_hash": "1f5e88da97500790c6e778dd0c2f93acb373c458f1cb761e74185f884db1f23c"
+    },
+    "dishes/vegetable_dish/水油焖蔬菜.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "385b0c02d500dd38b124f6a5a0c789f3316d2db1b076f4d9c93ee344ec818848",
+      "annotation_hash": "933107a94b597c26ffa6d595f406bc36bb3c5fb90fd442ffa13bd1f1552052f2"
+    },
+    "dishes/vegetable_dish/炒滑蛋/炒滑蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "3991146afc3f3a34b6ba8a420f80c3aceb95927ecbc4733fc2c2a51015aa0d9d",
+      "annotation_hash": "d08adb06f6a082d27c48e58f4be35188a8a1d9676ddb34075e0875815633485a"
+    },
+    "dishes/vegetable_dish/糖拌西红柿/糖拌西红柿.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "0a17cd82ca74f182fdd543842535beac063179b47bfdf55135f76b8a1101f822",
+      "annotation_hash": "f240a92b20415dd1940872ca4b2d16dcce2ee91ab447c670c2170b247f3d0961"
+    },
+    "dishes/vegetable_dish/金针菇日本豆腐煲.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "63e116fba2f6f6fa079fa1a998ef81ecedb7d9231e640b3f71e2e67b8e8cd036",
+      "annotation_hash": "44e48759f97608dbfab8166bbb0eb4dc21f5568bc24cd8da4cd8721b6e08a5dd"
+    },
+    "dishes/vegetable_dish/菠菜炒鸡蛋/菠菜炒鸡蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "5f9053270d84462f8006f3bb69a9132d7c3d4f46497d39f6f31cb312c70e1bf7",
+      "annotation_hash": "15728bb0269321af6210dab90dbac1d7174c81799d34b5e8ada9879ac989167f"
+    },
+    "dishes/vegetable_dish/西红柿豆腐汤羹/西红柿豆腐汤羹.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "d4d41279075a56094a4e3ef1dcf5db1db68c04f80a9871a25fbf58af6e54c88d",
+      "annotation_hash": "7d9ac64e9dbc943f86b8f8ca2cf93063deddad270297a5c0df814664870ee378"
+    },
+    "dishes/vegetable_dish/炒青菜.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "3196880e12a33d0c331c4a0634d2a83b48c59331750c034eaead2dac1bf5c2e8",
+      "annotation_hash": "425ef75052c8591a456df51dc966cb2fccdec283732e45cab46fc1c7605bbd27"
+    },
+    "dishes/vegetable_dish/莴笋叶煎饼/莴笋叶煎饼.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "ad9ef92dab5e2ab6dcf569714053276dfe163464669c7f4f504483b8d7ee99b5",
+      "annotation_hash": "94c271f404c00b50686d9725d32e9f8c71d6ead1fb9c18ee9a46ebb266857a9b"
+    },
+    "dishes/meat_dish/肉饼炖蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "063e9b28e531b0425f9d1697104d908ac90db2089c03a20732ef234041662788",
+      "annotation_hash": "3dac1973ab83c40bed959cfd90a2c24fc0cb37cb49dbf8da0bf0f3e0da03f3f8"
+    },
+    "dishes/meat_dish/黔式腊肠娃娃菜/黔式腊肠娃娃菜.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "e2f9a6d66824886063740947eccc258497d0da508037d96c3ec15e910a9bf341",
+      "annotation_hash": "aedf97a331c678ee591a9d808dc5d86867edd825a93f3db4ac365abc50826f82"
+    },
+    "dishes/meat_dish/烤鸡翅.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "ffd8f772f2aeab8127b79229fbbb59f5fab1cb2ee81c67f62dd9e85da8460e40",
+      "annotation_hash": "fccd9a3092ea73b02c4569737860e18d36233116f2922a6633a4c29f12d24559"
+    },
+    "dishes/meat_dish/小炒黄牛肉/小炒黄牛肉.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "02b20428ae93648cc9de76dc8040cfa8285fcb2641185418a00aec0d9f104fe5",
+      "annotation_hash": "b13a2b3ac7e2177684123a2b3e67ec21c6cba68f7bb1775e78825f27cbb66a10"
+    },
+    "dishes/meat_dish/小米辣炒肉.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "8bd75d7ec3191a2e2de137f1dfdd9064af65b2249ce6fdc9ac691235baa0ded8",
+      "annotation_hash": "0701ba891d2643f45d2beb57d0dadc806b57be36760d7f70c12f27ca8e93dea9"
+    },
+    "dishes/meat_dish/豆豉鲮鱼油麦菜/豆豉鲮鱼油麦菜.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "c681e57c88a55666cbbadd2e29b7d5e0e016bea5070ab642bcd7b6898212d2cb",
+      "annotation_hash": "7f1bf443f2736317e85b4c1efaaeeddc06403e31d0a565568cd67ef126d1fea7"
+    },
+    "dishes/meat_dish/小炒肉.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "020664019cc79e82f8619b8e5cdc66c39aa83abc83ff6bdbec22a767a68842c6",
+      "annotation_hash": "8cb862dde1647bfe386b8c2f116860e13e62e2f8cf847950ba6f4a659f5061b0"
+    },
+    "dishes/meat_dish/尖椒炒牛肉.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "2eb23c0b34b5e368a7e7fea6f18a42a51968eccd59f43d143ad0ad75b56e30b3",
+      "annotation_hash": "80ce61736ec74dd19d490907c85acbfa29f12353e2e89be5475eb660dbcec5cb"
+    },
+    "dishes/meat_dish/蒜苔炒肉末.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "8bfcca2a4b34cd1e68588c9d2433dc9fb01813f24d73dd391f7bb7d05437b154",
+      "annotation_hash": "bafe46376ede069500d63653ef3ace59975533720a6b27b72818b9de7e11e88f"
+    },
+    "dishes/meat_dish/香煎五花肉/香煎五花肉.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "5e29124f9e5db5b0b6aa6305c4ee1bd0308162d3d4a057285572a7b2822f300b",
+      "annotation_hash": "bae015239a528825b4411039a18553d5693f1cb67a44705398a886bb21353bed"
+    },
+    "dishes/aquatic/蒜蓉虾/蒜蓉虾.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "d8965d8b868bdba8892843fabf5c58fcad6a46fe1b92da25eaec07895e471881",
+      "annotation_hash": "a7d5ab45f0db9c4db060389e63d6a45e0213732a6f7cda65bd66de4ef237ec80"
+    },
+    "dishes/aquatic/蛏抱蛋/蛏抱蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "328e71351946eb93ba64dbf49021639bf66aacbb495755c97f9ce8d824d6b962",
+      "annotation_hash": "4923b3ecfeda3eccba5d35ceba7d370d5f831c882d07faa7480ef23037684e1e"
+    },
+    "dishes/aquatic/蒜香黄油虾/蒜香黄油虾.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "d346a992b858c0bc12693c959ea60e8b61adda363a5dbb8a549ce2f9f851ad3b",
+      "annotation_hash": "53cd266f117b97a5de3681a6e0b07c0db6b32933e4c5cc58f14f9401184f066e"
+    },
+    "dishes/aquatic/黄油煎虾/黄油煎虾.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "fc48a45b812cdf4c9e5d4fde7675ae15dffc552af9de685440f480c6669be3d5",
+      "annotation_hash": "63fca1d1f497f86c77878dc84c0b695f9640771aa0d167b3b4328c418e1dc6d9"
+    },
+    "dishes/aquatic/白灼虾/白灼虾.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "6296adcbaaeb2ecd0280c60b22c91d1c4a97b888791320942e4787b9d58f9b43",
+      "annotation_hash": "d299dd81968e49441edd291c40b9696417b39f501880736906d1085d9e2ec3a4"
+    },
+    "dishes/aquatic/油焖大虾/油焖大虾.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "f7d0a6c69cdd4253e3db8816a2d8bacf61fd75bf0ac7c256f4acd2ce42f29c39",
+      "annotation_hash": "dbb6163eb75854f1871dc0520e9df34a3d5330b96cf2dffa0baec0d934664500"
+    },
+    "dishes/aquatic/酱炖蟹.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "6c38db78acdc84c0cca7d7bbddd595d5ed9cd9c6f66ef963040d4dd9b59bfd10",
+      "annotation_hash": "4574b3f2b13313f11928897c12aa591731f889f678030ebf6780dc0559489276"
+    },
+    "dishes/aquatic/芥末黄油罗氏虾/芥末黄油罗氏虾.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "d970f49cc663ea364df5607c890bf0ae5b7808c1df05e8d174c4afe5d786c530",
+      "annotation_hash": "8549c9ef141b83b035134057f55e294e0309e2963abcd97230316d8c45f13c85"
+    },
+    "dishes/aquatic/葱烧海参/葱烧海参.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "d951d77d8e8aff44a50b2d191e3872a9d3793ec7d27d1507f98d55f7d6155cc4",
+      "annotation_hash": "2a687a2a0aa324241f2135399f7ee01401a591441aa76c28febdf68aa02d398c"
+    },
+    "dishes/aquatic/小龙虾/小龙虾.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "7ca726dce299f6d522ce22831bfbe59e98cf5f9f7036e8e936bdab764af0e67e",
+      "annotation_hash": "f1a541af7d84346652296e5fd4ca6e2b6b6ab5f79accbd222d1c7bfc44761f06"
+    },
+    "dishes/soup/朱雀汤/朱雀汤.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "ef0a8d60e6a1a914e30952c891bae31b2b681d273c2d0aa5fbfa60f643e1b59c",
+      "annotation_hash": "9c526f611f79621b945d763de6c97586b29b8ccbd65472920ab09a587ae0bb2e"
+    },
+    "dishes/soup/金针菇汤.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "b68d4c0b7410c0e649006006ea17c8b094d31592515474780ac02d4fb39a6100",
+      "annotation_hash": "2ada71262c67313fd5fb59db973245ad2d7e14baf51688cd007d1b0e90f9c679"
+    },
+    "dishes/soup/紫菜蛋花汤.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "8b83438660e9d15b9658644b4b9c8d16eecf1207cf33ac7e2fd526aa3f760020",
+      "annotation_hash": "3b320cdd9fe091b62bae8586a916f19de84ba5fe34851195d78d4350598ae60f"
+    },
+    "dishes/soup/西红柿鸡蛋汤.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "27692a58fc1659aee6d67ce67bf5cfebf114b12540370ba2a2ef9950a5dd5bc5",
+      "annotation_hash": "4fea085d8acfcf7aef06bd7455240256959cf199a912f026629e5fa671eff8f5"
+    },
+    "dishes/soup/银耳莲子粥/银耳莲子粥.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "26b2d70247e989e283a21319280f9f2e38bab15b21be2019127717cf6235d404",
+      "annotation_hash": "7685a4c921c80fd2c3ae061f4db45523a0997e2db57c73f61916529f84154cb9"
+    },
+    "dishes/soup/菌菇炖乳鸽/菌菇炖乳鸽.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "e1d86e2d918b9c50dc04d1d401169e781ffb84addc287d320e38c4413e115ed5",
+      "annotation_hash": "cabd31dd19d00759dcd2fd1f7d326dcdfac785e39e90479537e9e07b05bedca0"
+    },
+    "dishes/soup/番茄牛肉蛋花汤.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "968a779af81eb85f75f09afde118a0ffc0a33c5b9bdbcdfa39d887dd6c9a7096",
+      "annotation_hash": "0a23d9c4513bff1068716b7fca9dc341a1707533d36706dc7610b9ff06df2df4"
+    },
+    "dishes/soup/羊肉汤/羊肉汤.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "67bb1e702aa8f78f908381c4bb137ab5ee98de2dc6167e0a53bd86d0119cddc1",
+      "annotation_hash": "1be7eeddd6a4abd4d7e4e447927f96d1fd705080a57d509d63e625dbe9ac4c15"
+    },
+    "dishes/soup/米粥.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "538a5fb1becb4d6143f01ccfc98a2685b50de71918e53fd2a1cc7f08616849f5",
+      "annotation_hash": "fc0d404e3e7d4b1b9109176c14cd2fa7213548f9616035184f90218cc59c9df5"
+    },
+    "dishes/soup/陈皮排骨汤.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "265a2b9d5d8bd93349c1567b8fdaa54c80cd7754d5a3b7fded8b236b83217322",
+      "annotation_hash": "0413893f961dc7bdcd86aeaeb118504129548638b673fa53600f2fa2d6c1d22d"
+    },
+    "dishes/staple/老干妈拌面.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "ecef27ed60d0291d10119c27608e030f214c0cf7f2ada25b0dad5138833521b7",
+      "annotation_hash": "1c3eb14e3b49e1661970ae376ea3989dc73419a98e90f873fb7357ad3beb4d8e"
+    },
+    "dishes/staple/电饭煲三文鱼炊饭/电饭煲三文鱼炊饭.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "7d454091bacf5da5fd5d77de6bdb4df4352b16585e18cb628c90419463bc723a",
+      "annotation_hash": "f145a26bfcf1106fc0828f7959106b24c10e5bb3e2e192993f1334ab6fe8a940"
+    },
+    "dishes/staple/鲣鱼海苔玉米饭/鲣鱼海苔玉米饭.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "05816fe39b71fdf9aca091e4930111f170277f30fbada57f36c6956a2196f96c",
+      "annotation_hash": "f6abdcd2b9a720bc95b68531a5bf76c6672ab1a96fe672465316cec454fc4763"
+    },
+    "dishes/staple/炒意大利面/炒意大利面.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "1f2afa3384002d5c86dd1430853366ae5d28e2a840e37d8e0e6b408f12c733eb",
+      "annotation_hash": "2513751e4f462144cbb1c94d7076b32b6a80ebb2bf5564640fbb0c239000c426"
+    },
+    "dishes/staple/韭菜盒子.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "1bffe395c2a9f311da7a72247eb42141a1ad1e830398247e29a104af33031da0",
+      "annotation_hash": "e079127f23a1b24bd9e3ddea24c7773ecc4f8b0ecb0fb2ca9d87a63aa3ab765a"
+    },
+    "dishes/staple/醪糟小汤圆.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "1449462c523baf3e63113536b271ef31045b0dd308577b1117fd9c0229455c39",
+      "annotation_hash": "d1c53efafaa577955270f74e4c0f040890a3d2a7eed7cb710b97f308ed5dd725"
+    },
+    "dishes/staple/米饭/煮锅蒸米饭.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "0e9d2218d45694002cea57acad64b4f21353d290e06e8b701cd1fcebe5129285",
+      "annotation_hash": "5ac6984ed433f96578201a7c888f07a4394dba986e89c370f79be7a61f7484c3"
+    },
+    "dishes/staple/酱拌荞麦面/酱拌荞麦面.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "ee253318dee83882497b63fa08ec1c6663de135c2e69da5fd0eddd24471f4b72",
+      "annotation_hash": "f6a331baeb791f6d3c02e737ad6c7334a758aa708b9154d1ccaba90f8d11b578"
+    },
+    "dishes/staple/麻油拌面.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "051515b5f6888aabc020561a06bd0143bc53d3626899ecd64f9a1066aa4d584b",
+      "annotation_hash": "f82ed8b8dda6397c8b9590b91da2c46e0c537469512ee22d35d25a4d014ed113"
+    },
+    "dishes/staple/煮泡面加蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "e787fb6d8f3bceba3a17d0a61ad08c57b190d4eeb11e45324db716e82ef8485a",
+      "annotation_hash": "a656b60cee05ea72c67e2b0f30b1a88e7d924d28c7ee9a756aec2e2382ad20e6"
+    },
+    "dishes/breakfast/空气炸锅面包片.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "5c57f5cf967524ec2fab8fc9eaf1d4a90ad45e23d2da9a443d889741d02559f0",
+      "annotation_hash": "ff76e7a4a8adbe5f2ac77106a84cc123deee02b67cf1ae40dcbc08f2b8f931e5"
+    },
+    "dishes/breakfast/水煮玉米.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "675bfc65305cc8da1f9d3ef50c95343d0afc97d293087ad60c2ad13e8e7d2b82",
+      "annotation_hash": "116300a407d198150dd8f1c551e074b2e700b87b5045ff43e4f866f4c70473cd"
+    },
+    "dishes/breakfast/鸡蛋三明治.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "27c400d50141e164b651848e41be79cea4f84bb12f75b99c15bd95152993d9d1",
+      "annotation_hash": "c61a44cdad96402c30517c892ba3e3850529741ea8450c7f1d1820ad73d4aea7"
+    },
+    "dishes/breakfast/桂圆红枣粥.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "0a732e4d4674dd6d60d5f6f0d9f2d548fc7cb3d6e2f619afc8966998db67909f",
+      "annotation_hash": "3276fcccbbba0e0fdc4531ff4d3bacbdc5b9dca372b5fabeb910b7ecbc32b55c"
+    },
+    "dishes/breakfast/美式炒蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "5e2a165dc354be04e757353654fcb2e849ec34ced081fcbd30caa3aefa5c7571",
+      "annotation_hash": "ccdc6d762fca8bab26df78f1dfd5f98bc9f06f659b0adbf894a19e7fe866c6fc"
+    },
+    "dishes/breakfast/吐司果酱.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "126205729748a8c6ca005cb973eb35716827d1565a97f941cb187de6ab17788a",
+      "annotation_hash": "73bef3105c974f5568d0d511ea5b3a8221267177ebe65307ee1a960e27f3b513"
+    },
+    "dishes/breakfast/蒸花卷.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "927c8c67b3003995bb9a6bf4fa4a5954b67486c8ba0c03f3a4b20f7191fb8eea",
+      "annotation_hash": "5b1042f6954e6569a46b1ab76e436268b7912e3624b3734709b1e73282c4d1f7"
+    },
+    "dishes/breakfast/蒸水蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "0c3f775486ab027d3704d5dce26af2e84e35ade2d84e75ebf8b5e71678f311aa",
+      "annotation_hash": "82bd0c44393bb05d2b68b5e8377583fe37503dfe1b91a9d92583878990a0c1d2"
+    },
+    "dishes/breakfast/煎饺.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "dac3578391d6d6c8b17a42aea22b6fb6dca4622d28421b5cb95c83d45650c1a5",
+      "annotation_hash": "12021e8931cd6aa4f04e503fd33febd74f325fa32b0b6ed1a73a7b5746bf6b67"
+    },
+    "dishes/breakfast/蛋煎糍粑.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "c3704c9c8c680b273c9b9daed48447b0bbca96f71cf72158f45c8a8b2da0d284",
+      "annotation_hash": "a13adc7c9e366cb76f23a27c92a84cacc594df4f2ce42922912f464ef4830af9"
+    },
+    "dishes/condiment/油酥.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "7b03cb02058bbca9d01ba206735ac06eba6c6f6dd6cc0b65a83e834f37589b54",
+      "annotation_hash": "11f004f5bc1a50d51c12a2e8790152ca7668448ed7fb2588069fdce7be61548b"
+    },
+    "dishes/condiment/糖醋汁.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "f2d9d1c359cc708270406f36e6c2fbfddab7ef6dd91ec627bcb3dbdfa495f37b",
+      "annotation_hash": "9bc4d739caa35f896e602bc9fbb82901a7fa868dacd0900bb1a584efd3af2275"
+    },
+    "dishes/condiment/葱油.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "f82dac14b82f901a8556d6b24b58f3cd428d618b0482d766db3c25edf5aaebe3",
+      "annotation_hash": "204a469899d48b70ad116a0d8bdc1edd35cdfc1eb55cbd54135e7b7d0c99590b"
+    },
+    "dishes/condiment/油泼辣子/油泼辣子.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "26944708a607a477ebd802ba611e00391eac905ad38ffb9bfb44b325b9bc5caa",
+      "annotation_hash": "af28e3a279e2470412c820e8ddb018a04df8485fec8858063ec0c56e7a33aad3"
+    },
+    "dishes/condiment/简易版炒糖色.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "499c945ec0c913e14db00c9082f73d0f1c60221c5e93c7104762df5a4f47160b",
+      "annotation_hash": "117baf70dcc533b6f1071d69aff51cf009c31a9d4e5b371fb53c16dacfaab4a1"
+    },
+    "dishes/dessert/酸奶意式奶冻/酸奶意式奶冻.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "ed525430319710507b1d72d5fad7594dddcfd67649c8150c546ce1c411bbc018",
+      "annotation_hash": "85f0e4b7060a667fb753d98e474cd1c134401f5499fdc437ef20c088bd851930"
+    },
+    "dishes/dessert/龟苓膏/龟苓膏.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "3cd91e6e63df6d88cdb9f1bf542e22dc28fc80a9972f65e5cf9db53c491b825f",
+      "annotation_hash": "df6c44ad92c786d9b200513bf7e2fb2c81fd1a371a7a887088806e0659f19010"
+    },
+    "dishes/dessert/英式司康/英式司康.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "286fb85e071ee5ed2bc66e28643195902ebcb94f27342b48eb2496a65fcfe8cf",
+      "annotation_hash": "d797541bbc18d39d1ac015bd87e98092ebe1012c121679ceda9a04110273b004"
+    },
+    "dishes/dessert/草莓冰淇淋/草莓冰淇淋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "2117137354550b8f49255813c925080d8be30f3ad6f41f02e9c155e7b13c4218",
+      "annotation_hash": "1a45a74364f92b6f1b7de37d6bcd7e81383fcf14aa5139f40df45c832eb41e5c"
+    },
+    "dishes/dessert/玛格丽特饼干/玛格丽特饼干.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "7bfed2870e38d0e34d2eda7ad55ed7db33d81b1d3aa847f0aefc94d95f14b89f",
+      "annotation_hash": "e2d78a9a0c1235776e73c5263634fbf552009292f0405191e120934262ab770f"
+    },
+    "dishes/dessert/红柚蛋糕/红柚蛋糕.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "819fa32ac3b9dae57aa98106c20b8fa245c015c2caaf3a8cf388a6892c2bdd4a",
+      "annotation_hash": "21fb04bd28a0e07430a6d3e244ea55c7d269d16b1358dce75e0d935224dec942"
+    },
+    "dishes/dessert/咖啡椰奶冻/咖啡椰奶冻.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "b5bb0774195d6b6826612a183bc51cc4275fbd11ed443cdefcaa11a1e162fe36",
+      "annotation_hash": "491dfb642c5fc8b3683f61b985a4bd8b6b8b31b7fb17203e00a92d28116d9295"
+    },
+    "dishes/dessert/雪花酥/雪花酥.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "d143844bcb0bfc15a4c2d2f717e0a8c0e924e56708ddce92c860369b4bd589d0",
+      "annotation_hash": "5493d2c510c37d6bce8f63a23ef1990436919b960f5f448349291555f9bd16ca"
+    },
+    "dishes/dessert/炸鲜奶/炸鲜奶.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "0a9c5132c351591c201ae292c137c1392347a7ca5cfc86f98be12238dc452080",
+      "annotation_hash": "35a1739c2fc3c3228f5674846cfa3f3c04ca3fda68cb4e1885f84c18b6f721c6"
+    },
+    "dishes/dessert/无厨师机蜂蜜面包/无厨师机蜂蜜面包.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "41c34cf84d5352fac2ec1733f0d117c60f5e83b23f05d558c03ea74d8d5e1b42",
+      "annotation_hash": "30331b344af2fc1f02b05083102c7aa1b5956d0de858c06362b2ed8473a50d0c"
+    },
+    "dishes/vegetable_dish/素炒豆角.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "25bd80eaf19f3e9ccc786e4af8daeea295538ed6d0aee22ca85eefd60d204ae6",
+      "annotation_hash": "5de197f102d7780ba2459de7061485542e5a08e2195b336c33062e6380bd3d83"
+    },
+    "dishes/vegetable_dish/凉拌油麦菜.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "3a31ea73324f7656ffa025d0963c117946e570a846f2d4c12b51782f4294f9b0",
+      "annotation_hash": "393663d2e6b520719b5bed3f3cd926c51e0a1c241ac1150be9e65b743bda357b"
+    },
+    "dishes/breakfast/溏心蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "350fd1bf477f25643d25d3626acd8d54b7a6c227a70237cb4eda375c0fb9b3ec",
+      "annotation_hash": "bb9f36ef806c58d649ec9ff7ecee2b126121f5ecde49905423fab2332a4a67a8"
+    },
+    "dishes/vegetable_dish/凉拌莴笋/凉拌莴笋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "3ac67ce68b0837211daf0d62671806453aa5670e254ed53c19ac22d8f531acb7",
+      "annotation_hash": "9aeb114ef0b4b23b27d26a143b52768771bf9730fe2e4d25c17af359d9413b51"
+    },
+    "dishes/vegetable_dish/油醋爆蛋.md": {
+      "reviewer": "tft999（组长，机器校验后批准）",
+      "reviewed_on": "2026-09-14",
+      "source_hash": "101f2ae70ddd003749c6ee921426b629dc951461a2c512de1a2e1ca47f58baf4",
+      "annotation_hash": "f57084bdee8f59cea2b13e6448b6e6c38eaf38e9fd0afe0d08eac38faa2cbc91"
+    }
+  }
+}
